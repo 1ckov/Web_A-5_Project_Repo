@@ -1,0 +1,17 @@
+body {
+    margin:0; 
+    font-family:sans-serif;
+}
+
+/* Table border settings */
+tr, td, th{
+    border: 1px solid black;
+}
+.container-flags {
+    margin: 10% auto auto 32%;
+}
+.login-menu {
+    margin: 0px 0px auto 70%;
+}
+
+

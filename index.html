@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Html language attribute, default is english -->
+<html lang="de">
+<head> 
+    <!-- What charset to use in our HTML file, UTF-8 is best -->
+    <meta charset="UTF8">
+    <!-- Here we set the width of the page to fit the width of the device -->
+    <link rel="stylesheet" href="css/main.css"> 
+    <title>GEZ-Hilfe</title>
+
+</head>
+
+<body>
+    <div class="login-menu">
+        <form action="">
+            Login: 
+            <label for="uname"> Username: </label>
+            <input type="text" id="uname" name="uname">
+            <label for="passwd">
+                Password: 
+            </label>
+            <input type="password" id="passwd" name="passwd">
+            <input type="submit" value="Submit">
+        </form>
+       
+    </div>
+    <h1></h1>
+    <div class="container-flags">
+        <table style="border: 2px solid; border-color: black;" >
+            <tr>
+                <th>English</th>
+                <th>Deutsch</th>
+                <th>Български</th>
+                <th>Francious</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="localized_pages/English/index.html" > <img src="images/gb_small.png"> </a>
+                </td>
+                <td>
+                    <a href="localized_pages/German/index.html" ><img src="images/de_small.png"> </a>
+                </td>
+                <td>
+                    <a href="localized_pages/Bulgarian/index.html" ><img src="images/bg_small.png"> </a>
+                </td>
+                <td>
+                    <a href="localized_pages/French/index.html" ><img src="images/fr_small.png"> </a>
+                </td>
+            </tr>
+        </table> 
+    </div>
+
+</body>
+
+</html>
