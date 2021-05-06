@@ -12,15 +12,15 @@
 */
 
 html{
-    width: 600px;
+    width: 900px;
 }
 
 body{
     text-align: center;
 }
 table {
-    margin:auto auto auto 300px;
-    width: 60%;
+    margin:auto auto auto 400px;
+    width: 70%;
     border: 2px solid black;
 }
 
@@ -44,5 +44,23 @@ td.video-fields{
     width: 20%;
 }
 td.info-fields{
-    width: 30%;
+    width: 400px;
 }
+.extra-info{
+    display: none;
+    line-height: 30px;
+    font-size: 12px;
+}
+.info-button:hover {
+    background-color: white;
+    padding: 0 0 0 5px;
+    width: 300px;
+    text-align: left;
+}
+.info-button:hover .extra-info{
+    display: block;
+}
+*{
+    transition: .4s;
+}
+
