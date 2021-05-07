@@ -11,51 +11,49 @@
         <div class="pers-fields">
             <form action="">
                 <table>
-                    <h2>1.Allgemeine Angaben</h2>
+                    <h2>5. SEPA-Lastschrift</h2>
                     <tr>
                         <th>Feld:</th>
                         <th>Kurze Erklärung</th>
                     </tr>
                     <tr>
                         <td class="formular-fields">
-                            <label for="male" >Männlich </label>
-                            <input type="radio" id="male" name="gender" value="Herr" required><br>
-                            <label for="female">Weiblich</label>
-                            <input type="radio" id="female" name="gender" value="Frau"> 
+                            <label for="name" >Titel/Nachname/Vorname:</label>
+                            <input type="text" id="name" name="name"  required>
                         </td>
                         <td class="info-fields">
                             <div class="info-button">
                                 <img src="/images/favicon.png" alt="informationen">
                                  <span class="extra-info">   
-                                        Weitere Informationen werden noch hinzugefügt
+                                        Geben Sie ihren Namen in folgender Reihenfolge an: Titel, Nachname, Vorname. Beispiel: Max von Mustermann -> von Mustermann Max
                                  </span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="formular-fields">
-                            <label for="fname" >Vorname:</label>
-                            <input type="text" id="fname" name="fname"  required>
+                            <label for="street" >Straße:</label>
+                            <input type="text" id="street" name="street"  required>
                         </td>
                         <td class="info-fields">
                             <div class="info-button">
                                 <img src="/images/favicon.png" alt="informationen">
                                  <span class="extra-info">   
-                                        Weitere Informationen werden noch hinzugefügt
+                                    Geben Sie die Straße an, in der Sie wohnen. Beispiel: Musterstraße, Musterweg
                                  </span>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="formular-fields">
-                            <label for="lname" >Titel/Nachname:</label>
-                            <input type="text" id="lname" name="lname" required>
+                            <label for="home_nr" >Hausnummer:</label>
+                            <input type="text" id="home_nr" name="home_nr" required>
                         </td>
                         <td class="info-fields">
                             <div class="info-button">
                                 <img src="/images/favicon.png" alt="informationen">
                                  <span class="extra-info">   
-                                        Weitere Informationen werden noch hinzugefügt
+                                        Geben Sie die Nummer ihres Hauses an. Beispiele: 11, 11a, 35
                                  </span>
                             </div>
                         </td>
@@ -63,14 +61,85 @@
                     <tr>
                         <tr>
                         <td class="formular-fields">
-                            <label for="bdate" >Geburtstag:</label>
-                            <input type="date" id="bdate" name="bdate" required>
+                            <label for="area_code" >PLZ:</label>
+                            <input type="number" id="area_code" name="area_code" required>
                         </td>
                         <td class="info-fields">
                             <div class="info-button">
                                 <img src="/images/favicon.png" alt="informationen">
                                  <span class="extra-info">   
-                                        Weitere Informationen werden noch hinzugefügt
+                                        Geben Sie die Postleihzahl ihres Ortes an. Beispiel: 68219 Mannheim -> 68219
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <tr>
+                        <td class="formular-fields">
+                            <label for="area" >Ort:</label>
+                            <input type="text" id="area" name="area" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie den Namen ihres Wohnortes an. Beispiel: 68219 Mannheim -> Mannheim
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="IBAN" >IBAN:</label>
+                            <input type="text" id="IBAN" name="IBAN" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie ihren IBAN ihres Kontos an. Diese Nummer finden Sie auf der Forderseite ihrer Bankkarte. Ihre IBAN muss zu ihrem BIC passen.
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="BIC" >BIC:</label>
+                            <input type="text" id="BIC" name="BIC" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie ihren BIC ihres Kontos an. Dies finden Sie auf der Rückseite ihrer Bankkarte. Diese Ihr BIC muss zu ihrer IBAN passen.
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="credit_institution" >Kreditinstitut:</label>
+                            <input type="text" id="credit_institution" name="credit_institution" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie ihre Bank an, bei welcher Sie ihr Konto haben.
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="area" >Ort:</label>
+                            <input type="text" id="area" name="area" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie den Ort / die Stadt an, in der Sie ihre Unterschrift gesetzt haben.
                                  </span>
                             </div>
                         </td>
