@@ -1,0 +1,127 @@
+body {
+    background-image: url('../../images/blueBackground.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+}
+
+form{
+    max-width:500px;
+    min-height: 470px;
+    margin:50px auto;
+    background:#FDFDFD;
+    border-radius:2px;
+    padding:20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1{
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #000000;
+    font-size:x-large;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+    margin:0;	
+}
+
+li{
+    display: block;
+    padding: 9px;
+    border:1px solid #7DBDEA;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+li:last-child{
+    border:none;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+li > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #FDFDFD;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #000000;
+    font-size: 14px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="time"],
+input[type="url"],
+input[type="password"],
+input[type="date"],
+textarea,
+select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FDFDFD;
+}
+
+input[type="radio"]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: #FDFDFD;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li > span{
+    background: #CCECF2;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+textarea{
+    resize:none;
+}
+
+input[type="submit"],
+input[type="button"]{
+    background: #7DBDEA;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 3px solid #CCECF2;
+    border-radius: 3px;
+    color: #000000;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover{
+    background: #CCECF2;
+    color:#000000;
+}
