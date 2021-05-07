@@ -1,0 +1,43 @@
+*{
+   
+    font-family: arial;  
+}
+
+h1 {
+    font-size: 80px;
+    color: blue;
+    text-align: center;
+}
+h2{
+    font-size: 60px;
+    text-align: center;
+}
+.boxed{
+    
+    font-size: 20px;
+    float: left;
+    margin: 10px;
+    border: 10px;
+    width: 30%;
+    overflow: scroll;
+   
+}
+.image{
+    min-width: 20%;
+    object-fit: cover;
+    width: 45%;
+}
+.text{
+    font-size: 4ex;
+    /*background-color:aqua;
+    */
+}
+#welfare{
+    background-color:dodgerblue;
+}
+#finalsentence{
+    
+    font-size: 40px;
+    float: left;
+    
+}
