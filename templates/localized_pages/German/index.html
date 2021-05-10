@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head> 
+        
+        <meta charset="UTF-8">
+        <title>Rundfunk Beitrag</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div class="pers-fields">
+            <form action="">
+                <table>
+                    <h2>1. Allgemeine Angaben</h2>
+                    <tr>
+                        <th>Feld:</th>
+                        <th>Kurze Erklärung</th>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="male" >Männlich </label>
+                            <input type="radio" id="male" name="gender" value="Herr" required><br>
+                            <label for="female">Weiblich</label>
+                            <input type="radio" id="female" name="gender" value="Frau"> 
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                 <span class="extra-info">   
+                                        Geben Sie an, mit welchem Geschlecht Sie sich Identifizieren.
+                                 </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="fname" >Vorname:</label>
+                            <input type="text" id="fname" name="fname"  required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                    <span class="extra-info">   
+                                        Geben Sie ihren Vornamen an. Beispiel: Max von Mustermann -> Max
+                                    </span>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formular-fields">
+                            <label for="lname" >Titel/Nachname:</label>
+                            <input type="text" id="lname" name="lname" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                    <span class="extra-info">   
+                                        Geben Sie ihren Nachnamen mit evtl. Titel an. Beispiel: Max von Mustermann -> von Mustermann
+                                    </span>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <tr>
+                        <td class="formular-fields">
+                            <label for="bdate" >Geburtstag:</label>
+                            <input type="date" id="bdate" name="bdate" required>
+                        </td>
+                        <td class="info-fields">
+                            <div class="info-button">
+                                <img src="/images/favicon.png" alt="informationen">
+                                    <span class="extra-info">   
+                                        Geben Sie ihr Geburtsdatum an. Dies muss mit ihrem Geburtstag auf ihrem Ausweis übereinstimmen.
+                                    </span>
+                                </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </body>
+</html>

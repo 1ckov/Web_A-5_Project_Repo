@@ -1,0 +1,64 @@
+{%extends 'base.html'%}
+
+{% block start %} <html lang="en"> {% endblock %} 
+{% block head %}
+    <title>GEZ-Help</title>
+{% endblock %}
+
+{% block body %}
+    <div class="login-menu">
+        <form action="">
+            Login:
+            <label for="uname"> Username: </label>
+            <input type="text" id="uname" name="uname">
+            <label for="passwd">
+                Password:
+            </label>
+            <input type="password" id="passwd" name="passwd">
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+    <h1></h1>
+    <div class="container-flags">
+        <table>
+
+            <!-- Different languages  -->
+            <tr>
+                <th>English</th>
+                <th>Deutsch</th>
+                <th>Български</th>
+                <th>Francious</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="templates/localized_pages/English/index.html"> <img src="static/images/gb_small.png"> </a>
+                </td>
+                <td>
+                    <a href="templates/localized_pages/German/index.html"><img src="static/images/de_small.png"> </a>
+                </td>
+                <td>
+                    <a href="localized_pages/Bulgarian/index.html"><img src="static/images/bg_small.png"> </a>
+                </td>
+                <td>
+                    <a href="templates/localized_pages/French/index.html"><img src="static/images/fr_small.png"> </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Cookie html code from here: -->
+    <div class="cookie-container">
+        <p>
+          We use cookies in this website to give you the best experience possible
+          and show you relevant ads. To find out more, read our
+          <a href="templates/localized_pages/English/privacy_policy.html">privacy policy</a>.
+        </p>
+  
+        <button class="cookie-btn">
+          Okay
+        </button>
+      </div>
+  static/javascript/cookieConsent.js
+      <script type="text/javascript" src="{{url_for('static', filename='javascript/cookieConsent.js')}}"></script>
+{% endblock %}
