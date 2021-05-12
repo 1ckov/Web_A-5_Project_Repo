@@ -13,7 +13,6 @@ language = "en"
 def index():
     return render_template('index.html')
 
-
 # Landing Page for each language
 @app.route('/<string:lang>/home')
 def home(lang):
@@ -59,10 +58,18 @@ def sepa(lang):
         ########## Put data from forms into DB ##########
         
         #################################################
-        return redirect('/' + lang + '/gez/complete' )
+        return redirect('/' + lang + '/gez/final' )
     else:
         return render_template(lang + '/sepa.html', language = lang)
 
+@app.route('/<string:lang>/gez/final')
+def gez_final(lang):
+    return render_template(lang + '/final.html')
+
+
+@app.route('/<string:lang>/about')
+def about(lang):
+    return render_template(lang + '/about_us.html', language = lang)
 
 if __name__ == "__main__":
     app.run(debug=True)
