@@ -126,6 +126,26 @@ input[type="button"]:hover{
     color:#000000;
 }
 
+/* Navbar style for login page*/
+
+.firstnavbar{
+  background-color: #474747;
+    overflow: hidden;
+    text-align: center;
+    max-height: 40px;
+}
+
+.firstnavbar a{
+  display: inline-block;
+  size: 50px;
+}
+
+#reg{
+  text-align: center;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #474747;
@@ -242,6 +262,11 @@ input[type="button"]:hover{
     }
 }
 
+/*
+ *
+ * Cookie Style
+ *
+ */
 p {
   margin: 24px 0;
   line-height: 2;
