@@ -1,0 +1,70 @@
+{% extends 'en/en_base.html' %}
+
+
+{% block start %}
+<html lang="en">
+{% endblock %}
+{% block head %}
+<!-- <title> ... </title>-->
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<form action="">
+    <h1>Register</h1>
+    <ul>
+        <li>
+            <label for="uNameReg">Username</label>
+            <input type="text" name="userNameReg" id="uNameReg" required>
+            <span>Choose your username</span>
+        </li>
+        <li>
+            <label for="">Password</label>
+            <input type="password" name="" id="" required>
+            <span>Choose your password</span>
+            <br>
+            <input type="password" name="" id="" required>
+            <span>Repeat your password please</span>
+        </li>
+        <li>
+            <label for="mail">E-Mail</label>
+            <input type="email" name="email" id="mail" required>
+            <span>Enter your E-Mail adress here please</span>
+        </li>
+
+        <h2>This part is optional</h2>
+        <li>
+            <label for="">Gender</label>
+            <input type="radio" name="gender" id="radioMale"> Male
+            <input type="radio" name="gender" id="radioFemale"> Female
+            <span>Enter your gender here please</span>
+        </li>
+        <li>
+            <label for="fName">First Name</label>
+            <input type="text" name="firstName" id="fName">
+            <span>Enter your first name here please</span>
+        </li>
+        <li>
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lName">
+            <span>Enter your last name here please</span>
+        </li>
+        <li>
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" name="dateOfBirth" id="dob">
+            <span>Enter your date of birth here please</span>
+        </li>
+        <li>
+            <label for="">Language</label>
+            <input type="radio" name="language" id="l1"> English
+            <input type="radio" name="language" id="l2"> German
+            <input type="radio" name="language" id="l3"> Bulgarian
+            <input type="radio" name="language" id="l4"> French
+            <span>Choose the language you'd like to use</span>
+        </li>
+        <li>
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+
+{% endblock %}
