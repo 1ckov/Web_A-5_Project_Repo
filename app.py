@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 #db = SQLAlchemy(app)
-
+   
 language = "en"
 
 # "Chose language" and "Loggin" page
