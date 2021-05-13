@@ -9,7 +9,7 @@
 <title>GEZ</title>
 {% endblock %}
 {% block body %}
-<form action="">
+<form action="/register" method="POST">
     <h1>Register</h1>
     <ul>
         <li>
@@ -55,10 +55,10 @@
         </li>
         <li>
             <label for="">Language</label>
-            <input type="radio" name="language" id="l1"> English
-            <input type="radio" name="language" id="l2"> German
-            <input type="radio" name="language" id="l3"> Bulgarian
-            <input type="radio" name="language" id="l4"> French
+            <input type="radio" name="language" id="en"> English
+            <input type="radio" name="language" id="de"> German
+            <input type="radio" name="language" id="bg"> Bulgarian
+            <input type="radio" name="language" id="fr"> French
             <span>Choose the language you'd like to use</span>
         </li>
         <li>

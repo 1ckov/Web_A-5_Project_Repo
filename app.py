@@ -17,9 +17,9 @@ def index():
 def registration():
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
-        
+        language = request.form['language']
         #################################################
-        return redirect('/' + lang + '/home' )
+        return redirect('/' + language + '/home' )
     else:
         return render_template('register.html')
 

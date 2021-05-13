@@ -6,124 +6,60 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <table>
-            <h2>2. Anmeldung</h2>
-            <tr>
-                <th>Feld:</th>
-                <th>Kurze Erklärung</th>
-            </tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="anmeldung_zum">Anmeldung zum:</label>
-                    <input typ="date" id="anmeldung_zum" name="anmledung_zum" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie den Monat und das Jahr an, zu welchem Sie sich bei ihrer neuen Adresse angemeldet
-                            haben.
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="street">Straße:</label>
-                    <input type="text" id="street" name="street" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie die Straße an in der Sie wohnen. Beispiel: Musterstraße, Musterweg
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="home_nr">Hausnummer:</label>
-                    <input type="text" id="home_nr" name="home_nr" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie die Nummer ihres Hauses an. Beispiele: 11, 11a, 35
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="adress_additions">Adress Zusatz:</label>
-                    <input type="text" id="adress_additions" name="adress_additions" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie weitere Informationen zu ihrer Adresse an. Beispiel: Wohnungs-Nr., Hinterhaus
-                            rechts
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="area_code">PLZ:</label>
-                    <input type="number" id="area_code" name="area_code" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie die Postleihzahl ihres Ortes an. Beispiel: 68219 Mannheim -> 68219
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="area">Ort:</label>
-                    <input type="text" id="area" name="area" required>
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Geben Sie den Namen ihres Wohnortes an. Beispiel: 68219 Mannheim -> Mannheim
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-            <tr>
-                <td class="formular-fields">
-                    <label for="phone_number">Telefonnummer: (freiwillige Angabe)</label>
-                    <input type="tel" id="phone_number" name="phone_number">
-                </td>
-                <td class="info-fields">
-                    <div class="info-button">
-                        <img src="/images/favicon.png" alt="informationen">
-                        <span class="extra-info">
-                            Falls es Rückfragen gibt, kann man Sie über diese Telefonnummer erreichen. Beispiel: +49 176
-                            555555555
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="Submit">
-                </td>
-            </tr>
-        </table>
-    </form>
+        <h1> Adress </h1>
+        <ul>
+            <li>
+                <label for="date_registered">Date registered:</label>
+                <input type="date" id="date_registered" name="date_reg" required>
+                <span> Please enter the exact date that you have registered your adress in the City.</span>
+            </li>
+            <li>
+                <label for="street">Street:</label>
+                <input type="text" name="street" id="street" required>
+                <span class="extra-info">
+                    Please enter the name of the Street you are living in. For example: Examplestreet, Longstreet
+                </span>
+            </li>
+            <li>
+                <label for="street_nr">Street-number:</label>
+                <input type="text" id="street_nr" name="street_nr" required>
+                <span class="extra-info">
+                    Please enter the number of your flat, on the given street.For Example 2, 4a, 254
+                </span>
+            </li>
+            <li>
+                <label for="adress_additions">Adress additions:</label>
+                <input type="text" id="adress_additions" name="adress_additions" required>
+                <span class="extra-info">
+                    Please enter additiononal information regarding your adress. For example: 1st Floor Right, 15
+                </span>
+            </li>
+            <li>
+                <label for="zip_code">ZIP Code:</label>
+                <input type="number" id="zip_code" name="zip_code" required>
+                <span class="extra-info">
+                    Please enter the Postal Code of your adress. For example 67812, 62342
+                </span>
+            </li>
+            <li>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                <span class="extra-info">
+                    Please enter the name of the city you live in. For example: Johntown, Getinsburg.
+                </span>
+            </li>
+            <li>
+                <label for="phone_number">Phone number: (Optional)</label>
+                <input type="tel" id="phone_number" name="phone_number">
+                <span class="extra-info">
+                    If you would like to be contacted per Telephone, please enter your Telephone number.
+                </span>
+            </li>
+            <li>
+                <input type="submit" value='submit'>
+            </li>
+
+        </ul>
 
 </div>
 
