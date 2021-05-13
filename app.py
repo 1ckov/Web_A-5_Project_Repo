@@ -9,7 +9,7 @@ app = Flask(__name__)
 language = "en"
 
 # "Chose language" and "Loggin" page
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
