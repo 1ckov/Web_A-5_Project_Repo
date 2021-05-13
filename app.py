@@ -13,6 +13,16 @@ language = "en"
 def index():
     return render_template('index.html')
 
+@app.route('/register', methods=['GET','POST'])
+def registration():
+    if request.method == 'POST':
+        ########## Put data from forms into DB ##########
+        
+        #################################################
+        return redirect('/' + lang + '/home' )
+    else:
+        return render_template('register.html')
+
 # Landing Page for each language
 @app.route('/<string:lang>/home')
 def home(lang):
