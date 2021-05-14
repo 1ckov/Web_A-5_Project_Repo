@@ -1,14 +1,26 @@
 {% extends 'en/en_base.html' %}
 
 
-{% block head %} 
-        <title> Welcome </title>
+{% block head %}
+<title> Welcome </title>
 {% endblock %}
 {% block body %}
 <h1>Welcome </h1>
 <hr>
 <h2> Please chose the document, that you need help with: </h2>
-<p><a href="">Appartement registration</a></p>
-<p><a href="/en/gez/general_information"> GEZ</a></p>
-<p><a href="">Child care</a></p>
+<ul>
+        <li>
+                <a href="">Appartement registration</a>
+        </li>
+        <li>
+                <a href="/en/gez/general_information"> GEZ</a>
+        </li>
+        <li>
+                <a href="">Child care</a>
+        </li>
+        <li></li>
+</ul>
+
+
+
 {% endblock %}
