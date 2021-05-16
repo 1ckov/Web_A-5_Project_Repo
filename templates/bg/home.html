@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="bg">
-    <head> 
-        <meta charset="UTF-8">
-        <title>Принос за излъчване</title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+{% extends 'bg/bg_base.html' %}
+
+
+{% block head %}
+<title> Добре дошли!</title>
+{% endblock %}
+{% block body %}
+<h1>Добре дошли!</h1>
+<hr>
+<h2> Моля, изберете документа, от когото се нуждаете: </h2>
+<ul>
+        <li>
+                <a href="">Адресна регистрация</a>
+        </li>
+        <li>
+                <a href="/bg/gez/general_information"> GEZ</a>
+        </li>
+        <li>
+                <a href="">Защита на детето</a>
+        </li>
+        <li></li>
+</ul>
+
+
+
+{% endblock %}
