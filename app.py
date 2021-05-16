@@ -56,8 +56,12 @@ def payment_methods(lang):
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
         
+        
         #################################################
-        return redirect('/' + lang + '/gez/sepa' )
+        if request.form["type"] == "sepa":
+            return redirect('/' + lang + '/gez/sepa' )
+        elif request.form["type"] == "bank":
+            return redirect('/' + lang + '/gez/final')
     else:
         return render_template(lang + '/payment_methods.html', language = lang)
 
