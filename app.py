@@ -9,16 +9,21 @@ app = Flask(__name__)
 language_glob = "en"
 
 # "Chose language" and "Loggin" page
+@app.route('/')
 @app.route('/<string:lang>/')
 def index(lang):
     global language_glob
     if request.args.get('lang') != None:
-        return redirect ('/' + request.args.get('lang') + '/')
-    language_glob = lang
+        print 
+        language_glob = request.args.get('lang')
+        redirect('/'+ language_glob + '/')
+
+        
     return render_template(language_glob + '/welcome.html')
 
+# Registration Page 
 @app.route('/<string:lang>/register', methods=['GET','POST'])
-def registration(lang):
+def registration():
     global language_glob
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
@@ -103,6 +108,7 @@ def sepa(lang):
         language_glob = lang
         return render_template(language_glob + '/sepa.html', language = language_glob)
 
+# Final notice page for GEZ
 @app.route('/<string:lang>/gez/final')
 def gez_final(lang):
     global language_glob
@@ -111,7 +117,7 @@ def gez_final(lang):
     language_glob = lang
     return render_template(language_glob + '/final.html')
 
-
+# About us page
 @app.route('/<string:lang>/about')
 def about(lang):
     global language_glob
