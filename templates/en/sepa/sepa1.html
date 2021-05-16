@@ -1,0 +1,44 @@
+{% extends 'en/en_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<form action="/{{language}}/gez/sepa" method="POST">
+    <h1>SEPA direct debit mandate</h1>
+    <ul>
+        <li>
+        <label for="name">Name</label>
+        <input type="text" name="fullName" id="name" required>
+        <span><details>
+            <summary>
+                Help?
+            </summary>Enter your full name in the following order: title, last name, first name</span>
+        </details>
+        </li>
+        <li>
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required>
+            <span><details>
+                <summary>
+                    Help?
+                </summary>Enter the Streetname of your home here please.
+            </details> </span>
+        </li>
+        <li>
+            <label for="home_nr">Streetnumber:</label>
+            <input type="text" id="street_nr" name="street_nr" required>
+            <span><details>
+                <summary>
+                    Help?
+                </summary>Enter the streetnumber of your home here please
+                </details></span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+        </ul>
+    </form>
+    {% endblock %}
