@@ -1,0 +1,95 @@
+
+{%extends 'en/en_base.html'%}
+
+{% block head %}
+<title>Welcome</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>
+    Welcome!
+</h1>
+<p>Welcome to our website! </p>
+<p >
+    Our Team A-5 is here to provide you with the best possible help you can get to fill out all the documents you have
+    to finish for a save and easy life in germany!
+    We work on translating any necessary information for you, whilest explaining in easy to follow steps how to fill
+    every document you could have questions for.
+</p>
+<br>
+
+<p >
+    Our team is composed of 6 students, all in their third semester, from the Hochschule Mannheim in Germany. We use the
+    newest technology
+    we just learned in cooperation with our professor, as well as the <b id="welfare"> welfare faculty </b>from our
+    school to create this website /app/.<br>
+    If you want to learn more <b>about us </b>, you can find any necessary information <a href = "en/about_us.html"> here</a>.
+</p>
+
+<p>
+       
+        <form action="/" method="POST">
+            <h1>Login</h1>
+            <ul>
+                <li>
+                    <label for="uName">Username</label>
+                    <input type="text" name="username" id="uName">
+                    <span>Enter your Username here please</span>
+                </li>
+                <li>
+                    <label for="pWord">Password</label>
+                    <input type="password" name="password" id="pWord">
+                    <span>Enter your password here please</span>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <input type="submit" value="Submit">
+                            <input type="button" value="Use as a Guest">
+                        </li>
+                    </ul>
+                    
+                </li>
+            </ul>
+        
+            <ul>
+                <li>
+                    <a href="/register">
+                        <p id="reg">Register</p>
+                    </a>
+                    
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h2>
+                        If you do not want to create an account you can click right here!
+                    </h2>
+                    <br>
+                    <a href= "home.html"> Where can we help you?</a>
+                </li>
+            </ul>
+        
+        </form>
+</p>
+
+
+<p id="finalsentence">
+    <br>Every member of our team hopes that this site will give you the help you need on your way through germany's
+    bureaucracy. We all wish you a pleasant time in Germany!
+</p>
+<!-- Cookie html code from here: -->
+<div class="cookie-container">
+    <p>
+        We use cookies in this website to give you the best experience possible
+        and show you relevant ads. To find out more, read our
+        <a href="templates/localized_pages/English/privacy_policy.html">privacy policy</a>.
+    </p>
+
+    <button class="cookie-btn">
+        Okay
+    </button>
+</div>
+<script type="text/javascript" src="{{url_for('static', filename='javascript/cookieConsent.js')}}"></script>
+{% endblock %}
