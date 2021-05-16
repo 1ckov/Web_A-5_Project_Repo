@@ -11,26 +11,52 @@
             <label for="">Gender</label>
             <input type="radio" name="gender" id="radioMale" required> Male
             <input type="radio" name="gender" id="radioFemale"> Female
-            <span>Enter your gender here please</span>
+            <span><details><summary>
+                Help?
+            </summary> 
+                <p>Enter your gender here please </p>
+            </details></span>
         </li>
         <li>
             <label for="fName">First Name</label>
             <input type="text" name="firstName" id="fName" required>
-            <span>Enter your first name here please</span>
+            <span><details><summary>
+                Help?
+            </summary> 
+                <p>Enter your first name here please.
+                    <br> You can find it on your ID Card </p>
+            </details></span>
         </li>
         <li>
             <label for="lastName">Last Name</label>
             <input type="text" name="lastName" id="lName" required>
-            <span>Enter your last name here please</span>
+            <span><details><summary>
+                Help?
+            </summary> 
+                <p>Enter your last name here please 
+                    <br> Also known as your family name. You can find it on your ID Card.
+                </p>
+            </details></span>
         </li>
         <li>
             <label for="dateOfBirth">Date of Birth</label>
             <input type="date" name="dateOfBirth" id="dob" required>
-            <span>Enter your date of birth here please</span>
+            <span><details><summary>
+                Help?
+            </summary> 
+                <p>Enter your date of birth here please 
+                    <br> It is the day you were born.
+                </p>
+            </details></span>
         </li>
         <li>
+               <input type="button" value="Back" onClick="javascript:history.back()">
             <input type="submit" value="Submit">
+            
+             
+            
         </li>
+        
     </ul>
 </form>
 {% endblock %}

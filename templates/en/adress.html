@@ -11,51 +11,82 @@
             <li>
                 <label for="date_registered">Date registered:</label>
                 <input type="date" id="date_registered" name="date_reg" required>
-                <span> Please enter the exact date that you have registered your adress in the City.</span>
+                <span> <details><summary>
+                    Help?
+                </summary> 
+                    <p>Please enter the exact date that you have registered your adress in the City.
+                    </p>
+                </details></span>
             </li>
             <li>
                 <label for="street">Street:</label>
                 <input type="text" name="street" id="street" required>
-                <span class="extra-info">
-                    Please enter the name of the Street you are living in. For example: Examplestreet, Longstreet
+                <span class="extra-info"> <details><summary>
+                    Help?
+                </summary> 
+                    <p>Please enter the name of the Street you are living in. For example: Examplestreet, Longstreet
+                    </p>
+                </details>
+                    
                 </span>
             </li>
             <li>
                 <label for="street_nr">Street-number:</label>
                 <input type="text" id="street_nr" name="street_nr" required>
-                <span class="extra-info">
-                    Please enter the number of your flat, on the given street.For Example 2, 4a, 254
+                <span class="extra-info"><details><summary>
+                    Help?
+                </summary> 
+                    <p>Please enter the number of your flat, on the given street.For Example 2, 4a, 254
+                    </p>
+                </details>
+                    
                 </span>
             </li>
             <li>
                 <label for="adress_additions">Adress additions:</label>
                 <input type="text" id="adress_additions" name="adress_additions" required>
-                <span class="extra-info">
-                    Please enter additiononal information regarding your adress. For example: 1st Floor Right, 15
+                <span class="extra-info"><details><summary>
+                    Help?
+                </summary> 
+                   <p> Please enter additiononal information regarding your adress. For example: 1st Floor Right, 15
+                </p>
+                </details>
                 </span>
             </li>
             <li>
                 <label for="zip_code">ZIP Code:</label>
                 <input type="number" id="zip_code" name="zip_code" required>
-                <span class="extra-info">
+                <span class="extra-info"><details><summary>Help?
+
+                </summary>
                     Please enter the Postal Code of your adress. For example 67812, 62342
-                </span>
+                </details>
+            </span>
             </li>
             <li>
                 <label for="city">City:</label>
                 <input type="text" id="city" name="city" required>
-                <span class="extra-info">
-                    Please enter the name of the city you live in. For example: Johntown, Getinsburg.
+                <span class="extra-info"><details><summary>Help?
+
+                </summary>
+                Please enter the name of the city you live in. For example: Johntown, Getinsburg.
+            </details>
+                   
                 </span>
             </li>
             <li>
                 <label for="phone_number">Phone number: (Optional)</label>
                 <input type="tel" id="phone_number" name="phone_number">
-                <span class="extra-info">
-                    If you would like to be contacted per Telephone, please enter your Telephone number.
+                <span class="extra-info"><details><summary>Help?
+
+                </summary>
+                If you would like to be contacted per Telephone, please enter your Telephone number.
+            </details>
+                    
                 </span>
             </li>
             <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
                 <input type="submit" value='submit'>
             </li>
 
