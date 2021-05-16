@@ -9,12 +9,16 @@ app = Flask(__name__)
 language_glob = "en"
 
 # "Chose language" and "Loggin" page
-@app.route('/')
-def index():
-    return render_template('welcome.html')
+@app.route('/<string:lang>/')
+def index(lang):
+    global language_glob
+    if request.args.get('lang') != None:
+        return redirect ('/' + request.args.get('lang') + '/')
+    language_glob = lang
+    return render_template(language_glob + '/welcome.html')
 
-@app.route('/register', methods=['GET','POST'])
-def registration():
+@app.route('/<string:lang>/register', methods=['GET','POST'])
+def registration(lang):
     global language_glob
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
@@ -22,7 +26,7 @@ def registration():
         #################################################
         return redirect('/' + language_glob + '/home')
     else:
-        return render_template('register.html')
+        return render_template( language_glob + '/register.html')
 
 # Landing Page for each language
 @app.route('/<string:lang>/home')
