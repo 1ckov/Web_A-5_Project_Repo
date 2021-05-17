@@ -10,7 +10,6 @@ language_glob = "en"
 
 # "Chose language" and "Loggin" page
 @app.route('/')
-#@app.route('/<string:lang>/')
 def index():
     global language_glob
     if request.args.get('lang') != None:
@@ -20,21 +19,22 @@ def index():
     return render_template(language_glob + '/welcome.html', language = language_glob)
 
 # Registration Page 
-#@app.route('/<string:lang>/register', methods=['GET','POST'])
 @app.route('/register', methods=['GET','POST'])
 def registration():
     global language_glob
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
         language_glob = request.form['language']
+
         #################################################
-        return redirect('/' + language_glob + '/home')
+        return redirect('/home')
     else:
         return render_template( language_glob + '/register.html', language = language_glob)
 
 # Landing Page for each language
-@app.route('/<string:lang>/home')
-def home(lang):
+
+@app.route('/home')
+def home():
     global language_glob
     if request.args.get('lang') != None:
         language_glob = request.args.get('lang')
