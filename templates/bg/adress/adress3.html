@@ -1,20 +1,20 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 3 of 5</h1>
+        <h1> Адрес 3 от 5</h1>
         <li>
-            <label for="adress_additions">Adress additions(optional) :</label>
+            <label for="adress_additions">Допълнителна информация за адрес(опционално) :</label>
             <input type="text" id="adress_additions" name="adress_additions" required>
             <span class="extra-info"><details><summary>
-                Help?
+                Помощ?
             </summary> 
-               <p> Please enter additiononal information regarding your adress. For example: 1st Floor Right, 15
-                   <br> It is purely Optional.
+               <p> Моля, въведете допълнителна информация относно Вашия адрес. Например: 1-ви етаж вдясно, 15
+                   <br> Изцяло опционално.
             </p>
             </details>
             </span>

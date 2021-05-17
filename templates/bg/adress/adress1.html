@@ -1,20 +1,20 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 1 of 5</h1>
+        <h1> Адрес 1 от 5</h1>
         <ul>
             <li>
-                <label for="date_registered">Date registered:</label>
+                <label for="date_registered">Дата на регистрация</label>
                 <input type="date" id="date_registered" name="date_reg" required>
                 <span> <details><summary>
-                    Help?
+                    Помощ?
                 </summary> 
-                    <p>Please enter the exact date that you have registered your adress in the City.
+                    <p>Моля, въведете точната дата, в която сте регистрирали адреса си в общината.
                     </p>
                 </details></span>
             </li>

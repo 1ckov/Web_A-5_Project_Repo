@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -6,27 +6,27 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 2 of 5</h1>
+        <h1> Адрес 2 от 5</h1>
         <ul>
             <li>
-    <label for="street">Street:</label>
+    <label for="street">Улица</label>
     <input type="text" name="street" id="street" required>
     <span class="extra-info"> <details><summary>
-        Help?
+        Помощ?
     </summary> 
-        <p>Please enter the name of the Street you are living in. For example: Examplestreet, Longstreet
+        <p>Моля, въведете името на улицата, в която живеете. Например: Улица-пример, Примерна-улица
         </p>
     </details>
         
     </span>
 </li>
 <li>
-    <label for="street_nr">Street-number:</label>
+    <label for="street_nr">Номер на улица:</label>
     <input type="text" id="street_nr" name="street_nr" required>
     <span class="extra-info"><details><summary>
-        Help?
+        Помощ?
     </summary> 
-        <p>Please enter the number of your flat, on the given street.For Example 2, 4a, 254
+        <p>Моля, въведете номера на вашия апартамент на дадената улица. Например 2, 4а, 254
         </p>
     </details>
         
