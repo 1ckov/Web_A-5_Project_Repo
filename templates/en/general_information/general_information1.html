@@ -1,0 +1,30 @@
+{% extends 'en/en_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<form action="/{{language}}/gez/general_information" method='POST'>
+    <h1>General Information</h1>
+    <ul>
+        <li>
+            <label for="">Gender</label>
+            <input type="radio" name="gender" id="radioMale" required> Male
+            <input type="radio" name="gender" id="radioFemale"> Female
+            <span><details><summary>
+                Help?
+            </summary> 
+                <p>Enter your gender here please </p>
+            </details></span>
+        </li>
+        <li>
+               <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+            
+             
+            
+        </li>
+        
+    </ul>
+</form>
+{% endblock %}

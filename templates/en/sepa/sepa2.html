@@ -9,27 +9,27 @@
     <h1>SEPA direct debit mandate</h1>
     <ul>
         <li>
-            <label for="ZIP_code">ZIP:</label>
-            <input type="number" id="ZIP_code" name="ZIP_code" required>
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required>
             <span><details>
                 <summary>
                     Help?
-                </summary>Enter the ZIP-code of your adress here please. It should be the same just as the address you wrote down earlier.
+                </summary>Enter the Streetname of your home here please. It should be the same just as the address you wrote down earlier.
             </details> </span>
         </li>
         <li>
-            <label for="area">City:</label>
-            <input type="text" id="area" name="area" required>
+            <label for="home_nr">Streetnumber:</label>
+            <input type="text" id="street_nr" name="street_nr" required>
             <span><details>
                 <summary>
                     Help?
-                </summary>Enter the City of your home here please. It should be the same just as the address you wrote down earlier.
-                </details> </span>
+                </summary>Enter the streetnumber of your home here please. It should be the same just as the address you wrote down earlier.
+                </details></span>
         </li>
         <li>
             <input type="button" value="Back" onClick="javascript:history.back()">
             <input type="submit" value="Submit">
         </li>
-    </ul>
-</form>
-{%endblock}
+        </ul>
+    </form>
+    {% endblock %}

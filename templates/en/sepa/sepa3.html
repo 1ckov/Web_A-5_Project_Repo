@@ -9,35 +9,22 @@
     <h1>SEPA direct debit mandate</h1>
     <ul>
         <li>
-            <label for="IBAN">IBAN:</label>
-            <input type="text" id="IBAN" name="IBAN" required>
+            <label for="ZIP_code">ZIP:</label>
+            <input type="number" id="ZIP_code" name="ZIP_code" required>
             <span><details>
                 <summary>
                     Help?
-                </summary>Enter the IBAN of your bank account here please. It is also known as your bank identification code. <br>
-                It is a connection from the country you live in, your bank code and your account number.<br>
-                For example: <i>DE02120300000000202051     </i>
+                </summary>Enter the ZIP-code of your adress here please. It should be the same just as the address you wrote down earlier.
             </details> </span>
         </li>
         <li>
-            <label for="BIC">BIC:</label>
-            <input type="text" id="BIC" name="BIC" required>
+            <label for="area">City:</label>
+            <input type="text" id="area" name="area" required>
             <span><details>
                 <summary>
                     Help?
-                </summary>Enter the BIC of your bank account here please. It is also known as your Bank Identifier Code.<br>
-                For example: <i>BYLADEM1001</i>	
-            </details></span>
-        </li>
-        <li>
-            <label for="credit_institution">Credit institution:</label>
-                    <input type="text" id="credit_institution" name="credit_institution" required>
-            <span><details>
-                <summary>
-                    Help?
-                </summary>Enter the name of your credit institution here please.
-                For example: <i>DEUTSCHE KREDITBANK BERLIN </i>
-            </details></span>
+                </summary>Enter the City of your home here please. It should be the same just as the address you wrote down earlier.
+                </details> </span>
         </li>
         <li>
             <input type="button" value="Back" onClick="javascript:history.back()">
@@ -45,4 +32,4 @@
         </li>
     </ul>
 </form>
-{% endblock %}
+{%endblock}
