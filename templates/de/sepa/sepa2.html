@@ -1,0 +1,41 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<form action="/{{language}}/gez/sepa" method="POST">
+    <h1>SEPA-Lastschriftmandat 2/4</h1>
+    <ul>
+        <li>
+            <label for="street">Starße:</label>
+            <input type="text" id="street" name="street" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p> Bitte geben Sie den Namen der Staße ein in der der Kontoinhaber lebt. Bitte beachten Sie, dass
+                        der Kontoinhaber von der
+                        Person die den Antrag stellt abweichen kann.</p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <label for="home_nr">Hausnummer:</label>
+            <input type="text" id="street_nr" name="street_nr" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben Sie die Hausnummer des Gebäudes in dem der Kontoinhaber lebt. Bitte beachten Sie,
+                        dass der Kontoinhaber von der
+                        Person die den Antrag stellt abweichen kann.</p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Senden">
+        </li>
+    </ul>
+</form>
+{% endblock %}

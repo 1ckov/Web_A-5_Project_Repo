@@ -1,0 +1,28 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<div class="pers-fields">
+    <form action="/{{language}}/gez/adress" method="POST">
+        <h1> Adresse 5/5</h1>
+        <ul>
+            <li>
+                <label for="phone_number">Telefonnummer: (Optional)</label>
+                <input type="tel" id="phone_number" name="phone_number">
+                <span class="extra-info">
+                    <details>
+                        <summary>Hilfe?</summary>
+                        <p>Wenn Sie telefonisch kontaktiert werden wollen geben Sie bitte hier ihre Telefonnummer an.
+                            Dies ist jedoch freiwillig, d.h. Sie sind nicht dazu gezwungen.</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
+                <input type="submit" value='Senden'>
+            </li>
+        </ul>
+    </form>
+    {% endblock %}

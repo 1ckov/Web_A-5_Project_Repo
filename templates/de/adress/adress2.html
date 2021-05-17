@@ -1,0 +1,43 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<div class="pers-fields">
+    <form action="/{{language}}/gez/adress" method="POST">
+        <h1> Adresse 2/5</h1>
+        <ul>
+            <li>
+                <label for="street">Straße:</label>
+                <input type="text" name="street" id="street" required>
+                <span class="extra-info">
+                    <details>
+                        <summary>
+                            Hilfe?
+                        </summary>
+                        <p>Bitte geben Sie den Starßenname der Starße in der Sie leben ein. Z.B. Hauptstraße</p>
+                    </details>
+
+                </span>
+            </li>
+            <li>
+                <label for="street_nr">Hausnummer:</label>
+                <input type="text" id="street_nr" name="street_nr" required>
+                <span class="extra-info">
+                    <details>
+                        <summary>
+                            Hilfe?
+                        </summary>
+                        <p>Bitte geben Sie die Hausnummer des Gebäudes an in dem Sie leben. Z.B. 2 oder 4a</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
+                <input type="submit" value='Senden'>
+            </li>
+        </ul>
+    </form>
+</div>
+{% endblock %}

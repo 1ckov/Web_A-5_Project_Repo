@@ -1,0 +1,37 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<div class="pers-fields">
+    <form action="/{{language}}/gez/adress" method="POST">
+        <h1> Adresse 4/5</h1>
+        <ul>
+            <li>
+                <label for="zip_code">PLZ:</label>
+                <input type="number" id="zip_code" name="zip_code" required>
+                <span class="extra-info">
+                    <details>
+                        <summary>Hilfe?</summary>
+                        <p>Bitte geben Sie ihre Postleitzahl ein. Z.B. 68161</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <label for="city">Stadt:</label>
+                <input type="text" id="city" name="city" required>
+                <span class="extra-info">
+                    <details>
+                        <summary>Hilfe?</summary>
+                        <p>Bitte geben Sie den Namen der Stadt ein in der Sie aktuell leben. Z.B. Mannheim</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
+                <input type="submit" value='Senden'>
+            </li>
+        </ul>
+    </form>
+    {% endblock %}

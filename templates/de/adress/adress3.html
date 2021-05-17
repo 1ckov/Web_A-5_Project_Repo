@@ -1,0 +1,28 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<div class="pers-fields">
+    <form action="/{{language}}/gez/adress" method="POST">
+        <h1> Adresse 3/5</h1>
+        <li>
+            <label for="adress_additions">Adresszusatz (optional):</label>
+            <input type="text" id="adress_additions" name="adress_additions" required>
+            <span class="extra-info">
+                <details>
+                    <summary>
+                        Hilfe?
+                    </summary>
+                    <p>Bitte geben Sie ihren Adresszusatz an sofern vorhanden. Z.B. erster Stock oder Wohnung Nr. 23</p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value='Senden'>
+        </li>
+        </ul>
+    </form>
+    {% endblock %}

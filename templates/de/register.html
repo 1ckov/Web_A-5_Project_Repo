@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'de/de_base.html' %}
 
 
 {% block head %}
@@ -7,59 +7,59 @@
 {% endblock %}
 {% block body %}
 <form action="/register" method="POST">
-    <h1>Register</h1>
+    <h1>Registrierung</h1>
     <ul>
         <li>
-            <label for="uNameReg">Username</label>
+            <label for="uNameReg">Benutzername</label>
             <input type="text" name="userNameReg" id="uNameReg" required>
-            <span>Choose your username</span>
+            <span>Wählen Sie ihren Benutzernamen.</span>
         </li>
         <li>
-            <label for="">Password</label>
+            <label for="">Pwasswort</label>
             <input type="password" name="" id="" required>
-            <span>Choose your password</span>
+            <span>Bitte wählen Sie ihr Passwort.</span>
             <br>
             <input type="password" name="" id="" required>
-            <span>Repeat your password please</span>
+            <span>Bitte wiederholen Sie ihr Passwort.</span>
         </li>
         <li>
             <label for="mail">E-Mail</label>
             <input type="email" name="email" id="mail" required>
-            <span>Enter your E-Mail adress here please</span>
+            <span>Bitte geben Sie ihre E-Mail Adresse ein.</span>
         </li>
 
-        <h2>This part is optional</h2>
+        <h2>Dieser Part ist optional</h2>
         <li>
-            <label for="">Gender</label>
-            <input type="radio" name="gender" id="radioMale"> Male
-            <input type="radio" name="gender" id="radioFemale"> Female
-            <span>Enter your gender here please</span>
+            <label for="">Geschlecht</label>
+            <input type="radio" name="gender" id="radioMale"> Männlich
+            <input type="radio" name="gender" id="radioFemale"> Weiblich
+            <span>Bitte geb Sie ihr Geschlecht ein.</span>
         </li>
         <li>
-            <label for="fName">First Name</label>
+            <label for="fName">Vorname</label>
             <input type="text" name="firstName" id="fName">
-            <span>Enter your first name here please</span>
+            <span>Bitte gebn Sie ihren Vornamen ein.</span>
         </li>
         <li>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Nachname</label>
             <input type="text" name="lastName" id="lName">
-            <span>Enter your last name here please</span>
+            <span>Bitte geben Sie ihrem Nachnamen ein.</span>
         </li>
         <li>
-            <label for="dateOfBirth">Date of Birth</label>
+            <label for="dateOfBirth">Geburtsdatum</label>
             <input type="date" name="dateOfBirth" id="dob">
-            <span>Enter your date of birth here please</span>
+            <span>Bitte geben Sie ihr Geburtsdatum ein.</span>
         </li>
         <li>
-            <label for="">Language</label>
+            <label for="">Sprache</label>
             <input type="radio" name="language" id="en" value="en"> English
             <input type="radio" name="language" id="de" value="de"> German
             <input type="radio" name="language" id="bg" value="bg"> Bulgarian
             <input type="radio" name="language" id="fr" value="fr"> French
-            <span>Choose the language you'd like to use</span>
+            <span>Bitte wählen Sie ihre bevorzugte Sprache.</span>
         </li>
         <li>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Senden">
         </li>
     </ul>
 </form>

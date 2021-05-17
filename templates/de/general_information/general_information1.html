@@ -1,0 +1,28 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<form action="/{{language}}/gez/general_information" method='POST'>
+    <h1>Allgemeine Informationen 1/3</h1>
+    <ul>
+        <li>
+            <label for="">Geschlecht:</label>
+            <input type="radio" name="gender" id="radioMale" required> Männlich
+            <input type="radio" name="gender" id="radioFemale"> Weiblich
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben Sie hier ihr Geschlecht ein. Sind Sie eine Mann (mäannlich) oder eine Frau
+                        (weiblich).</p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Senden">
+        </li>
+    </ul>
+</form>
+{% endblock %}
