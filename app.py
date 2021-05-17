@@ -10,15 +10,8 @@ language_glob = "en"
 
 # "Chose language" and "Loggin" page
 @app.route('/')
-@app.route('/<string:lang>/')
-def index(lang):
-    global language_glob
-    if request.args.get('lang') != None:
-        print 
-        language_glob = request.args.get('lang')
-        redirect('/'+ language_glob + '/')
 
-        
+def index():
     return render_template(language_glob + '/welcome.html')
 
 # Registration Page 
