@@ -10,12 +10,18 @@ language_glob = "en"
 
 # "Chose language" and "Loggin" page
 @app.route('/')
-
+#@app.route('/<string:lang>/')
 def index():
-    return render_template(language_glob + '/welcome.html')
+    global language_glob
+    if request.args.get('lang') != None:
+        language_glob = request.args.get('lang')
+        return redirect ('/')
+
+    return render_template(language_glob + '/welcome.html', language = language_glob)
 
 # Registration Page 
-@app.route('/<string:lang>/register', methods=['GET','POST'])
+#@app.route('/<string:lang>/register', methods=['GET','POST'])
+@app.route('/register', methods=['GET','POST'])
 def registration():
     global language_glob
     if request.method == 'POST':
@@ -24,16 +30,15 @@ def registration():
         #################################################
         return redirect('/' + language_glob + '/home')
     else:
-        return render_template( language_glob + '/register.html')
+        return render_template( language_glob + '/register.html', language = language_glob)
 
 # Landing Page for each language
 @app.route('/<string:lang>/home')
 def home(lang):
     global language_glob
     if request.args.get('lang') != None:
+        language_glob = request.args.get('lang')
         return redirect ('/' + request.args.get('lang') + '/home')
-    language_glob = lang
-    print (language_glob)
     return render_template(language_glob + '/home.html', language = language_glob)
 
                     #testing app.route für gez_explanation
