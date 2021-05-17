@@ -1,29 +1,29 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 
 <form action="/{{language}}/gez/sepa" method="POST">
-    <h1>SEPA direct debit mandate 2 of 4</h1>
+    <h1>Мандат за директен дебит на SEPA 2 от 4</h1>
     <ul>
         <li>
-            <label for="street">Street:</label>
+            <label for="street">Улица:</label>
             <input type="text" id="street" name="street" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the Streetname of your home here please. It should be the same just as the address you wrote down earlier.
+                    Помощ?
+                </summary>Въведете тук името на Вашата улицата, моля. То трябва да бъде същото като адреса, който сте записали по-рано.
             </details> </span>
         </li>
         <li>
-            <label for="home_nr">Streetnumber:</label>
+            <label for="home_nr">Номер на улица:</label>
             <input type="text" id="street_nr" name="street_nr" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the streetnumber of your home here please. It should be the same just as the address you wrote down earlier.
+                    Помощ?
+                </summary>Въведете тук номера на Вашата улицата, моля. То трябва да бъде същото като адреса, който сте записали по-рано.
                 </details></span>
         </li>
         <li>

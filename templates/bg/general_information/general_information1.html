@@ -1,20 +1,20 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 <form action="/{{language}}/gez/general_information" method='POST'>
-    <h1>General Information 1 of 3</h1>
+    <h1>Обща информация 1 от 3</h1>
     <ul>
         <li>
-            <label for="">Gender</label>
-            <input type="radio" name="gender" id="radioMale" required> Male
-            <input type="radio" name="gender" id="radioFemale"> Female
+            <label for="">Пол</label>
+            <input type="radio" name="gender" id="radioMale" required> Мъж
+            <input type="radio" name="gender" id="radioFemale"> Жена
             <span><details><summary>
-                Help?
+                Помощ?
             </summary> 
-                <p>Enter your gender here please </p>
+                <p>Моля, изберете пол </p>
             </details></span>
         </li>
         <li>

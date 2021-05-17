@@ -1,24 +1,24 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 
 <div class="pers-fields">
     <form action="/{{language}}/gez/payment_methods" method="POST">
-        <h1>Types of payment 2 of 2</h1>
+        <h1>Методи на плащане 2 от 2</h1>
         <ul>
             <li>
-            <label for="">Type of Transfer</label>
-            <input type="radio" id="sepa" name="type" value="1" required> Through Sepa mandate <br>
+            <label for="">Методи за трансфер</label>
+            <input type="radio" id="sepa" name="type" value="1" required> Чрез SEPA мандат <br>
             <input type="radio" id="bank_transfer" name="type" value="2"> Through Bank transfer
             <span><details>
                 <summary>
-                    Help?
-                </summary>Please chose how you would like to pay the fee, you can either give SEPA the right to withdraw money from your acount or do a bank transfer on your own. <br>
-                If you decide to use SEPA, we need your banking informations. You will be sent to another page where you can fill out your banking informations.<br>
-                If you decide to send the money through a bank transfer, you will be sent to the last step of this document, but you have to send the money later on your own.
+                    Помощ?
+                </summary>Моля, изберете как искате да платите таксата, можете да дадете право на SEPA да тегли пари от сметката Ви или да направите банков превод сами. <br>
+                Ако решите да използвате SEPA, ние се нуждаем от Вашата банкова информация. Ще бъдете изпратени на друга страница, където можете да попълните банковата си информация.<br>
+                Ако решите да изпратите парите чрез банков превод, ще бъдете препратени до последната стъпка от този документ, но трябва да изпратите парите по-късно сами.
             </details>
                 
             </span>

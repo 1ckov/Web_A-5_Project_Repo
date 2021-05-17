@@ -1,21 +1,21 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 
 <form action="/{{language}}/gez/sepa" method="POST">
-    <h1>SEPA direct debit mandate 1 of 4</h1>
+    <h1>Мандат за директен дебит на SEPA 1 от 4</h1>
     <ul>
         <li>
-        <label for="name">Name</label>
+        <label for="name">Име</label>
         <input type="text" name="fullName" id="name" required>
         <span><details>
             <summary>
-                Help?
-            </summary>Enter your full name in the following order: title, last name, first name<br> For example: Dr. Mustermann Max
-        <br> If this bank account is not yours, please write down the name of this accounts owner.</span>
+                Помощ?
+            </summary>Въведете пълното си име в следния ред: заглавие, фамилия, име<br> Например: д-р Мустерман Макс
+        <br> Ако тази банкова сметка не е ваша, моля, запишете името на собственика на тази сметка.</span>
         </details>
         </li>
         

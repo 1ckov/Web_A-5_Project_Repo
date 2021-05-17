@@ -1,42 +1,42 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 
 <form action="/{{language}}/gez/sepa" method="POST">
-    <h1>SEPA direct debit mandate 4 of 4</h1>
+    <h1>Мандат за директен дебит на SEPA 4 от 4</h1>
     <ul>
         <li>
-            <label for="IBAN">IBAN:</label>
+            <label for="IBAN">IBAN номер:</label>
             <input type="text" id="IBAN" name="IBAN" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the IBAN of your bank account here please. It is also known as your bank identification code. <br>
-                It is a connection from the country you live in, your bank code and your account number.<br>
-                For example: <i>DE02120300000000202051     </i>
+                    Помощ?
+                </summary>Въведете IBAN на банковата си сметка тук, моля. Той е известен и като идентификационен код на вашата банка. <br>
+                Това е връзка от държавата, в която живеете, вашия банков код и номер на вашата сметка.<br>
+                Например: <i>DE02120300000000202051     </i>
             </details> </span>
         </li>
         <li>
-            <label for="BIC">BIC:</label>
+            <label for="BIC">BIC номер:</label>
             <input type="text" id="BIC" name="BIC" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the BIC of your bank account here please. It is also known as your Bank Identifier Code.<br>
-                For example: <i>BYLADEM1001</i>	
+                    Помощ?
+                </summary>Въведете BIC на вашата банкова сметка тук, моля. Той е известен също като вашия банков идентификационен код.<br>
+                Например: <i>BYLADEM1001</i>	
             </details></span>
         </li>
         <li>
-            <label for="credit_institution">Credit institution:</label>
+            <label for="credit_institution">Банкова институция:</label>
                     <input type="text" id="credit_institution" name="credit_institution" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the name of your credit institution here please.
-                For example: <i>DEUTSCHE KREDITBANK BERLIN </i>
+                    Помощ?
+                </summary>Въведете тук името на вашата банкова институция, моля.
+                    Например: <i>УниКредит Булбанк </i>
             </details></span>
         </li>
         <li>
