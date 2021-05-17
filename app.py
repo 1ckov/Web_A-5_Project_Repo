@@ -36,6 +36,17 @@ def home(lang):
     print (language_glob)
     return render_template(language_glob + '/home.html', language = language_glob)
 
+                    #testing app.route für gez_explanation
+@app.route('/<string:lang>/gez/gez_explanation')
+def gez_explanation(lang):
+    global language_glob
+    if request.args.get('lang') != None:
+        return redirect ('/' + request.args.get('lang') + '/gez_explanation')
+    language_glob = lang
+    print (language_glob)
+    return render_template(language_glob + '/gez_explanation', language = language_glob)
+
+
 # The GEZ Form Part 1 (Generall information)
 @app.route('/<string:lang>/gez/general_information', methods=['GET','POST'])
 def general_information(lang):
