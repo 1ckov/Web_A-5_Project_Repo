@@ -1,20 +1,20 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 <form action="/{{language}}/gez/general_information" method='POST'>
-    <h1>General Information 3 of 3</h1>
+    <h1>Обща информация 3 от 3</h1>
     <ul>
         <li>
             <label for="dateOfBirth">Date of Birth</label>
             <input type="date" name="dateOfBirth" id="dob" required>
             <span><details><summary>
-                Help?
+                Помощ?
             </summary> 
-                <p>Enter your date of birth here please 
-                    <br> It is the day you were born.
+                <p>Въведете тук датата си на раждане, моля 
+                    <br> Денят, в който сте родени.
                 </p>
             </details></span>
         </li>

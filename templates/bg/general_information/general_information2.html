@@ -1,30 +1,30 @@
-{% extends 'en/en_base.html' %}
+{% extends 'bg/bg_base.html' %}
 
 {% block head %}
-<title>GEZ</title>
+<title>Адресна регистрация</title>
 {% endblock %}
 {% block body %}
 <form action="/{{language}}/gez/general_information" method='POST'>
-    <h1>General Information 2 of 3</h1>
+    <h1>Обща информация 2 от 3</h1>
     <ul>
         <li>
-            <label for="fName">First Name</label>
+            <label for="fName">Първо име</label>
             <input type="text" name="firstName" id="fName" required>
             <span><details><summary>
-                Help?
+                Помощ?
             </summary> 
-                <p>Enter your first name here please.
-                    <br> You can find it on your ID Card </p>
+                <p>Моля, напишете си първото име.
+                    <br> Може да го намерите на личната Ви карта. </p>
             </details></span>
         </li>
         <li>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Фамилия</label>
             <input type="text" name="lastName" id="lName" required>
             <span><details><summary>
-                Help?
+                Помощ?
             </summary> 
-                <p>Enter your last name here please 
-                    <br> Also known as your family name. You can find it on your ID Card.
+                <p>Моля, напишете си последното име. 
+                    <br> Още познато като Вашата фамилия, може да го намерите на личната Ви карта.
                 </p>
             </details></span>
         </li>
