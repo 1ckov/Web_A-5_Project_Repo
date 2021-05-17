@@ -1,0 +1,40 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<form action="/{{language}}/gez/general_information" method='POST'>
+    <h1>Allgemeine Informationen 2/3</h1>
+    <ul>
+        <li>
+            <label for="fName">Vorname:</label>
+            <input type="text" name="firstName" id="fName" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben Sie hier ihren Vornamen ein.
+                        <br> Diesen können Sie auf ihrem Personalausweis finden.
+                    </p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <label for="lastName">Nachname:</label>
+            <input type="text" name="lastName" id="lName" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben hier Ihren NAchnamen ein.
+                        <br> Auch als bekannt als Familienname. Auch diesen finden Sie auf ihrem Personalausweis.
+                    </p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+{% endblock %}

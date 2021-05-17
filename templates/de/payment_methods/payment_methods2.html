@@ -1,0 +1,33 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<div class="pers-fields">
+    <form action="/{{language}}/gez/payment_methods" method="POST">
+        <h1>Angaben zu Zahlungsweise 2/2</h1>
+        <ul>
+            <li>
+                <label for="">Zahlungsart</label>
+                <input type="radio" id="sepa" name="type" value="1" required> Durch Lastschrift <br>
+                <input type="radio" id="bank_transfer" name="type" value="2"> Durch Überweisung
+                <span>
+                    <details>
+                        <summary>Hilfe?</summary>
+                        <p>Bitte wählen Sie eine Zahlungsart aus. Sie haben die Möglichkeit per SEPA-Lastschriftmandat
+                            zu zahlen oder das Geld immer "manuell" zu überweisen indem Sie in der gewählten Zeitspanne
+                            eine Überweisung bei Ihrer Bank tätigen.</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
+                <input type="submit" value="Submit"><br>
+            </li>
+        </ul>
+    </form>
+</div>
+
+{% endblock %}

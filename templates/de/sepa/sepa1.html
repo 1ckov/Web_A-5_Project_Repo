@@ -1,0 +1,29 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<form action="/{{language}}/gez/sepa" method="POST">
+    <h1>SEPA-Lastschriftmandat 1/4</h1>
+    <ul>
+        <li>
+            <label for="name">Name:</label>
+            <input type="text" name="fullName" id="name" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben Sie den Namen des Kontoinhabers ein. Bitte beachten Sie, dass der Kontoinhaber von
+                        der
+                        Person die den Antrag stellt abweichen kann.</p>
+            </span>
+            </details>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+{% endblock %}

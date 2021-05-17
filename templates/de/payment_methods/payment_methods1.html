@@ -1,0 +1,36 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<div class="pers-fields">
+    <form action="/{{language}}/gez/payment_methods" method="POST">
+        <h1>Angaben zu Zahlungsweise 1/2</h1>
+        <ul>
+            <li>
+                <label for=""> Zeitspanne </label>
+                <input type="radio" id="3-months" name="timespan" value="1" required>In der Mitte eines
+                Dreimonatszeitraums (zum 15.) <br> <br>
+                <input type="radio" id="3-months-before" name="timespan" value="2">vierteljährlich im Voraus (zum 1.1
+                ..., 1.4..., 1.7..., 1.10) <br> <br>
+                <input type="radio" id="6-months-before" name="timespan" value="3">halbjährlich im Voraus (zum 1.1...,
+                1.7...) <br> <br>
+                <input type="radio" id="12-months-before" name="timespan" value="4">jährlich im Voraus (zum 1.1) <br>
+                <span>
+                    <details>
+                        <summary>Hilfe?</summary>
+                        <p>Bitte geben Sie die Zeitspanne an in der Sie die Rundfunkgebühren zahlen möchten.</p>
+                    </details>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Back" onClick="javascript:history.back()">
+                <input type="submit" value="Submit"><br>
+            </li>
+        </ul>
+    </form>
+</div>
+
+{% endblock %}

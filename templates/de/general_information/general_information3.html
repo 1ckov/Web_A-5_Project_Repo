@@ -1,0 +1,28 @@
+{% extends 'de/de_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+<form action="/{{language}}/gez/general_information" method='POST'>
+    <h1>Allgemeine Informationen 3/3</h1>
+    <ul>
+        <li>
+            <label for="dateOfBirth">Geburtsdatum:</label>
+            <input type="date" name="dateOfBirth" id="dob" required>
+            <span>
+                <details>
+                    <summary>Hilfe?</summary>
+                    <p>Bitte geben Sie hier ihr Geburtsdatum ein.
+                        <br> Es ist der tag andem Sie geboren wurden.
+                    </p>
+                </details>
+            </span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+{% endblock %}
