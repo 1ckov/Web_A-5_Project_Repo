@@ -15,10 +15,10 @@
         </li>
         <li>
             <label for="">Password</label>
-            <input type="password" name="" id="" required>
+            <input type="password" name="" id="password1" minlength="6" required>
             <span>Choose your password</span>
             <br>
-            <input type="password" name="" id="" required>
+            <input type="password" name="" id="password2" required>
             <span>Repeat your password please</span>
         </li>
         <li>
@@ -62,5 +62,5 @@
         </li>
     </ul>
 </form>
-
+<script type="text/javascript" src="{{url_for('static', filename='javascript/register.js')}}"></script>
 {% endblock %}
