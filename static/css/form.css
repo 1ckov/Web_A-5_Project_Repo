@@ -154,16 +154,11 @@ input[type="button"]:hover{
 
 /* Navbar style for login page*/
 
-.firstnavbar{
-  background-color: #474747;
+
+.flags a{
     overflow: hidden;
     text-align: center;
     max-height: 40px;
-}
-
-.firstnavbar a{
-  display: inline-block;
-  size: 50px;
 }
 
 #reg{

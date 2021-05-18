@@ -6,13 +6,13 @@
 {% block body %}
 
 <div class="pers-fields">
-    <form action="/{{language}}/gez/payment_methods" method="POST">
+    <form action="/{{language}}/gez/payment_methods2" method="POST">
         <h1>Методи на плащане 2 от 2</h1>
         <ul>
             <li>
             <label for="">Методи за трансфер</label>
-            <input type="radio" id="sepa" name="type" value="1" required> Чрез SEPA мандат <br>
-            <input type="radio" id="bank_transfer" name="type" value="2"> Through Bank transfer
+            <input type="radio" id="sepa" name="type" value="sepa" required> Чрез SEPA мандат <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank"> Through Bank transfer
             <span><details>
                 <summary>
                     Помощ?
