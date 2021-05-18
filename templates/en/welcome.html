@@ -1,4 +1,3 @@
-
 {%extends 'en/en_base.html'%}
 
 {% block head %}
@@ -7,79 +6,83 @@
 
 {% block body %}
 
-<h1>
-    Welcome!
-</h1>
-<form id = "welcometext">
+<form id="welcometext">
 
-<p>Welcome to our website! </p>
-<p >
-    Our Team A-5 is here to provide you with the best possible help you can get to fill out all the documents you have
-    to finish for a save and easy life in germany!
-    We work on translating any necessary information for you, so this website will help and explain you in easy to follow steps how to fill
-    three documents (Appartement registration, GEZ and Child Care) in several languages.
-</p>
+    <h1>Welcome to our website!</h1>
+    <p>
+        Our Team A-5 is here to provide you with the best possible help you can get to fill out all the documents you
+        have
+        to finish for a save and easy life in germany!
+        We work on translating any necessary information for you, so this website will help and explain you in easy to
+        follow steps how to fill
+        three documents (Appartement registration, GEZ and Child Care) in several languages.
+    </p>
 
-<p >
-    Our team is composed of 6 students from the Hochschule Mannheim in Germany.
-    We use all of your knowledge and expeariance to create this website in cooperation with the welfare faculty from the Hochschule Mannheim. <br>
-    If you want to learn more <b>about each member of our team </b>, you can find any necessary information <a href = "en/about_us.html"> here</a>.
-</p>
+    <p>
+        Our team is composed of 6 students from the Hochschule Mannheim in Germany.
+        We use all of your knowledge and expeariance to create this website in cooperation with the welfare faculty from
+        the Hochschule Mannheim. <br>
+        If you want to learn more <b>about each member of our team </b>, you can click right here <a
+            href="en/about_us.html"> here</a>.
+    </p>
 </form>
 <p>
-       
-        <form action="/" method="POST">
-            <h1>Login</h1>
-            <ul>
-                <li>
-                    <label for="uName">Username</label>
-                    <input type="text" name="username" id="uName">
-                    <span>Enter your Username here please</span>
-                </li>
-                <li>
-                    <label for="pWord">Password</label>
-                    <input type="password" name="password" id="pWord">
-                    <span>Enter your password here please</span>
-                </li>
-                <li>
-                    <ul>
-                        <li>
-                            <input type="submit" value="Submit">
-                            <input type="button" value="Use as a Guest">
-                        </li>
-                    </ul>
-                    
-                </li>
-            </ul>
-        
-            <ul>
-                <li>
-                    <a href="/register">
-                        <p id="reg">Register</p>
-                    </a>
-                    
-                </li>
-            </ul>
-        
-        </form>
-</p>
-<br>
-<br>
-<h2>
-    If you <u>do not want to register, or to login on our Website, </u>you can always use our service with a guest account! <details><summary>
-        <i>You can decide here on what we should help you!</i>
-    </summary> 
-        <p><a href=" "> Appartement registration</a> 
-            <br> <a href="/home"> GEZ</a> 
-            <br> <a href=" ">Child care</a>
-        </p>
-    </details></span>
-</h2>
 
-<p id="finalsentence">
-    <br>Every member of our team hopes that this site will give you the help you need on your way through germany's
-    bureaucracy. We all wish you a pleasant time in Germany!
+<form action="/" method="POST">
+    <h1>Login</h1>
+    <ul>
+        <li>
+            <label for="uName">Username</label>
+            <input type="text" name="username" id="uName">
+            <span>Enter your Username here please</span>
+        </li>
+        <li>
+            <label for="pWord">Password</label>
+            <input type="password" name="password" id="pWord">
+            <span>Enter your password here please</span>
+        </li>
+        <li>
+            <ul>
+                <li>
+                    <input type="submit" value="Submit">
+                    <input type="button" value="Use as a Guest">
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+
+    <ul>
+        <h3>You don't have an account. Create one right here.</h3>
+        <li class="listCenter">
+            
+            <a href="/register">Register</a>
+
+        </li>
+        <li></li>
+    </ul>
+    <br>
+    <br>
+
+    <ul>
+        <h2>
+             Don't want to create an account. <br>
+            Keep on as a guest by choosing a document you need help with.
+        </h2>
+        <li class="listCenter">
+            <a href=" "> Appartement registration</a>
+        </li>
+        <li class="listCenter">
+            <a href="/home"> GEZ</a>
+        </li>
+        <li class="listCenter">
+            <a href=" ">Child care</a>
+        </li>
+        <li></li>
+    </ul>
+</form>
 </p>
+
 <!-- Cookie html code from here: -->
 <div class="cookie-container">
     <p>
