@@ -1,0 +1,48 @@
+{% extends 'en/en_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<form action="/{{language}}/gez/sepa" method="POST">
+    <h1>SEPA direct debit mandate 4 of 4</h1>
+    <ul>
+        <li>
+            <label for="IBAN">IBAN:</label>
+            <input type="text" id="IBAN" name="IBAN" required>
+            <span><details>
+                <summary>
+                    Help?
+                </summary>Enter the IBAN of your bank account here please. It is also known as your bank identification code. <br>
+                It is a connection from the country you live in, your bank code and your account number.<br>
+                For example: <i>DE02120300000000202051     </i>
+            </details> </span>
+        </li>
+        <li>
+            <label for="BIC">BIC:</label>
+            <input type="text" id="BIC" name="BIC" required>
+            <span><details>
+                <summary>
+                    Help?
+                </summary>Enter the BIC of your bank account here please. It is also known as your Bank Identifier Code.<br>
+                For example: <i>BYLADEM1001</i>	
+            </details></span>
+        </li>
+        <li>
+            <label for="credit_institution">Credit institution:</label>
+                    <input type="text" id="credit_institution" name="credit_institution" required>
+            <span><details>
+                <summary>
+                    Help?
+                </summary>Enter the name of your credit institution here please.
+                For example: <i>DEUTSCHE KREDITBANK BERLIN </i>
+            </details></span>
+        </li>
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+{% endblock %}
