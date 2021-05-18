@@ -6,13 +6,13 @@
 {% block body %}
 
 <div class="pers-fields">
-    <form action="/{{language}}/gez/payment_methods" method="POST">
+    <form action="/{{language}}/gez/payment_methods2" method="POST">
         <h1>Types de paiement 2 sur 2</h1>
         <ul>
             <li>
             <label for="">Type de transfert</label>
-            <input type="radio" id="sepa" name="type" value="1" required> Par mandat Sepa <br>
-            <input type="radio" id="bank_transfer" name="type" value="2"> Par virement bancaire
+            <input type="radio" id="sepa" name="type" value="sepa" required> Par mandat Sepa <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank"> Par virement bancaire
             <span><details>
                 <summary>
                     Aider?

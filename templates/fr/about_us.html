@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>À propos de nous</title>
@@ -28,7 +28,7 @@
     Nos équipiers sont:
 </h2>
 <p class="boxed">
-    <img src="/images/Profil 1.png" class="image"> <br>Le premier membre est Georgi Haydukov, responsable de
+    <img src="{{url_for('static', filename='images/Profil 1.png')}}" class="image"> <br>Le premier membre est Georgi Haydukov, responsable de
     les cookies et nos politiques de confidentialité. Vous pouvez le joindre sous son email: <a
         href="11@stud.hs-mannheim.de">11@stud.hs-mannheim.de</a>
 </p>
@@ -36,14 +36,14 @@
 <br>
 <br>
 <p class="boxed">
-    <img src="/images/Profil 2.png" class="image"> <br>De plus, nous avons Aleksandar Histrov, notre spécialiste Flask et
+    <img src="{{url_for('static', filename='images/Profil 2.png')}}" class="image"> <br>De plus, nous avons Aleksandar Histrov, notre spécialiste Flask et
     traducteur bulgare. Vous pouvez le joindre sous son email: <a href="12@stud.hs-mannheim.de">12@stud.hs-mannheim.de</a>
 </p>
 <br>
 <br>
 <br>
 <p class="boxed">
-    <img src="/images/Profil 3.png" class="image"> <br>C'est Robert Endler qui travaille non seulement sur notre empreinte, mais aussi
+    <img src="{{url_for('static', filename='images/Profil 3.png')}}" class="image"> <br>C'est Robert Endler qui travaille non seulement sur notre empreinte, mais aussi
     sur notre traduction en français. Vous pouvez le joindre sous son email: <a
         href="13@stud.hs-mannheim.de">13@stud.hs-mannheim.de</a>
 </p>
@@ -51,7 +51,7 @@
 <br>
 <br>
 <p class="boxed">
-    <img src="/images/Profil 4.png" class="image"> <br>Voici Ilyas Bal qui travaille sur nos tutoriels et
+    <img src="{{url_for('static', filename='images/Profil 4.png')}}" class="image"> <br>Voici Ilyas Bal qui travaille sur nos tutoriels et
     des explications pour vos futurs documents. Vous pouvez le joindre sous son email:<a
         href="14@stud.hs-mannheim.de">14@stud.hs-mannheim.de</a>
 </p>
@@ -66,7 +66,7 @@
 <br>
 <br>
 <p class="boxed">
-    <img src="/images/profil 6.png" class="image"> <br>Enfin voici Muhammed Yavuz, qui est responsable de la
+    <img src="{{url_for('static', filename='images/Profil 6.png')}}" class="image"> <br>Enfin voici Muhammed Yavuz, qui est responsable de la
     les informations que vous lisez en ce moment! De plus, il travaille sur le login, tout comme sur le menu. Vous pouvez l'atteindre sous
     son email: <a href="16@stud.hs-mannheim.de">16@stud.hs-mannheim.de</a>
 </p>
