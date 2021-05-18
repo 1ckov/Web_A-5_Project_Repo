@@ -323,7 +323,7 @@ def privacy_policy(lang):
 
 
 @app.route('/<string:lang>/legal_notice')
-def privacy_policy(lang):
+def legal_notice(lang):
     global language_glob
     if request.args.get('lang') != None:
         language_glob = request.args.get('lang')
