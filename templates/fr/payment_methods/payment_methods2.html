@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -7,18 +7,18 @@
 
 <div class="pers-fields">
     <form action="/{{language}}/gez/payment_methods" method="POST">
-        <h1>Types of payment 2 of 2</h1>
+        <h1>Types de paiement 2 sur 2</h1>
         <ul>
             <li>
-            <label for="">Type of Transfer</label>
-            <input type="radio" id="sepa" name="type" value="1" required> Through Sepa mandate <br>
-            <input type="radio" id="bank_transfer" name="type" value="2"> Through Bank transfer
+            <label for="">Type de transfert</label>
+            <input type="radio" id="sepa" name="type" value="1" required> Par mandat Sepa <br>
+            <input type="radio" id="bank_transfer" name="type" value="2"> Par virement bancaire
             <span><details>
                 <summary>
-                    Help?
-                </summary>Please chose how you would like to pay the fee, you can either give SEPA the right to withdraw money from your acount or do a bank transfer on your own. <br>
-                If you decide to use SEPA, we need your banking informations. You will be sent to another page where you can fill out your banking informations.<br>
-                If you decide to send the money through a bank transfer, you will be sent to the last step of this document, but you have to send the money later on your own.
+                    Aider?
+                </summary>Veuillez choisir comment vous souhaitez payer les frais, vous pouvez soit donner à SEPA le droit de retirer de l'argent de votre compte, soit effectuer vous-même un virement bancaire. <br>
+                Si vous décidez d'utiliser SEPA, nous avons besoin de vos informations bancaires. Vous serez redirigé vers une autre page où vous pourrez remplir vos informations bancaires.<br>
+                Si vous décidez d'envoyer l'argent par virement bancaire, vous serez dirigé vers la dernière étape de ce document, mais vous devrez envoyer l'argent plus tard par vous-même.
             </details>
                 
             </span>
