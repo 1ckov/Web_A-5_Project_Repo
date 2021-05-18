@@ -9,7 +9,6 @@ app = Flask(__name__)
 language_glob = "en"
 
 # "Chose language" and "Loggin" page
-
 @app.route('/', methods=['GET','POST'])
 def index():
     global language_glob
@@ -31,9 +30,9 @@ def registration(lang):
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
         language_glob = request.form['language']
-
         #################################################
         return redirect('/' + language_glob + '/home')
+
     else:
         if request.args.get('lang') != None:
             language_glob = request.args.get('lang')
@@ -303,7 +302,7 @@ def gez_final(lang):
     if request.args.get('lang') != None:
         language_glob = request.args.get('lang')
         return redirect ('/' + request.args.get('lang') + '/gez/final')
-    return render_template(language_glob + '/final.html')
+    return render_template(language_glob + '/final.html', language = language_glob)
 
 # About us page
 @app.route('/<string:lang>/about_us')
