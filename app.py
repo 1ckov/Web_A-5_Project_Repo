@@ -29,7 +29,8 @@ def registration(lang):
     global language_glob
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
-        language_glob = request.form['language']
+        if request.form['language'] != None:
+            language_glob = request.form['language']
         #################################################
         return redirect('/' + language_glob + '/home')
 
