@@ -155,11 +155,7 @@ input[type="button"]:hover{
 /* Navbar style for login page*/
 
 
-.flags a{
-    overflow: hidden;
-    text-align: center;
-    max-height: 40px;
-}
+
 
 #reg{
   text-align: center;
@@ -171,6 +167,7 @@ input[type="button"]:hover{
 .topnav {
     background-color: #474747;
     overflow: hidden;
+    padding: 10px 0px 10px 0px;
   }
   
   /* Style the links inside the navigation bar */
@@ -178,16 +175,46 @@ input[type="button"]:hover{
     float: left;
     display: block;
     color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
+    min-height: max-content;
+    max-height: 50px;
+    padding: 0px 16px 0px 0px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
+    text-align: center;
   }
   
   /* Add an active class to highlight the current page */
   .active {
     background-color: #7DBDEA;
-    color: white;
+    float: left ;
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    border: none;
+  }
+
+  .active:hover{
+    background-color: #555;
+    color: #ffffff;
+  }
+
+  .document {
+    background-color: #474747;
+    color: #ffffff;
+    height: 40px;
+    padding: 0px 16px 0px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+  }
+
+  .document:hover{
+    background-color: #555;
+    color: #ffffff;
   }
   
   /* Hide the link that should open and close the topnav on small screens */
@@ -251,7 +278,7 @@ input[type="button"]:hover{
   }
   
   /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 880px) {
     .topnav a:not(:first-child), .dropdown .dropbtn {
       display: none;
     }
@@ -262,7 +289,7 @@ input[type="button"]:hover{
   }
   
   /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 880px) {
     .topnav.responsive {position: relative;}
     .topnav.responsive a.icon {
       position: absolute;
@@ -274,6 +301,15 @@ input[type="button"]:hover{
       display: block;
       text-align: left;
     }
+
+    .topnav.topnav.responsive a > button{
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+
+
     .topnav.responsive .dropdown {float: none;}
     .topnav.responsive .dropdown-content {position: relative;}
     .topnav.responsive .dropdown .dropbtn {
@@ -281,6 +317,31 @@ input[type="button"]:hover{
       width: 100%;
       text-align: left;
     }
+}
+
+.about_us_nav{
+  float: right;
+}
+
+.about_and_logout{
+  float: right;
+  display: block;
+  background-color: #474747;
+  color: #ffffff;
+  height: 40px;
+  padding: 0px 16px 0px 0px;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+}
+
+.about_and_logout:hover{
+  background-color: #555;
+  color: #ffffff;
+}
+.flags_nav{
+  float: inline-end;
 }
 
 /*

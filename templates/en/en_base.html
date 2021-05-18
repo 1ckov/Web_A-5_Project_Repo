@@ -25,23 +25,27 @@
 
 <body>
 
-    <nav class="Navbar">
+    <nav>
         <div class="topnav" id="myTopnav">
-            <a href="/en/home" class="active">Homepage</a>
-            <a href="">Documents</a>
-            <div class="flags">
+            <a href="/en/home"><button class="active">Homepage</button></a>
+            <a href=""> <button class="document">Documents</button></a>
+            <div>
+                <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
                 <a href="?lang=de"> <img src="{{url_for('static', filename='images/de.png')}}"> </a>
                 <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
-            <div class="about_and_logout">
-                <a href="/{{language}}/about">About us</a>
-                <a href="">Logout</a>
+
+            <div>
+                <a href=""></a>
+                <a href="/{{language}}/about"><button class="about_and_logout">About us</button></a>
+                <a href=""><button class="about_and_logout">Logout</button></a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
         </div>
     </nav>
+
 
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
