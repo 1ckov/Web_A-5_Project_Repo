@@ -1,13 +1,10 @@
 {% extends 'en/en_base.html' %}
 
-
-{% block start %} 
-<html lang="{{language}}">
-{% endblock %}
 {% block head %} 
 <title>GEZ</title> 
 {% endblock %}
 {% block body %}
+<form action="/{{language}}/gez/gez_explanation" method='POST'>
 <h1>Welcome to our GEZ-help!</h1>
 <h2>You requested some help for a gez-document.</h2>
 <p>GEZ is the broadcast fee here in germany. Every apartment has to pay it, so there is no escape from it, if you want to live in germany.</p>
@@ -22,4 +19,5 @@
 </ul>
 <h3> If you like to start now, just press the start button.</h3>
 <input type="submit" value="START" onclick="">
+</form>
 {% endblock %}

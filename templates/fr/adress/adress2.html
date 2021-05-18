@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -6,27 +6,27 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 2 of 5</h1>
+        <h1> Adresse 2 sur 5</h1>
         <ul>
             <li>
-    <label for="street">Street:</label>
+    <label for="street">rue:</label>
     <input type="text" name="street" id="street" required>
     <span class="extra-info"> <details><summary>
-        Help?
+        Aider?
     </summary> 
-        <p>Please enter the name of the Street you are living in. For example: Examplestreet, Longstreet
+        <p>Veuillez saisir le nom de la rue dans laquelle vous vivez. Par exemple: Exemple de rue, Longstreet
         </p>
     </details>
         
     </span>
 </li>
 <li>
-    <label for="street_nr">Street-number:</label>
+    <label for="street_nr">Numéro de rue:</label>
     <input type="text" id="street_nr" name="street_nr" required>
     <span class="extra-info"><details><summary>
-        Help?
+        Aider?
     </summary> 
-        <p>Please enter the number of your flat, on the given street.For Example 2, 4a, 254
+        <p>Veuillez saisir le numéro de votre appartement, dans la rue indiquée, par exemple 2, 4a, 254
         </p>
     </details>
         

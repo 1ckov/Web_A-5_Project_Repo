@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -6,24 +6,24 @@
 {% block body %}
 
 <form action="/{{language}}/gez/sepa" method="POST">
-    <h1>SEPA direct debit mandate 2 of 4</h1>
+    <h1>Mandat de prélèvement SEPA 2 sur 4</h1>
     <ul>
         <li>
-            <label for="street">Street:</label>
+            <label for="street">rue:</label>
             <input type="text" id="street" name="street" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the Street name of your home here please. It should be the same just as the address you wrote down earlier.
+                    Aider?
+                </summary>Entrez ici le nom de la rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.
             </details> </span>
         </li>
         <li>
-            <label for="home_nr">Street number:</label>
+            <label for="home_nr">Numéro de rue:</label>
             <input type="text" id="street_nr" name="street_nr" required>
             <span><details>
                 <summary>
-                    Help?
-                </summary>Enter the street number of your home here please. It should be the same just as the address you wrote down earlier.
+                    Aider?
+                </summary>Entrez ici le numéro de rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.
                 </details></span>
         </li>
         <li>

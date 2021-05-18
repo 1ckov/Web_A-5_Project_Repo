@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -6,15 +6,15 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 3 of 5</h1>
+        <h1> Adresse 3 sur 5</h1>
         <li>
-            <label for="adress_additions">Adress additions(optional) :</label>
+            <label for="adress_additions">Additions d'adresse (facultatif) :</label>
             <input type="text" id="adress_additions" name="adress_additions" required>
             <span class="extra-info"><details><summary>
-                Help?
+                Aider?
             </summary> 
-               <p> Please enter additiononal information regarding your adress. For example: 1st Floor Right, 15
-                   <br> It is purely Optional.
+               <p>Veuillez saisir des informations supplémentaires concernant votre adresse. Par exemple: 1er étage à droite, 15
+                   <br> C'est purement facultatif.
             </p>
             </details>
             </span>
