@@ -6,14 +6,16 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress4" method="POST">
-        <h1> Adress 4 of 5</h1>
+        <h1> Address 4 of 5</h1>
         <ul> <li>
             <label for="zip_code">ZIP Code:</label>
             <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$"  required>
             <span class="extra-info"><details><summary>Help?
 
             </summary>
-                Please enter the Postal Code of your adress. For example 67812, 62342
+                Please enter the Postal Code of your adress.<br>
+                <i>A ZIP in germany has 5 letters!</i><br>
+                 For example 67812, 62342
             </details>
         </span>
         </li>
@@ -23,7 +25,9 @@
             <span class="extra-info"><details><summary>Help?
 
             </summary>
-            Please enter the name of the city you live in. For example: Johntown, Getinsburg.
+            Please enter the name of the city you live in.<br>
+            <i>You can not write any numbers, nor any special signs except a minus (-)</i><br>
+            For example: Johntown, Getinsburg.
         </details>
                
             </span>

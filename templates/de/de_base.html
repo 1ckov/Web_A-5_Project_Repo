@@ -26,30 +26,37 @@
 
 <body>
 
-    <nav class="Navbar">
+    <nav>
         <div class="topnav" id="myTopnav">
-            <a href="/de/home" class="active">Home</a>
-            <a href="">Dokumente</a>
-            <div class="dropdown">
-                <button class="dropbtn">Sprache
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="?lang=en">English</a>
-                    <a href="?lang=de">Deutsch</a>
-                    <a href="">Bulgarisch</a>
-                    <a href="">Französisch</a>
-                </div>
+            <a href="/en/home"><button class="active">Startseite</button></a>
+            <a href=""> <button class="document">Dokumente</button></a>
+            <div>
+                <a href=""></a>
+                <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
+                <a href="?lang=de"> <img src="{{url_for('static', filename='images/de.png')}}"> </a>
+                <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
+                <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
-            <a href="/de/about">Über uns</a>
-            <a href="">Ausloggen</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
+            <div>
+                <a href=""></a>
+                <a href="/{{language}}/about"><button class="about_and_logout">Über uns</button></a>
+                <a href=""><button class="about_and_logout">Logout</button></a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
         </div>
     </nav>
+
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/navbar.js')}}"></script>
+
 
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
+    <footer>
+        <a href="/{{language}}/privacy_policy">Datenschutzerklärung</a>
+        <a href="/{{language}}/legal_notice">Impressum</a>
+    </footer>
 </body>
 
 </html>

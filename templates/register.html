@@ -4,7 +4,9 @@
 <!-- <title> ... </title>-->
 <title>Registration</title>
 {% endblock %}
+
 {% block body %}
+<script type="text/javascript" src="{{url_for('static', filename='javascript/register.js')}}"></script>
 <form action="/register" method="POST">
     <h1>Register</h1>
     <ul>
@@ -62,5 +64,5 @@
         </li>
     </ul>
 </form>
-<script type="text/javascript" src="{{url_for('static', filename='javascript/register.js')}}"></script>
+
 {% endblock %}
