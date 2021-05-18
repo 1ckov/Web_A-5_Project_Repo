@@ -1,5 +1,5 @@
 
-{%extends 'en/en_base.html'%}
+{%extends 'de/de_base.html'%}
 
 {% block head %}
 <title>Welcome</title>
@@ -8,9 +8,9 @@
 {% block body %}
 
 <h1>
-    Welcome!
+    Willkomen!
 </h1>
-<p>Welcome to our website! </p>
+<p>Willkomen zu unserer Website! </p>
 <p >
     Our Team A-5 is here to provide you with the best possible help you can get to fill out all the documents you have
     to finish for a save and easy life in germany!
@@ -24,7 +24,7 @@
     newest technology
     we just learned in cooperation with our professor, as well as the <b id="welfare"> welfare faculty </b>from our
     school to create this website /app/.<br>
-    If you want to learn more <b>about us </b>, you can find any necessary information <a href = "en/about_us.html"> here</a>.
+    If you want to learn more <b>about us </b>, you can find any necessary information <a href = "/{{language}}/about_us"> here</a>.
 </p>
 
 <p>
@@ -35,18 +35,18 @@
                 <li>
                     <label for="uName">Username</label>
                     <input type="text" name="username" id="uName">
-                    <span>Enter your Username here please</span>
+                    <span>Geben Sie ihren Usernamen ein</span>
                 </li>
                 <li>
-                    <label for="pWord">Password</label>
+                    <label for="pWord">Passwort</label>
                     <input type="password" name="password" id="pWord">
-                    <span>Enter your password here please</span>
+                    <span>Geben Sie ihr Passwort ein</span>
                 </li>
                 <li>
                     <ul>
                         <li>
                             <input type="submit" value="Submit">
-                            <input type="button" value="Use as a Guest">
+                            <input type="button" value="Als Gast benutzen">
                         </li>
                     </ul>
                     
@@ -55,8 +55,8 @@
         
             <ul>
                 <li>
-                    <a href="/register">
-                        <p id="reg">Register</p>
+                    <a href="/{{language}}/register">
+                        <p id="reg">Registrieren</p>
                     </a>
                     
                 </li>
@@ -64,10 +64,10 @@
             <ul>
                 <li>
                     <h2>
-                        If you do not want to create an account you can click right here!
+                        Wenn Sie keinen Account Erstellen wollen könnens Sie Hier direkt zu den Funktionen übergehen.
                     </h2>
                     <br>
-                    <a href= "home.html"> Where can we help you?</a>
+                    <a href= "home.html">Womit können wir ihnnen helfen.</a>
                 </li>
             </ul>
         
@@ -76,15 +76,14 @@
 
 
 <p id="finalsentence">
-    <br>Every member of our team hopes that this site will give you the help you need on your way through germany's
-    bureaucracy. We all wish you a pleasant time in Germany!
+    <br>
+    Alle Leute aus unserem Team hoffen das wir ihnen so helfen können um sich Leichter durch die Deutsche Bürokratie zu Orientieren. Wir Wünschen ihnen eine angenehme Zeit in Deutschland.
 </p>
 <!-- Cookie html code from here: -->
 <div class="cookie-container">
     <p>
-        We use cookies in this website to give you the best experience possible
-        and show you relevant ads. To find out more, read our
-        <a href="templates/localized_pages/English/privacy_policy.html">privacy policy</a>.
+        Wir benutzen Cookies um ihnen die beste Erfahrung zu liefern und ihnen nur relevante Werbung zu zeigen. Um mehr zu erfahren, Clicken Sie Hier
+        <a href="templates/localized_pages/English/privacy_policy.html">Privacy Policy</a>.
     </p>
 
     <button class="cookie-btn">
