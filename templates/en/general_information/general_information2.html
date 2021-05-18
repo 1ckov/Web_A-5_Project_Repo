@@ -9,7 +9,7 @@
     <ul>
         <li>
             <label for="fName">First Name</label>
-            <input type="text" name="firstName" id="fName"  pattern="[^0-9]"  required>
+            <input type="text" name="firstName" id="fName" pattern="\p{Alpha}*"  required>
             <span><details><summary>
                 Help?
             </summary> 
@@ -19,7 +19,7 @@
         </li>
         <li>
             <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lName" pattern="[^0-9]" required>
+            <input type="text" name="lastName" id="lName" pattern="\p{Alpha}*" required>
             <span><details><summary>
                 Help?
             </summary> 
