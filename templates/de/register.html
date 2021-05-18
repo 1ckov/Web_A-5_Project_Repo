@@ -6,7 +6,8 @@
 <title>GEZ</title>
 {% endblock %}
 {% block body %}
-<form action="/register" method="POST">
+<script type="text/javascript" src="{{url_for('static', filename='javascript/register.js')}}"></script>
+<form action="/{{language}}/register" method="POST">
     <h1>Registrierung</h1>
     <ul>
         <li>
@@ -16,10 +17,10 @@
         </li>
         <li>
             <label for="">Passwort</label>
-            <input type="password" name="" id="" required>
+            <input type="password" name="" id="password1" required>
             <span>Bitte wählen Sie ihr Passwort.</span>
             <br>
-            <input type="password" name="" id="" required>
+            <input type="password" name="" id="password2" required>
             <span>Bitte wiederholen Sie ihr Passwort.</span>
         </li>
         <li>
@@ -59,7 +60,7 @@
             <span>Bitte wählen Sie ihre bevorzugte Sprache.</span>
         </li>
         <li>
-            <input type="submit" value="Senden">
+            <input type="submit" value="Senden" onclick=checkPasswordValidity()>
         </li>
     </ul>
 </form>
