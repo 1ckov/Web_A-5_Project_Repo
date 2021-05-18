@@ -24,18 +24,36 @@
 
 <body>
     
-    <nav class="Navbar">
-        <div class="firstnavbar" id="myFirstnav">
-            <a href="/en/home"> <img src="static/images/us.png"> </a>
-            <a href="/de/home"><img src="static/images/de.png"> </a>
-            <a href="/bg/home"><img src="static/images/bg.png"> </a>
-            <a href="/fr/home"><img src="static/images/fr.png"> </a>
+    <nav>
+        <div class="topnav" id="myTopnav">
+            <a href="/en/home"><button class="active">Homepage</button></a>
+            <a href=""> <button class="document">Documents</button></a>
+            <div>
+                <a href=""></a>
+                <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
+                <a href="?lang=de"> <img src="{{url_for('static', filename='images/de.png')}}"> </a>
+                <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
+                <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
+            </div>
+
+            <div>
+                <a href=""></a>
+                <a href="/{{language}}/about"><button class="about_and_logout">About us</button></a>
+                <a href=""><button class="about_and_logout">Logout</button></a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
         </div>
     </nav>
+
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/navbar.js')}}"></script>
 
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
+    <footer>
+        <a href="/{{language}}/privacy_policy">privacy policy</a>
+        <a href="/{{language}}/legal_notice">legal notice</a>
+    </footer>
 </body>
 
 </html>
