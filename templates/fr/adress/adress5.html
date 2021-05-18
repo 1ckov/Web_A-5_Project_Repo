@@ -1,4 +1,4 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
@@ -6,15 +6,15 @@
 {% block body %}
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress" method="POST">
-        <h1> Adress 5 of 5</h1>
+        <h1> Adresse 5 sur 5</h1>
         <ul>
         <li>
-            <label for="phone_number">Phone number: (Optional)</label>
+            <label for="phone_number">Numéro de téléphone (facultatif)</label>
             <input type="tel" id="phone_number" name="phone_number">
             <span class="extra-info"><details><summary>Help?
 
             </summary>
-            If you would like to be contacted per Telephone, please enter your Telephone number. It is completely optional. Without it you would only receive letters.
+            Si vous souhaitez être contacté par téléphone, veuillez entrer votre numéro de téléphone. C'est complètement optionnel. Sans cela, vous ne recevriez que des lettres.
         </details>
                 
             </span>

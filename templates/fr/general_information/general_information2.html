@@ -1,30 +1,30 @@
-{% extends 'en/en_base.html' %}
+{% extends 'fr/fr_base.html' %}
 
 {% block head %}
 <title>GEZ</title>
 {% endblock %}
 {% block body %}
 <form action="/{{language}}/gez/general_information" method='POST'>
-    <h1>General Information 2 of 3</h1>
+    <h1>Informations générales 2 sur 3</h1>
     <ul>
         <li>
-            <label for="fName">First Name</label>
+            <label for="fName">Prénom</label>
             <input type="text" name="firstName" id="fName" required>
             <span><details><summary>
-                Help?
+                Aider?
             </summary> 
-                <p>Enter your first name here please.
-                    <br> You can find it on your ID Card </p>
+                <p>Entrez votre prénom ici s'il vous plaît.
+                    <br> Vous pouvez le trouver sur votre carte d'identité </p>
             </details></span>
         </li>
         <li>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Nom de famille</label>
             <input type="text" name="lastName" id="lName" required>
             <span><details><summary>
-                Help?
+                Aider?
             </summary> 
-                <p>Enter your last name here please 
-                    <br> Also known as your family name. You can find it on your ID Card.
+                <p>Entrez votre nom ici s'il vous plaît
+                    <br> Aussi connu sous le nom de votre nom de famille. Vous pouvez le trouver sur votre carte d'identité.
                 </p>
             </details></span>
         </li>
