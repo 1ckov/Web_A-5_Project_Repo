@@ -1,45 +1,45 @@
 {%extends 'bg/bg_base.html'%}
 
 {% block head %}
-<title>Welcome</title>
+<title>Добре дошли!</title>
 {% endblock %}
 
 {% block body %}
 
 <h1>
-    Welcome!
+    Добре дошли!
 </h1>
-<p>Welcome to our website! </p>
+<p>Добре дошли в нашия уебсайт! </p>
 <p >
-    Our Team A-5 is here to provide you with the best possible help you can get to fill out all the documents you have
-    to finish for a save and easy life in germany!
-    We work on translating any necessary information for you, whilest explaining in easy to follow steps how to fill
-    every document you could have questions for.
+    Нашият екип A-5 е тук, за да ви предостави възможно най-добрата помощ, която можете да получите, за да попълните всички документи, с които 
+    са Ви нужни за по-лесен живот в Германия!
+    Ние работим върху превода на всяка необходима информация за Вас, като същевременно обясняваме в лесни за изпълнение стъпки как да попълните
+    всеки документ, за който бихте могли да имате въпроси.
 </p>
 <br>
 
 <p >
-    Our team is composed of 6 students, all in their third semester, from the Hochschule Mannheim in Germany. We use the
-    newest technology
-    we just learned in cooperation with our professor, as well as the <b id="welfare"> welfare faculty </b>from our
-    school to create this website /app/.<br>
-    If you want to learn more <b>about us </b>, you can find any necessary information <a href = "en/about_us.html"> here</a>.
+    Екипът ни се състои от 6 студенти, всички през третия семестър, от Университет Манхайм в Германия. Ние използваме
+    най-новите технологии
+    току-що научени в сътрудничество с нашия професор, както и <b id="welfare"> социален факултет </b>от нашия
+    университет за създаване на този уебсайт /апликация/.<br>
+    Ако искате да научите повече <b>За нас </b>, можете да намерите необходимата информация <a href = "/en/about_us"> тук</a>.
 </p>
 
 <p>
        
         <form action="/" method="POST">
-            <h1>Login</h1>
+            <h1>Вход</h1>
             <ul>
                 <li>
-                    <label for="uName">Username</label>
+                    <label for="uName">Потребителско име</label>
                     <input type="text" name="username" id="uName">
-                    <span>Enter your Username here please</span>
+                    <span>Напишете потребителското Ви име тук</span>
                 </li>
                 <li>
-                    <label for="pWord">Password</label>
+                    <label for="pWord">Парола</label>
                     <input type="password" name="password" id="pWord">
-                    <span>Enter your password here please</span>
+                    <span>Напишете паролата Ви тук</span>
                 </li>
                 <li>
                     <ul>
@@ -55,7 +55,7 @@
             <ul>
                 <li>
                     <a href="/register">
-                        <p id="reg">Register</p>
+                        <p id="reg">Регистрация</p>
                     </a>
                     
                 </li>
@@ -63,10 +63,10 @@
             <ul>
                 <li>
                     <h2>
-                        If you do not want to create an account you can click right here!
+                        Ако не искате да създавате акаунт, можете да кликнете тук!
                     </h2>
                     <br>
-                    <a href= "home.html"> Where can we help you?</a>
+                    <a href= "/bg/home"> С какво можем да Ви помогнем?</a>
                 </li>
             </ul>
         
@@ -75,15 +75,15 @@
 
 
 <p id="finalsentence">
-    <br>Every member of our team hopes that this site will give you the help you need on your way through germany's
-    bureaucracy. We all wish you a pleasant time in Germany!
+    <br>Всеки член на нашия екип се надява, че този сайт ще Ви даде помощта, от която се нуждаете по пътя си през Германия
+    бюрокрация. Всички ви желаем приятно прекарване в Германия!
 </p>
 <!-- Cookie html code from here: -->
 <div class="cookie-container">
     <p>
-        We use cookies in this website to give you the best experience possible
-        and show you relevant ads. To find out more, read our
-        <a href="templates/localized_pages/English/privacy_policy.html">privacy policy</a>.
+        Ние използваме бисквитки в този уебсайт, за да Ви предоставим възможно най-доброто изживяване
+        и ще Ви показва подходящи реклами. За да научите повече, прочетете нашия
+        <a href="/bg/privacy_policy">политика за поверителност</a>.
     </p>
 
     <button class="cookie-btn">
