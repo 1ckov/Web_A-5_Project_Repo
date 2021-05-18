@@ -393,3 +393,9 @@ p {
 .cookie-btn:hover{
   background-color: #CCECF2;
 }
+
+footer{
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+}

@@ -46,11 +46,13 @@
         </div>
     </nav>
 
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/navbar.js')}}"></script>
+
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
     <footer>
-        <div class="Navbar">
+        <div>
              <a href="/Web_A-5_Project_Repo/templates/en/privacy_policy.html"> privacy policy</a>
              <a href="/Web_A-5_Project_Repo/templates/en/legalNotice.html">Legal notice</a>
         </div>
