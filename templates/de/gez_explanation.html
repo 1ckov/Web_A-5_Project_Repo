@@ -1,24 +1,27 @@
-{% extends 'en/en_base.html' %}
+{% extends 'de/de_base.html' %}
 
 {% block head %} 
 <title>GEZ</title> 
 {% endblock %}
 {% block body %}
 <form action="/{{language}}/gez/gez_explanation" method='POST'>
-<h1>Welcome to our GEZ-help!</h1>
-<h2>You requested some help for a gez-document.</h2>
-<p>GEZ is the broadcast fee here in germany. Every apartment has to pay it, so there is no escape from it, if you want to live in germany.</p>
-<p>While it can be annoying to pay, you only have to fill out the document once, as long as you live in your current apartment.</p>
-<h3>We devide the document into multiple little parts.</h3>
+<h1>Willkommen zu unserer GEZ-Hilfe!</h1>
+<h2>Sie haben Hilfe für die Bearbeitung Ihr GEZ-Formular beantragt</h2>
+<p>GEZ ist die Rundfunkgebühr hier in Deutschland. Jede Wohnung muss diese Gebühren bezahlen, also kann man diese nicht entkommen, wenn man ein ruhiges Leben in Deutschland führen will. Glücklicherweise muss man die Gebühren 
+    nur einmal pro Wohnung bezahlen.</p>
+<p>Desweiterem müssen Sie mindestens 18 Jahre alt sein, um Rundfunkgebühr zu bezahlen.</p>
+<p>Nach der Einreichung des Formulars müssen Sie die Gebühren regelmäßig bezahlen.</p>
+<p>Auch wenn es nervig sein kann, müssen Sie glücklicherweise dieses Formular nur einmal versenden, solange Sie nicht Ihren Wohnsitz ändern. In diesem Falle müssen Sie das dem Staat melden.</p>
+<h3>Wir teilen das Dokument in mehrere Untergruppen, wodurch das ausfüllen leichter wird:</h3>
 <ul>
-    <li>First of all we need your general informations, such as your name or your birth date</li>
-    <li>Secondly we need informations about your adress</li>
-    <li>Afterwards we need to know your prefered payment method.</li>
-    <li>If you like to use SEPA we need your banking information. Otherwise you have to send the money on your own.</li>
-    <li>Finally, if you are done, you just have to sign the document and you are done!</li>
+    <li>Zuerst benötigen wir Ihre allgemeine Daten, wie zum Beispiel Ihren Namen oder Ihren Geburtstag</li>
+    <li>Daraufhin benötigen wir noch Ihre Adresse</li>
+    <li>Desweiterem müssen wir Ihre bevorzugte Bezahlungsart wissen.</li>
+    <li>Falls Sie die Gebühr über eine SEPA Lastschrift bezahlen wollen benötigen wir Ihre Bankdaten. Ansonsten müssen Sie die Überweisung später selber durchführen.</li>
+    <li>Und zu guter Letzt müssen Sie das Dokument unterschreiben und dann ist das Formular absendbereit!</li>
     <li></li>
 </ul>
-<h3> If you like to start now, just press the start button.</h3>
+<h3> Wenn Ihr jetzt starten wollen, dann klicken Sie auf den Start-Button und schon können Sie beginnen!</h3>
 <ul>
     <li><input type="submit" value="START" onclick=""></li>
 </ul>
