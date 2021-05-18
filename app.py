@@ -310,8 +310,25 @@ def about(lang):
     global language_glob
     if request.args.get('lang') != None:
         language_glob = request.args.get('lang')
-        return redirect ('/' + request.args.get('lang') + '/about')
+        return redirect ('/' + request.args.get('lang') + '/about_us')
     return render_template(language_glob + '/about_us.html', language = language_glob)
+
+@app.route('/<string:lang>/privacy_policy')
+def privacy_policy(lang):
+    global language_glob
+    if request.args.get('lang') != None:
+        language_glob = request.args.get('lang')
+        return redirect ('/' + request.args.get('lang') + '/privacy_policy')
+    return render_template(language_glob + '/privacy_policy.html', language = language_glob)
+
+
+@app.route('/<string:lang>/legal_notice')
+def privacy_policy(lang):
+    global language_glob
+    if request.args.get('lang') != None:
+        language_glob = request.args.get('lang')
+        return redirect ('/' + request.args.get('lang') + '/legal_notice')
+    return render_template(language_glob + '/legalNotice.html', language = language_glob)
 
 if __name__ == "__main__":
     app.run(debug=True)
