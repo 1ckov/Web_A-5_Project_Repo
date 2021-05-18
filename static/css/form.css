@@ -15,7 +15,7 @@ body {
 }
 form{
     max-width:500px;
-    min-height: 470px;
+    min-height: 200px;
     margin:50px auto;
     background:#FDFDFD;
     border-radius:2px;
