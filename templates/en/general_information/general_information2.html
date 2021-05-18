@@ -9,7 +9,7 @@
     <ul>
         <li>
             <label for="fName">First Name</label>
-            <input type="text" name="firstName" id="fName" pattern="\p{Alpha}*"  required>
+            <input type="text" name="firstName" id="fName" pattern="[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"  required>
             <span><details><summary>
                 Help?
             </summary> 
@@ -19,7 +19,7 @@
         </li>
         <li>
             <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lName" pattern="\p{Alpha}*" required>
+            <input type="text" name="lastName" id="lName" pattern="[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span><details><summary>
                 Help?
             </summary> 
