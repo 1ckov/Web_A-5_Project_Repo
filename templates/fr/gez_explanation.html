@@ -1,0 +1,25 @@
+{% extends 'en/en_base.html' %}
+
+
+{% block start %} 
+<html lang="{{language}}">
+{% endblock %}
+{% block head %} 
+<title>GEZ</title> 
+{% endblock %}
+{% block body %}
+<h1>Welcome to our GEZ-help!</h1>
+<h2>You requested some help for a gez-document.</h2>
+<p>GEZ is the broadcast fee here in germany. Every apartment has to pay it, so there is no escape from it, if you want to live in germany.</p>
+<p>While it can be annoying to pay, you only have to fill out the document once, as long as you live in your current apartment.</p>
+<h3>We devide the document into multiple little parts.</h3>
+<ul>
+    <li>First of all we need your general informations, such as your name or your birth date</li>
+    <li>Secondly we need informations about your adress</li>
+    <li>Afterwards we need to know your prefered payment method.</li>
+    <li>If you like to use SEPA we need your banking information. Otherwise you have to send the money on your own.</li>
+    <li>Finally, if you are done, you just have to sign the document and you are done!</li>
+</ul>
+<h3> If you like to start now, just press the start button.</h3>
+<input type="submit" value="START" onclick="">
+{% endblock %}

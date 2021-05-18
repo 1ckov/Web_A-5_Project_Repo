@@ -1,0 +1,28 @@
+{% extends 'en/en_base.html' %}
+
+{% block head %}
+<title>GEZ</title>
+{% endblock %}
+{% block body %}
+
+<form action="/{{language}}/gez/sepa" method="POST">
+    <h1>SEPA direct debit mandate 1 of 4</h1>
+    <ul>
+        <li>
+        <label for="name">Name</label>
+        <input type="text" name="fullName" id="name" required>
+        <span><details>
+            <summary>
+                Help?
+            </summary>Enter your full name in the following order: title, last name, first name<br> For example: Dr. Mustermann Max
+        <br> If this bank account is not yours, please write down the name of this accounts owner.</span>
+        </details>
+        </li>
+        
+        <li>
+            <input type="button" value="Back" onClick="javascript:history.back()">
+            <input type="submit" value="Submit">
+        </li>
+        </ul>
+    </form>
+    {% endblock %}
