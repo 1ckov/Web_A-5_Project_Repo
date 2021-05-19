@@ -33,12 +33,12 @@
         </li>
         <li>
             <label for="credit_institution">Établissement de crédit:</label>
-                    <input type="text" id="credit_institution" name="credit_institution" pattern="^\p{Alpha}[^0-9]*" required>
+                    <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span><details>
                 <summary>
                     Aider?
                 </summary>Saisissez ici le nom de votre établissement de crédit.<br>
-                <i>Vous devez commencer par une lettre et vous ne pouvez pas écrire de chiffres</i><br>
+                <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes spéciaux sauf un moins (-)</i><br>
                 Par example: France Kredit Bank Paris 
             </details></span>
         </li>

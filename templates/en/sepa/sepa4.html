@@ -33,12 +33,12 @@
         </li>
         <li>
             <label for="credit_institution">Credit institution:</label>
-                    <input type="text" id="credit_institution" name="credit_institution" pattern="^\p{Alpha}[^0-9]*" required>
+                    <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span><details>
                 <summary>
                     Help?
                 </summary>Enter the name of your credit institution here please.<br>
-                <i>You have to start with a letter, and you can not write any numbers</i><br>
+                <i>You have to start with a letter, and you can not write any numbers, nor any special signs except a minus (-)</i><br>
                 For example: DEUTSCHE KREDITBANK BERLIN 
             </details></span>
         </li>

@@ -14,7 +14,9 @@
             <span>
                 <details>
                     <summary>Hilfe?</summary>
-                    <p>Bitte geben Sie die IBAN Adresse vom ihrem Bankkonto ein. Z.B. DE02120300000000202051</p>
+                    <p>Bitte geben Sie die IBAN Adresse vom ihrem Bankkonto ein.<br>
+                        <i>Eine IBAN besteht asu zwei großgeschriebenen Buchstaben und 20 Ziffern!</i><br>
+                         Z.B. DE02120300000000202051</p>
                 </details>
             </span>
         </li>
@@ -24,17 +26,21 @@
             <span>
                 <details>
                     <summary>Hilfe?</summary>
-                    <p>Bitte geben Sie die BIC Adresse ihres Bankkontos ein. Z.B. BYLADEM1001</p>
+                    <p>Bitte geben Sie die BIC Adresse ihres Bankkontos ein. <br>
+                        <i>Eine BIC hat entweder sieben oder 8 großgeschriebene Buchstaben und daraufhin maximal 4 Ziffern</i><br>
+                        Z.B. BYLADEM1001</p>
                 </details>
             </span>
         </li>
         <li>
             <label for="credit_institution">Kreditinstitut:</label>
-            <input type="text" id="credit_institution" name="credit_institution" pattern="^\p{Alpha}[^0-9]*" required>
+            <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
-                    <p>Bitte geben Sie den Namen ihrer Bank ein. Z.B. Deutsche Bank oder Sparkasse</p>
+                    <p>Bitte geben Sie den Namen ihrer Bank ein. <br>
+                        <i>Sie müssen mit einem Buchstaben beginnen. Desweiterem dürfen Sie keine Zahlen, noch Sonderzeichen außer dem Bindestrich (-) eingeben.</i><br>
+                        Z.B. Deutsche Bank oder Sparkasse</p>
                 </details>
             </span>
         </li>
