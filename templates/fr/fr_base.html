@@ -27,8 +27,8 @@
 
     <nav class="Navbar">
         <div class="topnav" id="myTopnav">
-            <a href="/{{language}}/home" class="active">Domicile</a>
-            <a href="">Des documents</a>
+            <a href="/" class="active">Domicile</a>
+            <a href="/{{language}}/home">Des documents</a>
             <div class="flags">
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
                 <a href="?lang=de"> <img src="{{url_for('static', filename='images/de.png')}}"> </a>
@@ -41,9 +41,14 @@
         </div>
     </nav>
 
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/navbar.js')}}"></script>
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
+    <footer>
+        <a href="/{{language}}/privacy_policy">Protection des données </a>
+        <a href="/{{language}}/legal_notice">Imprimer </a>
+    </footer>
 </body>
 
 </html>
