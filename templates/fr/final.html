@@ -8,18 +8,18 @@
 {% block body %}
 <h1>Welcome </h1>
 <hr>
-<h2> Please remember that we still need your signature and the date as validation! This is where you have to sign in! <details>
-    <summary>This is how it looks like!</summary>
+<h2> N'oubliez pas que nous avons encore besoin de votre signature et de la date comme validation! C'est là que vous devez vous connecter!<details>
+    <summary>C'est à ça que ça ressemble!</summary>
     <img src="{{url_for('static', filename='images/Part_3_fr.png')}}" class="image">
     </details>
-    <br> In case you have decided to send the money with a SEPA mandate you have to give another signature!
-    <details><summary>This is how it looks like!</summary>
+    <br>Dans le cas où vous avez décidé d'envoyer l'argent avec un mandat SEPA, vous devez donner une autre signature!
+    <details><summary>C'est à ça que ça ressemble!</summary>
         <img src="{{url_for('static', filename='images/Part_5_fr.png')}}" class="image">
     </details></h2>
     
-<p>If you need any kind of additional help, please do not hestitate to reach out the helpline <a href="https://www.mannheim.de/de/service-bieten/integration-migration/anima-ankommen-in-mannheim"></a>ANIMA </a></p>
+<p>Si vous avez besoin d'une aide supplémentaire, n'hésitez pas à contacter la ligne d'assistance.<a href="https://www.mannheim.de/de/service-bieten/integration-migration/anima-ankommen-in-mannheim"></a>ANIMA </a></p>
 <p>
-    If you would like to fill out any other document, please click <a href="/{{language}}/home">here</a>.
+    Si vous souhaitez remplir un autre document, veuillez cliquer sur<a href="/{{language}}/home">ici</a>.
 </p>
 
 {% endblock %}
