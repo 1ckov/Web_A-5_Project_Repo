@@ -10,11 +10,12 @@
         <ul>
             <li>
     <label for="street">Улица</label>
-    <input type="text" name="street" id="street" required>
+    <input type="text" name="street" id="street" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
     <span class="extra-info"> <details><summary>
         Помощ?
     </summary> 
-        <p>Моля, въведете името на улицата, в която живеете. Например: Улица-пример, Примерна-улица
+        <p>Моля, въведете името на улицата, в която живеете. Например: Улица-пример, Примерна-улица<br>
+            <i>Трябва да започнете с буква и не можете да пишете никакви цифри, нито някакви специални знаци с изключение на минус (-)</i>
         </p>
     </details>
         

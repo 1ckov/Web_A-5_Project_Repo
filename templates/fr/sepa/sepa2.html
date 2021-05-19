@@ -10,11 +10,12 @@
     <ul>
         <li>
             <label for="street">rue:</label>
-            <input type="text" id="street" name="street" required>
+            <input type="text" id="street" name="street" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span><details>
                 <summary>
                     Aider?
-                </summary>Entrez ici le nom de la rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.
+                </summary>Entrez ici le nom de la rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.<br>
+                <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes spéciaux sauf un moins (-)</i>
             </details> </span>
         </li>
         <li>

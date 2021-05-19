@@ -10,11 +10,13 @@
         <ul>
             <li>
     <label for="street">Street:</label>
-    <input type="text" name="street" id="street" required>
+    <input type="text" name="street" id="street" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
     <span class="extra-info"> <details><summary>
         Help?
     </summary> 
-        <p>Please enter the name of the Street you are living in. <br>For example: Examplestreet, Longstreet
+        <p>Please enter the name of the Street you are living in. 
+            <i>You have to start with a letter, and you can not write any numbers, nor any special signs except a minus (-)</i><br>
+            <br>For example: Examplestreet, Longstreet
         </p>
     </details>
         

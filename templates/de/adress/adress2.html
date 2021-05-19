@@ -10,13 +10,15 @@
         <ul>
             <li>
                 <label for="street">Straße:</label>
-                <input type="text" name="street" id="street" required>
+                <input type="text" name="street" id="street" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
                 <span class="extra-info">
                     <details>
                         <summary>
                             Hilfe?
                         </summary>
-                        <p>Bitte geben Sie den Starßenname der Starße in der Sie leben ein. Z.B. Hauptstraße</p>
+                        <p>Bitte geben Sie den Starßenname der Starße in der Sie leben ein.<br>
+                            <i>Sie müssen mit einem Buchstaben beginnen und können weder Ziffern, noch Sonderzeichen ausßer dem Bindestrich eingeben.</i><br>
+                             Z.B.: Hauptstraße</p>
                     </details>
 
                 </span>

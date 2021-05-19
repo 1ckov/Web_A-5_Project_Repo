@@ -10,13 +10,15 @@
     <ul>
         <li>
             <label for="street">Starße:</label>
-            <input type="text" id="street" name="street" required>
+            <input type="text" id="street" name="street" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
                     <p> Bitte geben Sie den Namen der Staße ein in der der Kontoinhaber lebt. Bitte beachten Sie, dass
                         der Kontoinhaber von der
-                        Person die den Antrag stellt abweichen kann.</p>
+                        Person die den Antrag stellt abweichen kann.<br>
+                        <i>Sie müssen mit einem Buchstaben beginnen und können weder Ziffern, noch Sonderzeichen ausßer dem Bindestrich eingeben.</i><br>
+                    </p>
                 </details>
             </span>
         </li>
