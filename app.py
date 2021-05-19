@@ -17,11 +17,11 @@ def index():
 
         #################################################
         return redirect('/' + language_glob + '/home')
-    
-    if request.args.get('lang') != None:
-        language_glob = request.args.get('lang')
-        return redirect('/')
-    return render_template(language_glob + '/welcome.html', language = language_glob)
+    else: 
+        if request.args.get('lang') != None:
+            language_glob = request.args.get('lang')
+            return redirect('/')
+        return render_template(language_glob + '/welcome.html', language = language_glob)
 
 # Registration Page 
 @app.route('/<string:lang>/register', methods=['GET','POST'])
