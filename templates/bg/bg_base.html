@@ -27,8 +27,8 @@
 
     <nav>
         <div class="topnav" id="myTopnav">
-            <a href="/bg/home"><button class="active">Homepage</button></a>
-            <a href=""> <button class="document">Documents</button></a>
+            <a href="/"><button class="active">Начална страница</button></a>
+            <a href="/{{language}}/home"> <button class="document">Документи</button></a>
             <div>
                 <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
@@ -39,8 +39,8 @@
 
             <div>
                 <a href=""></a>
-                <a href="/{{language}}/about_us"><button class="about_and_logout">About us</button></a>
-                <a href=""><button class="about_and_logout">Logout</button></a>
+                <a href="/{{language}}/about_us"><button class="about_and_logout">За нас</button></a>
+                <a href=""><button class="about_and_logout">Изход</button></a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
         </div>
@@ -52,8 +52,8 @@
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
     <footer>
-        <a href="/{{language}}/privacy_policy">privacy policy</a>
-        <a href="/{{language}}/legal_notice">legal notice</a>
+        <a href="/{{language}}/privacy_policy">Политика за поверителност</a>
+        <a href="/{{language}}/legal_notice">Правно известие</a>
     </footer>
 </body>
 

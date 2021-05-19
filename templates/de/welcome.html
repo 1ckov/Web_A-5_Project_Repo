@@ -1,0 +1,105 @@
+{%extends 'de/de_base.html'%}
+
+{% block head %}
+<title>Willkomen</title>
+{% endblock %}
+
+{% block body %}
+
+<form id="welcometext">
+<h1>
+    Willkomen!
+</h1>
+<p>Willkomen zu unserer Website! </p>
+<p>Wir sind Team A-5 und wir sind hier um Ihnen bei der Ausfüllung Ihrer Dokumente auszuhelfen, damit Sie
+    ein sorgenloses Leben in Deutschlangd haben!
+    Wir arbeiten daran jegliche notwendige Information für Sie zu übersetzen, als auch jeglichen Schritt genauestens zu
+    erklären.
+</p>
+<br>
+
+<p>
+    Unser Team besteht aus 6 Studenten der Hochschule Mannheim in Deutschland.
+    Wir nutzen unser gemeinsames Wissen und unsere Erfahrungen um in Kooperation mit unserer Fakultät für Sozialwesen
+    für Sie diese Seite zu erstellen. <br>
+    Wenn Sie mehr erfahren wollen, <b>über jedes Mitglied unseres Team,</b> dann klicken Sie bitte
+    <a href="/{{language}}/about_us"> hier</a>.
+</p>
+</form>
+<p>
+
+<form action="/" method="POST">
+    <h1>Login</h1>
+    <ul>
+        <li>
+            <label for="uName">Username</label>
+            <input type="text" name="username" id="uName">
+            <span>Geben Sie ihren Usernamen ein</span>
+        </li>
+        <li>
+            <label for="pWord">Passwort</label>
+            <input type="password" name="password" id="pWord">
+            <span>Geben Sie ihr Passwort ein</span>
+        </li>
+        <li>
+            <ul>
+                <li>
+                    <input type="submit" value="Submit">
+                    <input type="button" value="Als Gast benutzen">
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+
+    <ul>
+        <h3>Sie haben keinen Account, hier können Sie sich registrieren</h3>
+        <li class="listCenter">
+
+            <a href="/{{language}}/register">Registrieren</a>
+
+        </li>
+        <li></li>
+    </ul>
+
+</form>
+</p>
+
+<form action="">
+    <ul>
+        <h2>
+            Wenn Sie keinen Account Erstellen wollen könnens Sie Hier direkt zu den Funktionen übergehen.
+        </h2>
+        <li class="listCenter">
+            <a href=" ">Wohnungsanmeldung</a>
+        </li>
+        <li class="listCenter">
+            <a href="/{{language}}/gez/gez_explanation">GEZ</a>
+        </li>
+        <li class="listCenter">
+            <a href=" ">Kinderbetreuung</a>
+        </li>
+        <li></li>
+    </ul>
+</form>
+</p>
+
+<p id="finalsentence">
+    <br>
+    Alle Leute aus unserem Team hoffen das wir ihnen so helfen können um sich Leichter durch die Deutsche Bürokratie zu
+    Orientieren. Wir Wünschen ihnen eine angenehme Zeit in Deutschland.
+</p>
+<!-- Cookie html code from here: -->
+<div class="cookie-container">
+    <p>
+        Wir benutzen Cookies um ihnen die beste Erfahrung zu liefern und ihnen nur relevante Werbung zu zeigen. Um mehr
+        zu erfahren, Clicken Sie Hier
+        <a href="/{{language}}/privacy_policy">Datenschutzrichtlinien</a>.
+    </p>
+
+    <button class="cookie-btn">
+        Okay
+    </button>
+</div>
+<script type="text/javascript" src="{{url_for('static', filename='javascript/cookieConsent.js')}}"></script>
+{% endblock %}

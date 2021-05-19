@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends 'de/de_base.html' %}
 
+{% block head %}
+<title>Über uns</title>
+{% endblock %}
 
-<head>
-    <link rel=stylesheet href="css/about us css.css">
-    <title>Über uns</title>
-</head>
-
-<body>
+{% block body %}
     <h1>
         Willkommen zu unserer Website!
     </h1>
@@ -29,20 +26,20 @@
         Unsere Teammitglieder sind:
     </h2>
     <p class="boxed">
-        <img src="images\Profil 1.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 1.png')}}" class="image"> <br>
         Das ist Georgy Haydukov, der für die Cookies und unserer Datenschutz-Seite zuständig ist.
         Erreichbar ist er über seine Mail:
         <a href="georgi.haydukov@stud.hs-mannheim.de">georgi.haydukov@stud.hs-mannheim.de</a>
     </p>
     <p class="boxed">
-        <img src="images\Profil 2.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 2.png')}}" class="image"> <br>
         Hier ist Aleksandar Histrov, unser Flask Spezialist und
         bulgarischer Übersetzer.
         Erreichbar ist er über seine Mail:
         <a href="aleksandar.histrov@stud.hs-mannheim.de">aleksandar.histrov@stud.hs-mannheim.de</a>
     </p>
     <p class="boxed">
-        <img src="images\Profil 3.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 3.png')}}" class="image"> <br>
         Das ist Robert Endler.
         Er arbeitet an unserem Impressum, als auch an unserer französischen Übersetzung.
         Erreichbar ist er über seine Mail:
@@ -50,20 +47,20 @@
     </p>
     <br>
     <p class="boxed">
-        <img src="images\Profil 4.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 4.png')}}" class="image"> <br>
         Ilyas Bal arbeitet an der Implementierung unserer Tutorials für Ihre zukünftigen zu ausfüllenden Dokumenten.
         Erreichbar ist er über seine Mail:
         <a href="ilyas.bal@stud.hs-mannheim.de">ilyas.bal@stud.hs-mannheim.de</a>
     </p>
     <p class="boxed">
-        <img src="images\profil 5.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 5.png')}}" class="image"> <br>
         Lennart Gulde ist ebenfalls an unseren Tutorials tätig.
         Desweiterem arbeitet er an unserem Loginsystem.
         Erreichbar ist er über seine Mail:
         <a href="lennart.gulde@stud.hs-mannheim.de">lennart.gulde@stud.hs-mannheim.de</a>
     </p>
     <p class="boxed">
-        <img src="images\profil 6.png" class="image"> <br>
+        <img src="{{url_for('static', filename='images/Profil 6.png')}}" class="image"> <br>
         Hier haben wir Muhammed Yavuz, welcher die Über uns Seite
         schreibt die sie gerade lesen!Außerdem hilft er bei dem Login aus.
         Erreichbar ist er über seine Mail:
@@ -75,6 +72,4 @@
         aushelfen kann, damit du sicher und einfach durch die deutsche Bürokratie anvigieren kannst. Wir alle
         wünschen dir eine schöne Zeit in Deutschland!
     </p>
-</body>
-
-</html>
+{% endblock %}

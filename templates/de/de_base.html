@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!---->
 <!-- A html tag with the necessary language for the page-->
@@ -26,10 +25,10 @@
 
 <body>
 
-    <nav>
+    <nav class="Navbar">
         <div class="topnav" id="myTopnav">
-            <a href="/en/home"><button class="active">Startseite</button></a>
-            <a href=""> <button class="document">Dokumente</button></a>
+            <a href="/"><button class="active">Startseite</button></a>
+            <a href="/{{language}}/home"> <button class="document">Dokumente</button></a>
             <div>
                 <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
@@ -37,7 +36,6 @@
                 <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
-
             <div>
                 <a href=""></a>
                 <a href="/{{language}}/about"><button class="about_and_logout">Über uns</button></a>
@@ -48,8 +46,6 @@
     </nav>
 
     <script type="text/javascript" src="{{url_for('static', filename='javascript/navbar.js')}}"></script>
-
-
     <!-- Elements from body-->
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
