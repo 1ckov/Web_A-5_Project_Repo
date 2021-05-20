@@ -6,7 +6,7 @@
 <title>GEZ</title>
 {% endblock %}
 {% block body %}
-<form action="">
+<form action="/{{language}}/gez/gez_explanation" method="POST">
     <h1>Bienvenue dans notre GEZ-help!</h1>
     <h2>Vous avez demandé de l'aide pour un document gez.</h2>
     <p>GEZ est la redevance de diffusion ici en Allemagne. Chaque appartement doit le payer, donc il n'y a pas
@@ -29,7 +29,7 @@
     </ul>
     <h3> Si vous souhaitez commencer maintenant, appuyez simplement sur le bouton de démarrage.</h3>
     <li>
-        <input type="submit" value="START" onclick="">
+        <input type="submit" value="Démarrer" onclick="">
     </li>
 </form>
 
