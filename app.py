@@ -58,7 +58,7 @@ def gez_explanation(lang):
     else:
         if request.args.get('lang') != None:
             language_glob = request.args.get('lang')
-            return redirect ('/' + request.args.get('lang') + '/gez_explanation')
+            return redirect ('/' + request.args.get('lang') + '/gez/gez_explanation')
         return render_template(language_glob + '/gez_explanation.html', language = language_glob)
 
 ########################################################################################
