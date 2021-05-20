@@ -27,8 +27,8 @@
 
     <nav>
         <div class="topnav" id="myTopnav">
-            <button class="active"><a href="/" class="cen">Homepage</a></button>
-            <button class="document"><a href="/{{language}}/home" class="cen">Documents</a></button>
+            <button class="active"><a href="/">Homepage</a></button>
+            <button class="document"><a href="/{{language}}/home">Documents</a></button>
             <div>
                 <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
@@ -37,8 +37,8 @@
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
             <div>
-                <button class="about_and_logout"><a href="/{{language}}/about_us" class="cen">About us</a></button>
-                <button class="about_and_logout"><a href="" class="cen">Logout</a></button>
+                <button class="about_and_logout"><a href="/{{language}}/about_us">About us</a></button>
+                <button class="about_and_logout"><a href="">Logout</a></button>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
         </div>
@@ -50,8 +50,8 @@
     <!-- Example: <h1> Website </h1> -->
     {% block body %} {% endblock %}
     <footer>
-        <a href="/{{language}}/privacy_policy">privacy policy</a>
-        <a href="/{{language}}/legal_notice">legal notice</a>
+        <a href="/{{language}}/privacy_policy">Privacy policy</a>
+        <a href="/{{language}}/legal_notice">Legal notice</a>
     </footer>
 </body>
 
