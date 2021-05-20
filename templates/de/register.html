@@ -28,6 +28,14 @@
             <input type="email" name="email" id="mail" required>
             <span>Bitte geben Sie ihre E-Mail Adresse ein.</span>
         </li>
+        <li>
+            <label for="">Sprache</label>
+            <input type="radio" name="language" id="en" value="en" required> English
+            <input type="radio" name="language" id="de" value="de"> German
+            <input type="radio" name="language" id="bg" value="bg"> Bulgarian
+            <input type="radio" name="language" id="fr" value="fr"> French
+            <span>Bitte wählen Sie ihre bevorzugte Sprache.</span>
+        </li>
 
         <h2>Dieser Part ist optional</h2>
         <li>
@@ -50,14 +58,6 @@
             <label for="dateOfBirth">Geburtsdatum</label>
             <input type="date" name="dateOfBirth" id="dob">
             <span>Bitte geben Sie ihr Geburtsdatum ein.</span>
-        </li>
-        <li>
-            <label for="">Sprache</label>
-            <input type="radio" name="language" id="en" value="en"> English
-            <input type="radio" name="language" id="de" value="de"> German
-            <input type="radio" name="language" id="bg" value="bg"> Bulgarian
-            <input type="radio" name="language" id="fr" value="fr"> French
-            <span>Bitte wählen Sie ihre bevorzugte Sprache.</span>
         </li>
         <li>
             <input type="submit" value="Senden" onclick=checkPasswordValidity()>
