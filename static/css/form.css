@@ -372,12 +372,12 @@ p {
   color: #ffffff;
   padding: 0 32px;
   box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
-
   transition: 400ms;
 }
 
 .cookie-container.active {
   bottom: 0;
+  height: 200px;
 }
 
 .cookie-container a {
