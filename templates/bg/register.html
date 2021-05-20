@@ -27,6 +27,14 @@
             <input type="email" name="email" id="mail" required>
             <span>Въведете своя имейл адрес тук, моля</span>
         </li>
+        <li>
+            <label for="">Езици</label>
+            <input type="radio" name="language" id="en" value="en" required> English
+            <input type="radio" name="language" id="de" value="de"> German
+            <input type="radio" name="language" id="bg" value="bg"> Български
+            <input type="radio" name="language" id="fr" value="fr"> French
+            <span>Изберете езика, който искате да използвате</span>
+        </li>
 
         <h2>Тази част е опционална</h2>
         <li>
@@ -49,14 +57,6 @@
             <label for="dateOfBirth">Дата на раждане</label>
             <input type="date" name="dateOfBirth" id="dob">
             <span>Напишете Вашата рожденна дата тук</span>
-        </li>
-        <li>
-            <label for="">Езици</label>
-            <input type="radio" name="language" id="en" value="en"> English
-            <input type="radio" name="language" id="de" value="de"> German
-            <input type="radio" name="language" id="bg" value="bg"> Български
-            <input type="radio" name="language" id="fr" value="fr"> French
-            <span>Изберете езика, който искате да използвате</span>
         </li>
         <li>
             <input type="submit" value="Изпращане" onclick='checkPasswordValidity()'>
