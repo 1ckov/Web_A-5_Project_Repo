@@ -27,17 +27,19 @@
 
     <nav class="Navbar">
         <div class="topnav" id="myTopnav">
-            <a href="/"><button class="active">Domicile</button></a>
-            <a href="/{{language}}/home"><button class="document">Des documents</button></a>
+            <button class="active"><a href="/">Domicile</a></button>
+            <button class="document"><a href="/{{language}}/home">Des documents</a></button>
             <div class="flags">
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
                 <a href="?lang=de"> <img src="{{url_for('static', filename='images/de.png')}}"> </a>
                 <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
-            <a href="/{{language}}/about_us"><button class="about_and_logout">À propos</button></a>
-            <a href=""><button class="about_and_logout">Se déconnecter</button></a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            <div>
+                <button class="about_and_logout"><a href="/{{language}}/about_us">À propos</a></button>
+                <button class="about_and_logout"><a href="">Se déconnecter</a></button>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
         </div>
     </nav>
 

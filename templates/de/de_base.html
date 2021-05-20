@@ -27,8 +27,8 @@
 
     <nav class="Navbar">
         <div class="topnav" id="myTopnav">
-            <a href="/"><button class="active">Startseite</button></a>
-            <a href="/{{language}}/home"> <button class="document">Dokumente</button></a>
+            <button class="active"><a href="/" class="cen">Startseite</a></button>
+            <button class="document"><a href="/{{language}}/home" class="cen">Dokumente</a></button>
             <div>
                 <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
@@ -37,9 +37,8 @@
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
             <div>
-                <a href=""></a>
-                <a href="/{{language}}/about_us"><button class="about_and_logout">Über uns</button></a>
-                <a href=""><button class="about_and_logout">Logout</button></a>
+                <button class="about_and_logout"><a href="/{{language}}/about_us" class="cen">Über uns</a></button>
+                <button class="about_and_logout"><a href="" class="cen">Logout</a></button>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
         </div>

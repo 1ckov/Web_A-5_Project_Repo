@@ -27,8 +27,8 @@
 
     <nav>
         <div class="topnav" id="myTopnav">
-            <a href="/"><button class="active">Начална страница</button></a>
-            <a href="/{{language}}/home"> <button class="document">Документи</button></a>
+            <button class="active"><a href="/" class="cen"></a>Начална страница</button>
+            <button class="document"><a href="/{{language}}/home">Документи</a></button>
             <div>
                 <a href=""></a>
                 <a href="?lang=en"> <img src="{{url_for('static', filename='images/us.png')}}"> </a>
@@ -36,11 +36,9 @@
                 <a href="?lang=bg"> <img src="{{url_for('static', filename='images/bg.png')}}"> </a>
                 <a href="?lang=fr"> <img src="{{url_for('static', filename='images/fr.png')}}"> </a>
             </div>
-
             <div>
-                <a href=""></a>
-                <a href="/{{language}}/about_us"><button class="about_and_logout">За нас</button></a>
-                <a href=""><button class="about_and_logout">Изход</button></a>
+                <button class="about_and_logout"><a href="/{{language}}/about_us">За нас</a></button>
+                <button class="about_and_logout"><a href="" class="cen">Изход</a></button>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
         </div>

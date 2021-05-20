@@ -174,6 +174,19 @@ input[type="button"]:hover{
     overflow: hidden;
     padding: 10px 0px 10px 0px;
   }
+
+  .topnav button{
+    float: left;
+    display: block;
+    color: #ffffff;
+    min-height: max-content;
+    max-height: 50px;
+    padding: 0px 16px 0px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    min-width: 130px;
+  }
   
   /* Style the links inside the navigation bar */
   .topnav a {
@@ -204,6 +217,11 @@ input[type="button"]:hover{
   .active:hover{
     background-color: #555;
     color: #ffffff;
+  }
+
+  .cen{
+    margin-left: 10%;
+    text-align: center;
   }
 
   .document {
@@ -322,10 +340,6 @@ input[type="button"]:hover{
       width: 100%;
       text-align: left;
     }
-}
-
-.about_us_nav{
-  float: right;
 }
 
 .about_and_logout{
