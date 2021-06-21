@@ -1,6 +1,7 @@
 from datetime import datetime
-from flask import Flask, render_template, request, redirect
+from flask import Flask, flash, redirect, render_template, request, session, abort
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 
@@ -8,20 +9,54 @@ app = Flask(__name__)
 
 language_glob = "en"
 
+def passwordRejectedMessage():
+    global language_glob
+    def bg():
+        return "Грешна парола или потребител!" 
+    def en():
+        return "Wrong password or user"
+    def de():
+        return "Falsches Passwort oder Nutzername"
+    def fr():
+        return "Mot de passe ou utilisateur erroné "
+    def default():
+        return "You should not be seeing me"
+    dict = {
+        "bg": bg,
+        "en" : en,
+        "de" : de,
+        "fr" : fr
+    }
+    return dict.get(language_glob,default)()
+
+
+
 # "Chose language" and "Loggin" page
 @app.route('/', methods=['GET','POST'])
 def index():
     global language_glob
-    if request.method == 'POST':
-        ########## Put data from forms into DB ##########
-
-        #################################################
-        return redirect('/' + language_glob + '/home')
-    else: 
-        if request.args.get('lang') != None:
-            language_glob = request.args.get('lang')
-            return redirect('/')
-        return render_template(language_glob + '/welcome.html', language = language_glob)
+    if not (session.get('logged_in') == True):
+        if request.method == 'POST':
+            #### TEST CODE TO BE REMOVED
+            # Dummy Admin account for Testing purposes
+            if request.form['password']== '1qay2wsx' and request.form["username"]=='admin':
+                # Setting session to True
+                session['logged_in'] = True
+                return "Success"
+            else :
+                return "<h1>"+ passwordRejectedMessage() +"</h1>"
+            #### TEST CODE TO BE REMOVED
+            ########## Put data from forms into DB ##########
+            
+            #################################################
+            return redirect('/' + language_glob + '/home')
+        else: 
+            if request.args.get('lang') != None:
+                language_glob = request.args.get('lang')
+                return redirect('/')
+            return render_template(language_glob + '/welcome.html', language = language_glob)
+    else:
+        return redirect("/"+ language_glob + "/home")
 
 # Registration Page 
 @app.route('/<string:lang>/register', methods=['GET','POST'])
@@ -39,6 +74,12 @@ def registration(lang):
             language_glob = request.args.get('lang')
             return redirect ('/' + language_glob + '/register')
         return render_template( language_glob + '/register.html', language = language_glob)
+
+# Logout Function 
+@app.route('/logout')
+def logout():
+    session['logged_in'] = False
+    return redirect("/")
 
 # Landing Page for each language
 @app.route('/<string:lang>/home')
@@ -331,5 +372,8 @@ def legal_notice(lang):
         return redirect ('/' + request.args.get('lang') + '/legal_notice')
     return render_template(language_glob + '/legalNotice.html', language = language_glob)
 
+
+
 if __name__ == "__main__":
+    app.secret_key = os.urandom(12)
     app.run(debug=True)
