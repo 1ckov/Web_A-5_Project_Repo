@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from flask_sqlalchemy import SQLAlchemy
 import os
-
+from database import User
 app = Flask(__name__)
 
 #db = SQLAlchemy(app)
@@ -64,6 +64,7 @@ def registration(lang):
     global language_glob
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
+        new_user= User(username = request.form['userNameReg'], password= request.form['password'],email = request.form['email'], language= request.form['language'])
         if request.form['language'] != None:
             language_glob = request.form['language']
         #################################################
