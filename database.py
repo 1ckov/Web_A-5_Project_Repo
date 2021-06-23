@@ -20,10 +20,10 @@ class User(Base):
     password = Column(String, nullable=false)
     email = Column(EmailType, unique=True)
     language = Column(String)
-    gender = Column(String,Optional=true)
-    first_name = Column(String,Optional=true)
-    last_name = Column(String,Optional=true)
-    date_of_birth = Column(Date,Optional=true)
+    gender = Column(String,nullable=true)
+    first_name = Column(String,nullable=true)
+    last_name = Column(String,nullable=true)
+    date_of_birth = Column(Date,nullable=true)
 
 
 Base.metadata.create_all(engine)

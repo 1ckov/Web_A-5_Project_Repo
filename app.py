@@ -4,8 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from database import User
 app = Flask(__name__)
-
+db = SQLAlchemy(app)
 #db = SQLAlchemy(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
 
 language_glob = "en"
 
