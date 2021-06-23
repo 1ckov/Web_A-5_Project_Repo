@@ -41,6 +41,13 @@
             <input type="password" name="password" id="pWord">
             <span>Enter your password here please</span>
         </li>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
         <li>
             <input type="submit" value="Submit">
         </li>
