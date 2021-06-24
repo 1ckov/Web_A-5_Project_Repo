@@ -3,34 +3,53 @@ from re import S
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from flask_sqlalchemy import SQLAlchemy
 import os
-from database import User
-from passlib.hash import sha256_crypt
+from database import User,Data
+import hashlib
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
-db = SQLAlchemy(app)
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
+#db_session = SQLAlchemy(app)
+
+engine = create_engine('sqlite:///app.db', echo=True)
+#Session = sessionmaker(bind=engine)
+#db_session = Session()
+
 from sqlalchemy_utils import EmailType
 
 ## User Table for storing Username, Password, Email and Language Preference
-class User(db.Model):
-
-    __tablename__ = "benutzer"
-    id = db.Column(db.Integer,autoincrement=True,primary_key=True)
-    username= db.Column(db.String, unique=True, nullable=None)
-    password = db.Column(db.String, unique=True, nullable=None)
-    email = db.Column(EmailType, unique=True, nullable = None)
-    language = db.Column(db.String)
-    def __repr__(self):
-        return "User: "+ str(self.username) + " /Id: "+ str(self.id) +" /Pass: "+ str(self.password)+ " /Email: " + str(self.email) + " /Language: " + str(self.language)
-
-class Data(db.Model):
-    id = db.Column(db.Integer,autoincrement=None,primary_key=True)
-    gender = db.Column(db.String,nullable=True)
-    first_name = db.Column(db.String,nullable=True)
-    last_name = db.Column(db.String,nullable=True)
-    date_of_birth = db.Column(db.Date,nullable=True)
+#class User(db.Model):
+#
+#    __tablename__ = "benutzer"
+#    id = db.Column(db.Integer,autoincrement=True,primary_key=True)
+#    username= db.Column(db.String, unique=True, nullable=None)
+#    password = db.Column(db.String, unique=True, nullable=None)
+#    email = db.Column(EmailType, unique=True, nullable = None)
+#    language = db.Column(db.String)
+#    def __repr__(self):
+#        return "User: "+ str(self.username) + " /Id: "+ str(self.id) +" /Pass: "+ str(self.password)+ " /Email: " + str(self.email) + " /Language: " + str(self.language)
+#
+#class Data(db.Model):
+#    id = db.Column(db.Integer,autoincrement=None,primary_key=True)
+#    gender = db.Column(db.String,nullable=True)
+#    first_name = db.Column(db.String,nullable=True)
+#    last_name = db.Column(db.String,nullable=True)
+#    date_of_birth = db.Column(db.Date,nullable=True)
 ## Changing Language
 def changeLang(lang):
     session["lang"] = lang
+
+def hashPwd(pwd):
+    salt=(b"100000")
+    key = hashlib.pbkdf2_hmac(
+        'sha256', # The hash digest algorithm for HMAC
+        pwd.encode('utf-8'), # Convert the password to bytes
+        salt, # Provide the salt
+        100000, # It is recommended to use at least 100,000 iterations of SHA-256 
+        dklen=128 # Get a 128 byte key
+    )
+    return key
 
 def usernameExistsMessage():
     language_glob = session.get("lang")
@@ -104,22 +123,24 @@ def index():
 
     if not (session.get('logged_in') == True):
         if request.method == 'POST':
-            if (request.form["username"] != None) and (request.form["password"] != None):
+            if (request.form["username"] != "") and (request.form["password"] != ""):
 
                 usernamePOST=request.form["username"]
-                passwordPOST=request.form["password"]
-                passwordPOST =  sha256_crypt.encrypt("password")
+                passwordPOST=str(hashPwd(request.form["password"]))
                 print(passwordPOST)
 
+                Session = sessionmaker(bind=engine)
+                db_session = Session()
 
-                user=User.query.filter_by(username = usernamePOST).first()
-                
+                user=db_session.query(User).filter_by(username = usernamePOST).first()
+                print ("PasswordEntered: " + passwordPOST) 
+                print ("PasswordDB: " + user.password)
                 #Loggin Procedure
                 if user == None :
                     flash(passwordRejectedMessage())
                     return redirect('/')   
 
-                elif(passwordPOST == str(user.password)):
+                elif(passwordPOST == user.password):
                     session['logged_in'] = True
                     session['userId'] = user.id
                     changeLang(user.language)
@@ -144,24 +165,28 @@ def registration(lang):
     language_glob = session.get("lang")
      
     if request.method == 'POST':
-        
+        # Getting Post Data
         username = request.form['userNameReg']
-        password= request.form['password']
+        password= str(hashPwd(request.form['password']))
         email = request.form['email']
         language= request.form['language']
 
-        if User.query.filter_by(username = username).first() :
+        # Opening a Session with the DB server
+        Session = sessionmaker(bind=engine)
+        db_session = Session()
+    
+        if db_session.query(User).filter_by(username = username).first() :
             flash(usernameExistsMessage())
             return redirect('/'+ language_glob+'/register')
 
-        if User.query.filter_by(email = email).first() :
+        if db_session.query(User).filter_by(email = email).first() :
             flash(emailExistsMessage())
             return redirect('/'+ language_glob+'/register')
 
         ########## Put data from forms into DB ##########
         new_user= User(username = username, password= password, email= email, language= language)
-        db.session.add(new_user) 
-        db.session.commit()  
+        db_session.add(new_user) 
+        db_session.commit()  
         #################################################
         
         if request.form['language'] != None:

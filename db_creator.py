@@ -1,10 +1,14 @@
-from app import db
-from app import User
 
-print(User.query.all())
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from database import User,Data
+from passlib.hash import sha256_crypt
+engine = create_engine('sqlite:///app.db', echo=True)
+Session = sessionmaker(bind=engine)
+session = Session()
 
-db.session.add(User(username="momo", password="   ", email="ads.sd", language="en"))
 
-print(User.query.all())
+session.add(User(username="sa6o", password=sha256_crypt("   "), email="sdadwqe.sd", language="en"))
+print(session.query(User))
 
-db.session.commit()
+session.commit()

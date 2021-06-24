@@ -14,8 +14,8 @@ Base = declarative_base()
 
 class User(Base):
 
-    __tablename__ = "benutzer"
-    User_id = Column(Integer,autoincrement=True,primary_key=True)
+    __tablename__ = "user"
+    id = Column(Integer,autoincrement=True,primary_key=True)
     username= Column(String, nullable=false)
     password = Column(String, nullable=false)
     email = Column(EmailType, unique=True)
@@ -24,15 +24,19 @@ class User(Base):
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
     date_of_birth = Column(Date,nullable=true)
-    daten = relationship("daten", backref='benutzer', uselist=false)
+    data = relationship("Data", back_populates="user", uselist= False)
+    
+    def __repr__(self):
+       return "User: "+ str(self.username) + " /Id: "+ str(self.id) +" /Pass: "+ str(self.password)+ " /Email: " + str(self.email) + " /Language: " + str(self.language)
 
 
-class Daten(Base):
+class Data(Base):
 
-    __tablename__ = "daten"
+    __tablename__ = "data"
     id = Column(Integer ,primary_key=true)
-    User_id = Column(Integer, ForeignKey('benutzer'),unique=true)                                                   
-    gender = Column(String,nullable=true)
+    user_id = Column(Integer, ForeignKey('user.id'),unique=true)  
+    user = relationship("User", back_populates="data")                                                 
+    gender = Column(Boolean,nullable=true)
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
     date_of_birth = Column(Date,nullable=true)
@@ -48,5 +52,7 @@ class Daten(Base):
     IBAN = Column(String,nullable=true)
     BIC = Column(String,nullable=true)
     credit_institution = Column(String,nullable=true)
+
+
 
 Base.metadata.create_all(engine)
