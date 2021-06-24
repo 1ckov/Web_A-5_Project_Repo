@@ -147,6 +147,7 @@ def registration(lang):
         
         username = request.form['userNameReg']
         password= request.form['password']
+        password = sha256_crypt.encrypt('password')
         email = request.form['email']
         language= request.form['language']
 
