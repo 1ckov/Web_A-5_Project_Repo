@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from flask_sqlalchemy import SQLAlchemy
 import os
 from database import User
+from passlib.hash import sha256_crypt
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
 db = SQLAlchemy(app)
@@ -107,6 +108,9 @@ def index():
 
                 usernamePOST=request.form["username"]
                 passwordPOST=request.form["password"]
+                passwordPOST =  sha256_crypt.encrypt("password")
+                print(passwordPOST)
+
 
                 user=User.query.filter_by(username = usernamePOST).first()
                 

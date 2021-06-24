@@ -15,7 +15,7 @@ Base = declarative_base()
 class User(Base):
 
     __tablename__ = "benutzer"
-    id = Column(Integer,autoincrement=True,primary_key=True)
+    User_id = Column(Integer,autoincrement=True,primary_key=True)
     username= Column(String, nullable=false)
     password = Column(String, nullable=false)
     email = Column(EmailType, unique=True)
@@ -24,14 +24,14 @@ class User(Base):
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
     date_of_birth = Column(Date,nullable=true)
-    daten = relationship('daten', backref='benutzer', uselist=false)
+    daten = relationship("daten", backref='benutzer', uselist=false)
 
 
 class Daten(Base):
 
     __tablename__ = "daten"
     id = Column(Integer ,primary_key=true)
-    User_id = Column(Integer, ForeignKey('User_id'),unique=true)                                                   
+    User_id = Column(Integer, ForeignKey('benutzer'),unique=true)                                                   
     gender = Column(String,nullable=true)
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
@@ -41,7 +41,7 @@ class Daten(Base):
     address_addition = Column(String,nullable=true)
     zip_code = Column(Integer,nullable=true)
     city = Column(String,nullable=true)
-    phone_number = Column(PhoneNumber,nullable=true)
+    phone_number = Column(String,nullable=true)
     timespan = Column(String,nullable=true)
     type_of_transfer = Column(Boolean,nullable=true)            ##true = sepa## 
     name = Column(String,nullable=true)
