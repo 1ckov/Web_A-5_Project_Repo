@@ -14,6 +14,13 @@
             <input type="text" name="userNameReg" id="uNameReg" required>
             <span>Изберете потребителско име</span>
         </li>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <li>
             <label for="">Парола</label>
             <input type="password" name="password" id="password1" required>
@@ -27,6 +34,7 @@
             <input type="email" name="email" id="mail" required>
             <span>Въведете своя имейл адрес тук, моля</span>
         </li>
+
         <li>
             <label for="">Езици</label>
             <input type="radio" name="language" id="en" value="en" required> English

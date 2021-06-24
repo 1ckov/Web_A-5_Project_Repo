@@ -15,6 +15,13 @@
             <input type="text" name="userNameReg" id="uNameReg" required>
             <span>Choose your username</span>
         </li>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
+        {% endwith %}
         <li>
             <label for="">Password</label>
             <input type="password" name="password" id="password1" minlength="6" required>

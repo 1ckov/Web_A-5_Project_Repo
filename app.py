@@ -34,13 +34,13 @@ def changeLang(lang):
 def usernameExistsMessage():
     language_glob = session.get("lang")
     def bg():
-        return "Грешна парола или потребител!" 
+        return "Потребителското име вече съществува! Моля, изберете друг." 
     def en():
-        return "Wrong password or user"
+        return "Username already exists! Please, choose another one."
     def de():
-        return "Falsches Passwort oder Nutzername"
+        return "Benutzername ist vergeben! Bitte wählen Sie einen anderen."
     def fr():
-        return "Mot de passe ou utilisateur erroné "
+        return "Ce nom d'utilisateur existe déjà! S'il vous plaît, choisissez-en un autre."
     def default():
         return "You should not be seeing me"
     dict = {
@@ -54,13 +54,13 @@ def usernameExistsMessage():
 def emailExistsMessage():
     language_glob = session.get("lang")
     def bg():
-        return "Грешна парола или потребител!" 
+        return "Имейлът вече се използва! Моля, изберете друг." 
     def en():
-        return "Wrong password or user"
+        return "Email is already in use! Please choose another one."
     def de():
-        return "Falsches Passwort oder Nutzername"
+        return "Email wird schon benutzt! Bitte wählen Sie eine andere!"
     def fr():
-        return "Mot de passe ou utilisateur erroné "
+        return "Cet email est déjà utilisé! Veuillez en choisir un autre."
     def default():
         return "You should not be seeing me"
     dict = {
