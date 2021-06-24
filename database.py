@@ -24,14 +24,14 @@ class User(Base):
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
     date_of_birth = Column(Date,nullable=true)
-    ##daten = relationship('daten', backref='benutzer', uselist=false)
+    daten = relationship('daten', backref='benutzer', uselist=false)
 
 
 class Daten(Base):
 
     __tablename__ = "daten"
-    id = Column(Integer ,primary_key=true,)
-     ## User_id = Column(Integer, Foreignkey('User_id'),unique=true)                                                   
+    id = Column(Integer ,primary_key=true)
+    User_id = Column(Integer, ForeignKey('User_id'),unique=true)                                                   
     gender = Column(String,nullable=true)
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
