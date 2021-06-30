@@ -7,6 +7,7 @@ from database import User,Data
 import hashlib
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy_utils import EmailType
 app = Flask(__name__)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
@@ -16,7 +17,6 @@ engine = create_engine('sqlite:///app.db', echo=True)
 #Session = sessionmaker(bind=engine)
 #db_session = Session()
 
-from sqlalchemy_utils import EmailType
 
 ## User Table for storing Username, Password, Email and Language Preference
 #class User(db.Model):
@@ -139,7 +139,7 @@ def index():
                 if user == None :
                     flash(passwordRejectedMessage())
                     return redirect('/')   
-
+                
                 elif(passwordPOST == user.password):
                     session['logged_in'] = True
                     session['userId'] = user.id
@@ -242,7 +242,15 @@ def general_information1(lang):
      
     if request.method == 'POST':
         ########## Put data from forms into DB ##########
+        genderPOST=request.form["gender"] 
+
+        Session = sessionmaker(bind=engine)
+        db_session = Session()
+
+        newData = Data(gender=genderPOST)
+        db_session.add(Data)
         
+
         #################################################
         return redirect('/' + language_glob + '/gez/general_information2' )
     else:
