@@ -1,3 +1,4 @@
+from app import registration
 from typing import Optional
 from sqlalchemy import *
 from sqlalchemy import create_engine, ForeignKey
@@ -40,9 +41,9 @@ class Data(Base):
     first_name = Column(String,nullable=true)
     last_name = Column(String,nullable=true)
     date_of_birth = Column(Date,nullable=true)
-    street = Column(String,nullable=true)
+    street = Column(String,nullable=true)                       ##Stra&#223;e
     streetnumber = Column(String,nullable=true)
-    address_addition = Column(String,nullable=true)
+    address_addition = Column(String,nullable=true)             ##Adresszusatz
     zip_code = Column(Integer,nullable=true)
     city = Column(String,nullable=true)
     phone_number = Column(String,nullable=true)
@@ -51,6 +52,15 @@ class Data(Base):
     name = Column(String,nullable=true)
     IBAN = Column(String,nullable=true)
     BIC = Column(String,nullable=true)
+    registration_date = Column(Date,nullable=true)              ##Anmeldedatum
+    name_sepa = Column(String,nullable=true)
+    street_sepa = Column(String,nullable=true)                  ##Stra&#223;e_Lastschrift
+    streetnumber_sepa = Column(String,nullable=true)            ##HausnummerLastschrift
+    city_sepa = Column(String,nullable=true)                    ##OrtLastschrift
+    zip_code_sepa = Column(String,nullable=true)                ##PLZLastschrift
+    
+
+
     credit_institution = Column(String,nullable=true)
 
 
