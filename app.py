@@ -13,6 +13,8 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
 #db_session = SQLAlchemy(app)
 
+session_variables = ["",]
+POST_varaibles = ["",]
 engine = create_engine('sqlite:///app.db', echo=True)
 #Session = sessionmaker(bind=engine)
 #db_session = Session()
@@ -39,6 +41,11 @@ engine = create_engine('sqlite:///app.db', echo=True)
 ## Changing Language
 def changeLang(lang):
     session["lang"] = lang
+
+def addToSV(name, value):
+    session[name] = value
+
+
 
 def hashPwd(pwd):
     salt=(b"100000")
@@ -241,12 +248,15 @@ def general_information1(lang):
     language_glob = session.get("lang")
      
     if request.method == 'POST':
-        ########## Put data from forms into DB ##########
+        ########## Extract Data From Fields ##########
         genderPOST=request.form["gender"] 
-
+        session["gender"]
+        
+        # Start DB connection
         Session = sessionmaker(bind=engine)
         db_session = Session()
-
+        
+        ########## Put data from forms into DB ##########
         newData = Data(gender=genderPOST)
         db_session.add(Data)
         
