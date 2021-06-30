@@ -1,7 +1,9 @@
-<xfdf xmlns="http://ns.adobe.com/xfdf/">
+
+<?xml version="1.0" encoding="UTF-8"
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
     <fields>
         <field name="Anrede">
-            <value>1</value>
+            <value>Herr</value>
         </field>
     <fields>
 </xfdf>
