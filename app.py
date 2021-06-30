@@ -13,8 +13,8 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
 #db_session = SQLAlchemy(app)
 
-session_variables = ["",]
-POST_varaibles = ["",]
+session_variables = ["gender","first_name","last_name","date_of_birth","registration_date","street","streetnumber","address_addition","zip_code","city","phone_number","timespan","type_of_transfer","name_sepa","street_sepa","streetnumber_sepa","zip_code_sepa","city_sepa","IBAN","BIC","credit_institution"]
+POST_varaibles = ["gender", "firstName", "lastName", "dateOfBirth","date_reg","street","street_nr","adress_additions","zip_code","city","phone_number","timespan","type","fullName","street","street_nr","ZIP_code","area","IBAN","BIC","credit_institution"]
 engine = create_engine('sqlite:///app.db', echo=True)
 #Session = sessionmaker(bind=engine)
 #db_session = Session()
