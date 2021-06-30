@@ -1,0 +1,114 @@
+%FDF-1.2
+%‚„œ”
+1 0 obj
+
+<<
+/FDF 
+<<
+/Fields [
+<<
+/T (TitelNachname)
+/V ()
+>> 
+<<
+/T (Datum)
+/V (30062021)
+>> 
+<<
+/T (Zahlungsrhythmus)
+/V /
+>> 
+<<
+/T (IBAN)
+/V ()
+>> 
+<<
+/T (HausnummerLastschrift)
+/V ()
+>> 
+<<
+/T (OrtLastschrift)
+/V ()
+>> 
+<<
+/T (Straﬂe_Lastschrift)
+/V ()
+>> 
+<<
+/T (Geburtsdatum)
+/V ()
+>> 
+<<
+/T (DatumLastschrift)
+/V ()
+>> 
+<<
+/T (Adresszusatz)
+/V ()
+>> 
+<<
+/T (Straﬂe)
+/V ()
+>> 
+<<
+/T (Hausnummer)
+/V ()
+>> 
+<<
+/T (Anrede)
+/V /
+>> 
+<<
+/T (Ort)
+/V ()
+>> 
+<<
+/T (NameLastschrift)
+/V ()
+>> 
+<<
+/T (OrtUnterschrift)
+/V ()
+>> 
+<<
+/T (Telefonnummer)
+/V ()
+>> 
+<<
+/T (Zahlungsweise)
+/V /
+>> 
+<<
+/T (PLZLastschrift)
+/V ()
+>> 
+<<
+/T (Kreditinstitut)
+/V ()
+>> 
+<<
+/T (Anmeldedatum)
+/V ()
+>> 
+<<
+/T (BIC)
+/V ()
+>> 
+<<
+/T (Vorname)
+/V ()
+>> 
+<<
+/T (PLZ)
+/V ()
+>>]
+>>
+>>
+endobj
+
+trailer
+
+<<
+/Root 1 0 R
+>>
+%%EOF

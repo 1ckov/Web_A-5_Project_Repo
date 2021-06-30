@@ -1,0 +1,173 @@
+---
+FieldType: Button
+FieldName: Anrede
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Frau
+FieldStateOption: Off
+FieldStateOption: Herr
+---
+FieldType: Text
+FieldName: TitelNachname
+FieldNameAlt: Nachname und gegebenenfalls Titel eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 28
+---
+FieldType: Text
+FieldName: Vorname
+FieldNameAlt: Vorname eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 19
+---
+FieldType: Text
+FieldName: Geburtsdatum
+FieldNameAlt: Geburtsdatum eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: Anmeldedatum
+FieldNameAlt: Anmeldemonat und Jahr eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 6
+---
+FieldType: Text
+FieldName: Adresszusatz
+FieldNameAlt: Gegebenenfalls Adresszusatz eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 22
+---
+FieldType: Text
+FieldName: Stra&#223;e
+FieldNameAlt: Stra&#223;e eintragen
+FieldFlags: 25165824
+FieldJustification: Left
+FieldMaxLength: 22
+---
+FieldType: Text
+FieldName: Hausnummer
+FieldNameAlt: Hausnummer eintragen
+FieldFlags: 25165824
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: PLZ
+FieldNameAlt: Postleitzahl eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: Ort
+FieldNameAlt: Ort eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 22
+---
+FieldType: Text
+FieldName: Datum
+FieldNameAlt: Datum eintragen
+FieldFlags: 29360128
+FieldValue: 30062021
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Button
+FieldName: Zahlungsrhythmus
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: in der Mitte eines Dreimonatszeitraums
+FieldStateOption: Off
+FieldStateOption: viertelj&#228;hrlich im Voraus
+FieldStateOption: halbj&#228;hrlich im Voraus
+FieldStateOption: j&#228;hrlich im Voraus
+---
+FieldType: Button
+FieldName: Zahlungsweise
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: Lastschrift
+FieldStateOption: Off
+FieldStateOption: &#220;berweisung
+---
+FieldType: Text
+FieldName: Stra&#223;e_Lastschrift
+FieldNameAlt: Stra&#223;e eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 22
+---
+FieldType: Text
+FieldName: IBAN
+FieldNameAlt: IBAN eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 28
+---
+FieldType: Text
+FieldName: BIC
+FieldNameAlt: BIC eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 11
+---
+FieldType: Text
+FieldName: Kreditinstitut
+FieldNameAlt: Kreditinstitut eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 16
+---
+FieldType: Text
+FieldName: NameLastschrift
+FieldNameAlt: Vollst&#228;ndigen Namen und gegebenenfalls Titel eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 28
+---
+FieldType: Text
+FieldName: HausnummerLastschrift
+FieldNameAlt: Hausnummer eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: OrtLastschrift
+FieldNameAlt: Ort eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 22
+---
+FieldType: Text
+FieldName: PLZLastschrift
+FieldNameAlt: Postleitzahl eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 5
+---
+FieldType: Text
+FieldName: OrtUnterschrift
+FieldNameAlt: Ort eintragen
+FieldFlags: 12582912
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: DatumLastschrift
+FieldNameAlt: Datum eintragen
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 8
+---
+FieldType: Text
+FieldName: Telefonnummer
+FieldNameAlt: Telefonnummer eintragen (freiwillige Angabe)
+FieldFlags: 29360128
+FieldJustification: Left
+FieldMaxLength: 17
