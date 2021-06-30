@@ -5,5 +5,5 @@
         <field name="Anrede">
             <value>Herr</value>
         </field>
-    <fields>
+    </fields>
 </xfdf>
