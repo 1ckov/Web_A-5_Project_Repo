@@ -1,4 +1,3 @@
-from app import registration
 from typing import Optional
 from sqlalchemy import *
 from sqlalchemy import create_engine, ForeignKey
