@@ -11,8 +11,16 @@
         <ul>
             <li>
             <label for="">Методи за трансфер</label>
+            {% if fields.type_of_transfer == "sepa" %} 
+            <input type="radio" id="sepa" name="type" value="sepa" checked="checked" required> Чрез SEPA мандат <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank"> Чрез банков превод
+            {% elif fields.type_of_transfer == "bank" %} 
             <input type="radio" id="sepa" name="type" value="sepa" required> Чрез SEPA мандат <br>
-            <input type="radio" id="bank_transfer" name="type" value="bank"> Through Bank transfer
+            <input type="radio" id="bank_transfer" name="type" value="bank" checked="checked"> Чрез банков превод
+            {%else%}
+            <input type="radio" id="sepa" name="type" value="sepa" required> Чрез SEPA мандат <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank"> Чрез банков превод
+            {%endif%}
             <span><details>
                 <summary>
                     Помощ?

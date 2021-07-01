@@ -12,10 +12,32 @@
             <li>
                 <label for=""> Период от време
                 </label>
-                <input type="radio" id="3-months" name="timespan" value="1" required>В средата на първите 3 месеца(at the 15th) <br> <br>
+                {% if fields.timespan == "1" %} 
+                <input type="radio" id="3-months" name="timespan" checked="checked" value="1" required>В средата на първите 3 месеца(at the 15th) <br> <br>
                 <input type="radio" id="3-months-before" name="timespan" value="2">3 месеца предплащане: (1.1, 1.4, 1.7, 1.10) <br> <br>
                 <input type="radio" id="6-months-before" name="timespan" value="3">6 месеца предплащане:(1.1, 1.7) <br> <br>
                 <input type="radio" id="12-months-before" name="timespan" value="4">12 месеца предплащане:(1.1) <br> 
+                {%elif fields.timespan == "2"%}
+                <input type="radio" id="3-months" name="timespan"  value="1" required>В средата на първите 3 месеца(at the 15th)<br> <br>
+                <input type="radio" id="3-months-before" name="timespan" checked="checked"value="2">3 месеца предплащане: (1.1, 1.4, 1.7, 1.10) <br> <br>
+                <input type="radio" id="6-months-before" name="timespan" value="3">6 месеца предплащане:(1.1, 1.7) <br> <br>
+                <input type="radio" id="12-months-before" name="timespan" value="4">12 месеца предплащане:(1.1)<br> 
+                {%elif fields.timespan == "3"%}
+                <input type="radio" id="3-months" name="timespan"  value="1" required>В средата на първите 3 месеца(at the 15th) <br> <br>
+                <input type="radio" id="3-months-before" name="timespan" value="2">3 месеца предплащане: (1.1, 1.4, 1.7, 1.10) <br> <br>
+                <input type="radio" id="6-months-before" name="timespan" checked="checked" value="3">6 месеца предплащане:(1.1, 1.7) <br> <br>
+                <input type="radio" id="12-months-before" name="timespan" value="4">12 месеца предплащане:(1.1)<br> 
+                {%elif fields.timespan == "4" %}
+                <input type="radio" id="3-months" name="timespan" value="1" required>В средата на първите 3 месеца(at the 15th)<br> <br>
+                <input type="radio" id="3-months-before" name="timespan" value="2">3 месеца предплащане: (1.1, 1.4, 1.7, 1.10) <br> <br>
+                <input type="radio" id="6-months-before" name="timespan" value="3">6 месеца предплащане:(1.1, 1.7) <br> <br>
+                <input type="radio" id="12-months-before" name="timespan" checked="checked" value="4">12 месеца предплащане:(1.1)<br> 
+                {%else %}
+                <input type="radio" id="3-months" name="timespan" value="1" required>В средата на първите 3 месеца(at the 15th)<br> <br>
+                <input type="radio" id="3-months-before" name="timespan" value="2">3 месеца предплащане: (1.1, 1.4, 1.7, 1.10) <br> <br>
+                <input type="radio" id="6-months-before" name="timespan" value="3">6 месеца предплащане:(1.1, 1.7) <br> <br>
+                <input type="radio" id="12-months-before" name="timespan" value="4">12 месеца предплащане:(1.1)<br> 
+                {%endif%}
                 <span><details>
                     <summary>
                         Помощ?
