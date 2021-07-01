@@ -11,8 +11,16 @@
         <ul>
             <li>
             <label for="">Type de transfert</label>
+            {% if fields.type_of_transfer == "sepa" %} 
+            <input type="radio" id="sepa" name="type" value="sepa" checked="checked" required> Par mandat Sepa <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank"> Par virement bancaire
+        {% elif fields.type_of_transfer == "bank" %} 
+            <input type="radio" id="sepa" name="type" value="sepa" required> Par mandat Sepa <br>
+            <input type="radio" id="bank_transfer" name="type" value="bank" checked="checked"> Par virement bancaire
+        {%else%}
             <input type="radio" id="sepa" name="type" value="sepa" required> Par mandat Sepa <br>
             <input type="radio" id="bank_transfer" name="type" value="bank"> Par virement bancaire
+        {%endif%}
             <span><details>
                 <summary>
                     Aider?
