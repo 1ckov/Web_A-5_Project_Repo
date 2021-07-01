@@ -9,7 +9,7 @@
         <h1> Адрес 3 от 5</h1>
         <li>
             <label for="adress_additions">Допълнителна информация за адрес(опционално)</label>
-            <input type="text" id="adress_additions" name="adress_additions">
+            <input type="text" id="adress_additions" name="adress_additions" value="{{fields.address_addition if fields.address_addition != None else '' }}">
             <span class="extra-info"><details><summary>
                 Помощ?
             </summary> 
