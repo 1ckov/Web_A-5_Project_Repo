@@ -10,7 +10,7 @@
     <ul>
         <li>
             <label for="ZIP_code">Пощенски код</label>
-            <input type="text" id="ZIP_code" name="ZIP_code" pattern="[0-9]{5}$">
+            <input type="text" id="ZIP_code" name="ZIP_code" pattern="[0-9]{5}$" value="{{fields.zip_code_sepa if fields.zip_code_sepa != None else '' }}">
             <span><details>
                 <summary>
                     Помощ?
@@ -20,7 +20,7 @@
         </li>
         <li>
             <label for="area">Град</label>
-            <input type="text" id="area" name="area" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*">
+            <input type="text" id="area" name="area" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" value="{{fields.city_sepa if fields.city_sepa != None else '' }}">
             <span><details>
                 <summary>
                     Помощ?
