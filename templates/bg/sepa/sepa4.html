@@ -33,7 +33,7 @@
         </li>
         <li>
             <label for="credit_institution">Банкова институция:</label>
-                    <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
+                    <input type="text" id="credit_institution" name="credit_institution" value="{{fields.credit_institution if fields.credit_institution != None else '' }}" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
             <span><details>
                 <summary>
                     Помощ?
