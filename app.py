@@ -14,8 +14,8 @@ app = Flask(__name__)
 #db_session = SQLAlchemy(app)
 session_variables = {"gender": "", "first_name": "", "last_name":  "", "date_of_birth": "", "registration_date": "", "street": "", "streetnumber": "", "address_addition": "", "zip_code": "", "city": "",
                      "phone_number": "", "timespan": "", "type_of_transfer": "", "name_sepa": "", "street_sepa": "", "streetnumber_sepa": "", "zip_code_sepa": "", "city_sepa": "", "IBAN": "", "BIC": "", "credit_institution": ""}
-session_names= {"gender", "first_name", "last_name", "date_of_birth", "registration_date", "street", "streetnumber", "address_addition", "zip_code", "city",
-                     "phone_number", "timespan", "type_of_transfer", "name_sepa", "street_sepa", "streetnumber_sepa", "zip_code_sepa", "city_sepa", "IBAN", "BIC", "credit_institution"}
+session_names= ["gender", "first_name", "last_name", "date_of_birth", "registration_date", "street", "streetnumber", "address_addition", "zip_code", "city",
+                     "phone_number", "timespan", "type_of_transfer", "name_sepa", "street_sepa", "streetnumber_sepa", "zip_code_sepa", "city_sepa", "IBAN", "BIC", "credit_institution"]
 POST_names = ["gender", "firstName", "lastName", "dateOfBirth", "date_reg", "street", "street_nr", "adress_additions", "zip_code",
                   "city", "phone_number", "timespan", "type", "fullName", "street", "street_nr", "ZIP_code", "area", "IBAN", "BIC", "credit_institution"]
 
@@ -138,7 +138,7 @@ def index():
         session["lang"] = "en"
     # Saving language for further use
     language_glob = session.get("lang")
-    
+    session['session_variables'] = session_variables
     # If User not logged in
     if not (session.get('logged_in') == True):
         # If User is signing in
@@ -170,7 +170,6 @@ def index():
 
 ### Check if there is data from DB
                     # Create a session variables dict for PDF Creation
-                    session['session_variables'] = session_variables
 
                     changeLang(user.language)
                     return redirect('/' + user.language + '/home')
@@ -225,15 +224,18 @@ def registration(lang):
         if request.form['language'] != None:
             changeLang(request.form['language'])
             language_glob = request.form['language']
+        
         session["logged_in"] = True
         session['userId'] = new_user.id
-        session["session_variables"] = session_variables
         return redirect('/' + language_glob + '/home')
 
     else:
+
         if request.args.get('lang') != None:
+
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/register')
+
         return render_template(language_glob + '/register.html', language=language_glob)
 
 # Logout Function
@@ -241,8 +243,9 @@ def registration(lang):
 
 @app.route('/logout')
 def logout():
+    global session_variables
     session['logged_in'] = False
-    session["session_variables"] = None
+    session["session_variables"] = session_variables
     return redirect("/")
 
 # Landing Page for each language
@@ -297,7 +300,7 @@ def general_information1(lang):
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information1')
         fields=session.get("session_variables")   
-        return render_template(language_glob + '/general_information/general_information1.html', language=language_glob , fields=fields)
+        return render_template(language_glob + '/general_information/general_information1.html', language=language_glob , fields=session.get("session_variables"))
 
 # The General information Form Part 2
 
@@ -324,7 +327,7 @@ def general_information2(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information2')
-        return render_template(language_glob + '/general_information/general_information2.html', language=language_glob)
+        return render_template(language_glob + '/general_information/general_information2.html', language=language_glob, fields=session.get("session_variables"))
 
 # The General information Form Part 3
 
@@ -346,7 +349,7 @@ def general_information3(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information3')
-        return render_template(language_glob + '/general_information/general_information3.html', language=language_glob)
+        return render_template(language_glob + '/general_information/general_information3.html', language=language_glob, fields=session.get("session_variables"))
 
 ########################################################################################
 ###################################### Adress ##########################################
@@ -372,7 +375,7 @@ def adress1(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress1')
-        return render_template(language_glob + '/adress/adress1.html', language=language_glob)
+        return render_template(language_glob + '/adress/adress1.html', language=language_glob, fields=session.get("session_variables"))
 
 # The Adress Form Part 2
 
@@ -399,7 +402,7 @@ def adress2(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress2')
-        return render_template(language_glob + '/adress/adress2.html', language=language_glob)
+        return render_template(language_glob + '/adress/adress2.html', language=language_glob, fields=session.get("session_variables"))
 
 # The Adress Form Part 3
 
@@ -420,7 +423,7 @@ def adress3(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress3')
-        return render_template(language_glob + '/adress/adress3.html', language=language_glob)
+        return render_template(language_glob + '/adress/adress3.html', language=language_glob, fields=session.get("session_variables"))
 
 # The Adress Form Part 4
 
@@ -447,7 +450,7 @@ def adress4(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress4')
-        return render_template(language_glob + '/adress/adress4.html', language=language_glob)
+        return render_template(language_glob + '/adress/adress4.html', language=language_glob, fields=session.get("session_variables"))
 
 # The Adress Form Part 5
 
@@ -469,7 +472,7 @@ def adress5(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress5')
-        return render_template(language_glob + '/adress/adress5.html', language=language_glob)
+        return render_template(language_glob + '/adress/adress5.html', language=language_glob, fields=session.get("session_variables"))
 
 ########################################################################################
 ############################### Payment Methods ########################################
@@ -495,7 +498,7 @@ def payment_methods1(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/payment_methods1')
-        return render_template(language_glob + '/payment_methods/payment_methods1.html', language=language_glob)
+        return render_template(language_glob + '/payment_methods/payment_methods1.html', language=language_glob, fields=session.get("session_variables"))
 
 
 # The Payment Methods Form Part 2
@@ -519,7 +522,7 @@ def payment_methods2(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/payment_methods2')
-        return render_template(language_glob + '/payment_methods/payment_methods2.html', language=language_glob)
+        return render_template(language_glob + '/payment_methods/payment_methods2.html', language=language_glob, fields=session.get("session_variables"))
 
 ########################################################################################
 ###################################### Sepa ############################################
@@ -545,7 +548,7 @@ def sepa1(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa1')
-        return render_template(language_glob + '/sepa/sepa1.html', language=language_glob)
+        return render_template(language_glob + '/sepa/sepa1.html', language=language_glob, fields=session.get("session_variables"))
 
 
 # The Sepa Form Part 2
@@ -571,7 +574,7 @@ def sepa2(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa2')
-        return render_template(language_glob + '/sepa/sepa2.html', language=language_glob)
+        return render_template(language_glob + '/sepa/sepa2.html', language=language_glob, fields=session.get("session_variables"))
 
 
 # The Sepa Form Part 3
@@ -597,7 +600,7 @@ def sepa3(lang):
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa3')
-        return render_template(language_glob + '/sepa/sepa3.html', language=language_glob)
+        return render_template(language_glob + '/sepa/sepa3.html', language=language_glob, fields=session.get("session_variables"))
 
 
 # The Sepa Form Part 4
@@ -622,21 +625,25 @@ def sepa4(lang):
         genderPOST = request.form[POSTname]
         POSTname = getSessionName(20)
         addToSV(POSTname,genderPOST)
+
+        sv = session.get("session_varaibles")
+        for key, value in sv.items() :
+            print(" ")
+
         #################################################
         return redirect('/' + language_glob + '/gez/final')
     else:
         if request.args.get('lang') != None:
             changeLang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa4')
-        return render_template(language_glob + '/sepa/sepa4.html', language=language_glob)
+        return render_template(language_glob + '/sepa/sepa4.html', language=language_glob, fields=session.get("session_variables"))
 
 # Final notice page for GEZ
 
 
 @app.route('/<string:lang>/gez/final')
 def gez_final(lang):
-    language_glob = session.get("lang")
-
+    language_glob = session.get("lang")    
     if request.args.get('lang') != None:
         changeLang(request.args.get('lang'))
         return redirect('/' + request.args.get('lang') + '/gez/final')

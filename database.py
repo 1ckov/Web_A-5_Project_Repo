@@ -47,7 +47,10 @@ class Data(Base):
     zip_code = Column(Integer,nullable=true)
     city = Column(String,nullable=true)
     phone_number = Column(String,nullable=true)
-    timespan = Column(String,nullable=true)
+    timespan = Column(String,nullable=true)                     #1 = 45 days
+                                                                #2 = 3 Months before
+                                                                #3 = 6 Months before
+                                                                #4 = 12 Months before
     type_of_transfer = Column(Boolean,nullable=true)            ##true = sepa## 
     name_sepa = Column(String,nullable=true)
     street_sepa = Column(String,nullable=true)                  ##Stra&#223;e_Lastschrift
