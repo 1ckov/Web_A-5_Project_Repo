@@ -9,25 +9,28 @@
     <h1>Mandat de prélèvement SEPA 1 sur 4</h1>
     <ul>
         <li>
-        <label for="name">Nom</label>
-        <input type="text" name="fullName" id="name" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*">
-        <span><details>
-            <summary>
-                Aider?
-            </summary>
-            Entrez un nom uniquement si le titulaire du compte n'est pas le contributeur inscrit!
-            Entrez votre nom complet dans l'ordre suivant: titre, nom, prénom<br> 
-            <br>Si ce compte bancaire n'est pas le vôtre, veuillez noter le nom du propriétaire de ce compte.
-            <br>Par exemple: Dr Mustermann Max
-            <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
-        </span>
-        </details>
+            <label for="name">Nom</label>
+            <input type="text" name="fullName" id="name" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"
+                value="{{fields.name_sepa if fields.name_sepa != None else '' }}">
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    Entrez un nom uniquement si le titulaire du compte n'est pas le contributeur inscrit!
+                    Entrez votre nom complet dans l'ordre suivant: titre, nom, prénom<br>
+                    <br>Si ce compte bancaire n'est pas le vôtre, veuillez noter le nom du propriétaire de ce compte.
+                    <br>Par exemple: Dr Mustermann Max
+                    <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas
+                        écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
+            </span>
+            </details>
         </li>
-        
+
         <li>
             <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">
         </li>
-        </ul>
-    </form>
-    {% endblock %}
+    </ul>
+</form>
+{% endblock %}

@@ -9,35 +9,47 @@
     <ul>
         <li>
             <label for="fName">Prénom</label>
-            <input type="text" name="firstName" id="fName" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
-            <span><details><summary>
-                Aider?
-            </summary> 
-                <p>Entrez votre prénom ici s'il vous plaît.
-                    <br> Vous pouvez le trouver sur votre carte d'identité </p>
-                    <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
-            </details></span>
+            <input type="text" name="firstName" id="fName" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"
+                value="{{fields.first_name if fields.first_name != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    <p>Entrez votre prénom ici s'il vous plaît.
+                        <br> Vous pouvez le trouver sur votre carte d'identité
+                    </p>
+                    <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas
+                        écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
+                </details>
+            </span>
         </li>
         <li>
             <label for="lastName">Nom de famille</label>
-            <input type="text" name="lastName" id="lName" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
-            <span><details><summary>
-                Aider?
-            </summary> 
-                <p>Entrez votre nom ici s'il vous plaît
-                    <br> Aussi connu sous le nom de votre nom de famille. Vous pouvez le trouver sur votre carte d'identité.
-                </p>
-                <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
-            </details></span>
+            <input type="text" name="lastName" id="lName" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"
+                value="{{fields.last_name if fields.last_name != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    <p>Entrez votre nom ici s'il vous plaît
+                        <br> Aussi connu sous le nom de votre nom de famille. Vous pouvez le trouver sur votre carte
+                        d'identité.
+                    </p>
+                    <i>Vous pouvez noter plusieurs prénoms, au cas où vous en auriez plus d'un. Vous ne pouvez pas
+                        écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i>
+                </details>
+            </span>
         </li>
         <li>
-               <input type="button" value="Dos" onClick="javascript:history.back()">
+            <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">
-            
-             
-            
+
+
+
         </li>
-        
+
     </ul>
 </form>
 {% endblock %}

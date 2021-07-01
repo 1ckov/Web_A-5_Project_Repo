@@ -9,23 +9,27 @@
     <ul>
         <li>
             <label for="dateOfBirth">Date de naissance</label>
-            <input type="date" name="dateOfBirth" id="dob" required>
-            <span><details><summary>
-                Aider?
-            </summary> 
-                <p>Entrez votre date de naissance ici s'il vous plaît
-                    <br> C'est le jour de ta naissance.
-                </p>
-            </details></span>
+            <input type="date" name="dateOfBirth" id="dob"
+                value="{{fields.date_of_birth if fields.date_of_birth != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    <p>Entrez votre date de naissance ici s'il vous plaît
+                        <br> C'est le jour de ta naissance.
+                    </p>
+                </details>
+            </span>
         </li>
         <li>
-               <input type="button" value="Dos" onClick="javascript:history.back()">
+            <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">
-            
-             
-            
+
+
+
         </li>
-        
+
     </ul>
 </form>
 {% endblock %}

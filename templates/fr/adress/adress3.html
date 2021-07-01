@@ -9,14 +9,18 @@
         <h1> Adresse 3 sur 5</h1>
         <li>
             <label for="adress_additions">Additions d'adresse (facultatif)</label>
-            <input type="text" id="adress_additions" name="adress_additions">
-            <span class="extra-info"><details><summary>
-                Aider?
-            </summary> 
-               <p>Veuillez saisir des informations supplémentaires concernant votre adresse. Par exemple: 1er étage à droite, 15
-                   <br> C'est purement facultatif.
-            </p>
-            </details>
+            <input type="text" id="adress_additions" name="adress_additions"
+                value="fields.address_addition if fields.adress_addition != None else '' ">
+            <span class="extra-info">
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    <p>Veuillez saisir des informations supplémentaires concernant votre adresse. Par exemple: 1er étage
+                        à droite, 15
+                        <br> C'est purement facultatif.
+                    </p>
+                </details>
             </span>
         </li>
         <li>
@@ -24,6 +28,6 @@
             <input type="submit" value='Envoyer'>
         </li>
 
-    </ul>
+        </ul>
     </form>
     {% endblock %}

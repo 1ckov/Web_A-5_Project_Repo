@@ -10,27 +10,36 @@
     <ul>
         <li>
             <label for="street">Rue</label>
-            <input type="text" id="street" name="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*">
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Entrez ici le nom de la rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.<br>
-                <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes spéciaux sauf un moins (-)</i>
-            </details> </span>
+            <input type="text" id="street" name="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*"
+                value="{{fields.street_sepa if fields.street_sepa != None else '' }}">
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Entrez ici le nom de la rue de votre maison. Ce devrait être la même que l'adresse que
+                    vous avez écrite plus tôt.<br>
+                    <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes
+                        spéciaux sauf un moins (-)</i>
+                </details>
+            </span>
         </li>
         <li>
             <label for="home_nr">Numéro de rue</label>
-            <input type="text" id="street_nr" name="street_nr">
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Entrez ici le numéro de rue de votre maison. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.
-                </details></span>
+            <input type="text" id="street_nr" name="street_nr"
+                value="{{fields.streetnumber_sepa if fields.streetnumber_sepa != None else '' }}">
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Entrez ici le numéro de rue de votre maison. Ce devrait être la même que l'adresse que
+                    vous avez écrite plus tôt.
+                </details>
+            </span>
         </li>
         <li>
             <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">
         </li>
-        </ul>
-    </form>
-    {% endblock %}
+    </ul>
+</form>
+{% endblock %}

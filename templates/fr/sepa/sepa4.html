@@ -10,37 +10,51 @@
     <ul>
         <li>
             <label for="IBAN">IBAN</label>
-            <input type="text" id="IBAN" name="IBAN" pattern="\p{Upper}{2}[0-9]{20}$" required>
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Saisissez ici l'IBAN de votre compte bancaire. Il est également connu sous le nom de code d'identification bancaire. <br>
-                Il s'agit d'une connexion depuis le pays dans lequel vous vivez, votre code bancaire et votre numéro de compte.<br>
-                <i>Vous devez écrire deux lettres majuscules et 20 lettres après.</i>
-                Par example: DE02120300000000202051     
-            </details> </span>
+            <input type="text" id="IBAN" name="IBAN" pattern="\p{Upper}{2}[0-9]{20}$"
+                value="{{fields.IBAN if fields.IBAN != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Saisissez ici l'IBAN de votre compte bancaire. Il est également connu sous le nom de code
+                    d'identification bancaire. <br>
+                    Il s'agit d'une connexion depuis le pays dans lequel vous vivez, votre code bancaire et votre numéro
+                    de compte.<br>
+                    <i>Vous devez écrire deux lettres majuscules et 20 lettres après.</i>
+                    Par example: DE02120300000000202051
+                </details>
+            </span>
         </li>
         <li>
             <label for="BIC">BIC</label>
-            <input type="text" id="BIC" name="BIC" pattern="[^\p{Lower}]{7,8}[0-9]{0,4}$" required>
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Saisissez ici le BIC de votre compte bancaire. Il est également connu sous le nom de code d'identification de votre banque.<br>
-                <i>Vous devez écrire au moins 7 et au plus 8 lettres majuscules et au plus 4 chiffres.</i><br>
-                Par example: BYLADEM1001	
-            </details></span>
+            <input type="text" id="BIC" name="BIC" pattern="[^\p{Lower}]{7,8}[0-9]{0,4}$"
+                value="{{fields.BIC if fields.BIC != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Saisissez ici le BIC de votre compte bancaire. Il est également connu sous le nom de code
+                    d'identification de votre banque.<br>
+                    <i>Vous devez écrire au moins 7 et au plus 8 lettres majuscules et au plus 4 chiffres.</i><br>
+                    Par example: BYLADEM1001
+                </details>
+            </span>
         </li>
         <li>
             <label for="credit_institution">Établissement de crédit:</label>
-                    <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Saisissez ici le nom de votre établissement de crédit.<br>
-                <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes spéciaux sauf un moins (-)</i><br>
-                Par example: France Kredit Bank Paris 
-            </details></span>
+            <input type="text" id="credit_institution" name="credit_institution"
+                pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"
+                value="{{fields.credit_institution if fields.credit_institution != None else '' }}" required>
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Saisissez ici le nom de votre établissement de crédit.<br>
+                    <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes
+                        spéciaux sauf un moins (-)</i><br>
+                    Par example: France Kredit Bank Paris
+                </details>
+            </span>
         </li>
         <li>
             <input type="button" value="Dos" onClick="javascript:history.back()">

@@ -9,22 +9,33 @@
     <ul>
         <li>
             <label for="">Genre</label>
-            <input type="radio" name="gender" id="radioMale" required> Mâle
-            <input type="radio" name="gender" id="radioFemale"> Femelle 
-            <span><details><summary>
-                Aider?
-            </summary> 
-                <p>Veuillez choisir votre sexe ici</p>
-            </details></span>
+            {% if fields.gender == "Male" %}
+            <input type="radio" name="gender" id="radioMale" value="Male" checked="checked" required> Mâle
+            <input type="radio" name="gender" id="radioFemale" value="Female"> Femelle
+            {%elif fields.gender == "Female"%}
+            <input type="radio" name="gender" id="radioMale" value="Male" required> Mâle
+            <input type="radio" name="gender" id="radioFemale" value="Female" checked="checked"> Femelle
+            {%else %}
+            <input type="radio" name="gender" id="radioMale" value="Male" required> Mâle
+            <input type="radio" name="gender" id="radioFemale" value="Female"> Femelle
+            {%endif%}
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>
+                    <p>Veuillez choisir votre sexe ici</p>
+                </details>
+            </span>
         </li>
         <li>
-               <input type="button" value="Dos" onClick="javascript:history.back()">
+            <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">
-            
-             
-            
+
+
+
         </li>
-        
+
     </ul>
 </form>
 {% endblock %}

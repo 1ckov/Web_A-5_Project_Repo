@@ -9,36 +9,43 @@
         <h1> Adresse 2 sur 5</h1>
         <ul>
             <li>
-    <label for="street">Rue</label>
-    <input type="text" name="street" id="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" required>
-    <span class="extra-info"> <details><summary>
-        Aider?
-    </summary> 
-        <p>Veuillez saisir le nom de la rue dans laquelle vous vivez.<br>
-            <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de signes spéciaux sauf un moins (-)</i><br>
-             Par exemple: Exemple de rue, Longstreet
-        </p>
-    </details>
-        
-    </span>
-</li>
-<li>
-    <label for="street_nr">Numéro de rue</label>
-    <input type="text" id="street_nr" name="street_nr" required>
-    <span class="extra-info"><details><summary>
-        Aider?
-    </summary> 
-        <p>Veuillez saisir le numéro de votre appartement, dans la rue indiquée, par exemple 2, 4a, 254
-        </p>
-    </details>
-        
-    </span>
-</li>
-<li>
-    <input type="button" value="Dos" onClick="javascript:history.back()">
-    <input type="submit" value='Envoyer'>
-</li>
-</ul>
-</form>
+                <label for="street">Rue</label>
+                <input type="text" name="street" id="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*"
+                    value="fields.street if fields.street != None else '' " required>
+                <span class="extra-info">
+                    <details>
+                        <summary>
+                            Aider?
+                        </summary>
+                        <p>Veuillez saisir le nom de la rue dans laquelle vous vivez.<br>
+                            <i>Vous devez commencer par une lettre, et vous ne pouvez pas écrire de chiffres, ni de
+                                signes spéciaux sauf un moins (-)</i><br>
+                            Par exemple: Exemple de rue, Longstreet
+                        </p>
+                    </details>
+
+                </span>
+            </li>
+            <li>
+                <label for="street_nr">Numéro de rue</label>
+                <input type="text" id="street_nr" name="street_nr"
+                    value="fields.streetnumber if fields.streetnumber != None else '' " required>
+                <span class="extra-info">
+                    <details>
+                        <summary>
+                            Aider?
+                        </summary>
+                        <p>Veuillez saisir le numéro de votre appartement, dans la rue indiquée, par exemple 2, 4a, 254
+                        </p>
+                    </details>
+
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Dos" onClick="javascript:history.back()">
+                <input type="submit" value='Envoyer'>
+            </li>
+        </ul>
+    </form>
 </div>
 {% endblock %}

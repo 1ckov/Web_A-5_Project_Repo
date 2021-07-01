@@ -10,26 +10,34 @@
     <ul>
         <li>
             <label for="ZIP_code">Code postal</label>
-            <input type="text" id="ZIP_code" name="ZIP_code" pattern="[0-9]{5}$">
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Entrez ici le code postal de votre adresse. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.<br>
-                <i>Le code postal ne comporte que cinq chiffres</i><br>
-                Par exemple 67812, 62342
+            <input type="text" id="ZIP_code" name="ZIP_code" pattern="[0-9]{5}$"
+                value="{{fields.zip_code_sepa if fields.zip_code_sepa != None else '' }}">
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Entrez ici le code postal de votre adresse. Ce devrait être la même que l'adresse que vous
+                    avez écrite plus tôt.<br>
+                    <i>Le code postal ne comporte que cinq chiffres</i><br>
+                    Par exemple 67812, 62342
 
-            </details> </span>
+                </details>
+            </span>
         </li>
         <li>
             <label for="area">Ville</label>
-            <input type="text" id="area" name="area" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)">
-            <span><details>
-                <summary>
-                    Aider?
-                </summary>Entrez ici la ville de votre domicile. Ce devrait être la même que l'adresse que vous avez écrite plus tôt.<br>
-                <i>Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i><br>
-                Par exemple: Paris, Lyon.
-                </details> </span>
+            <input type="text" id="area" name="area" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)"
+                value="{{fields.city_sepa if fields.city_sepa != None else '' }}">
+            <span>
+                <details>
+                    <summary>
+                        Aider?
+                    </summary>Entrez ici la ville de votre domicile. Ce devrait être la même que l'adresse que vous avez
+                    écrite plus tôt.<br>
+                    <i>Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i><br>
+                    Par exemple: Paris, Lyon.
+                </details>
+            </span>
         </li>
         <li>
             <input type="button" value="Dos" onClick="javascript:history.back()">
