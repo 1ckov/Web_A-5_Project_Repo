@@ -64,7 +64,7 @@ def addToSV(name, value):
 
 def populateSV(uid):
     global session_variables
-    temp = session_variables
+    temp = session_variables.copy()
     print(temp)
     Session = sessionmaker(bind=engine)
     db_session = Session()
@@ -256,7 +256,7 @@ def index():
 def registration(lang):
     language_glob = session.get("lang")
     global session_variables
-    session["session_variables"] = session_variables
+    session["session_variables"] = session_variables.copy()
     if request.method == 'POST':
 
         # Getting Post Data
@@ -293,7 +293,7 @@ def registration(lang):
         addToSV("last_name", last_name)
 
 # Check if date of birth is future
-
+        
         date_of_birth = request.form.get("dateOfBirth")
         addToSV("date_of_birth", date_of_birth)
         new_data = Data(user_id=user_id,
