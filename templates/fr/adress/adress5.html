@@ -8,22 +8,26 @@
     <form action="/{{language}}/gez/adress5" method="POST">
         <h1> Adresse 5 sur 5</h1>
         <ul>
-        <li>
-            <label for="phone_number">Numéro de téléphone (facultatif)</label>
-            <input type="tel" id="phone_number" name="phone_number">
-            <span class="extra-info"><details><summary>Aider?
+            <li>
+                <label for="phone_number">Numéro de téléphone (facultatif)</label>
+                <input type="tel" id="phone_number" name="phone_number"
+                    value="fields.phone_number if fields.phone_number != None else '' ">
+                <span class="extra-info">
+                    <details>
+                        <summary>Aider?
 
-            </summary>
-            Si vous souhaitez être contacté par téléphone, veuillez entrer votre numéro de téléphone. C'est complètement optionnel. Sans cela, vous ne recevriez que des lettres.
-        </details>
-                
-            </span>
-        </li>
-        <li>
-            <input type="button" value="Dos" onClick="javascript:history.back()">
-            <input type="submit" value='Envoyer'>
-        </li>
+                        </summary>
+                        Si vous souhaitez être contacté par téléphone, veuillez entrer votre numéro de téléphone. C'est
+                        complètement optionnel. Sans cela, vous ne recevriez que des lettres.
+                    </details>
 
-    </ul>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Dos" onClick="javascript:history.back()">
+                <input type="submit" value='Envoyer'>
+            </li>
+
+        </ul>
     </form>
     {% endblock %}

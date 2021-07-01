@@ -7,36 +7,43 @@
 <div class="pers-fields">
     <form action="/{{language}}/gez/adress4" method="POST">
         <h1> Adresse 4 sur 5</h1>
-        <ul> <li>
-            <label for="zip_code">Code postal</label>
-            <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$" required>
-            <span class="extra-info"><details><summary>Help?
+        <ul>
+            <li>
+                <label for="zip_code">Code postal</label>
+                <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$"
+                    value="fields.zip_code if fields.zip_code != None else '' " required>
+                <span class="extra-info">
+                    <details>
+                        <summary>Help?
 
-            </summary>
-            Veuillez saisir le code postal de votre adresse. <br>
-            <i>Le code postal ne comporte que cinq chiffres</i><br>
-            Par exemple 67812, 62342
-            </details>
-        </span>
-        </li>
-        <li>
-            <label for="city">Ville</label>
-            <input type="text" id="city" name="city" pattern="^[A-Za-zzßÄÖÜäöü]+(([-]|[\s])?[A-Za-zzßÄÖÜäöü]+)*" required>
-            <span class="extra-info"><details><summary>Aider?
+                        </summary>
+                        Veuillez saisir le code postal de votre adresse. <br>
+                        <i>Le code postal ne comporte que cinq chiffres</i><br>
+                        Par exemple 67812, 62342
+                    </details>
+                </span>
+            </li>
+            <li>
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city" pattern="^[A-Za-zzßÄÖÜäöü]+(([-]|[\s])?[A-Za-zzßÄÖÜäöü]+)*"
+                    value="fields.city if fields.city != None else '' " required>
+                <span class="extra-info">
+                    <details>
+                        <summary>Aider?
 
-            </summary>
-            Veuillez saisir le nom de la ville dans laquelle vous vivez. <br>
-            <i>Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i><br>
-            Par exemple: Paris, Lyon.
-        </details>
-               
-            </span>
-        </li>
-        <li>
-            <input type="button" value="Dos" onClick="javascript:history.back()">
-            <input type="submit" value='Envoyer'>
-        </li>
+                        </summary>
+                        Veuillez saisir le nom de la ville dans laquelle vous vivez. <br>
+                        <i>Vous ne pouvez pas écrire de nombres, ni de signes spéciaux sauf un signe moins (-)</i><br>
+                        Par exemple: Paris, Lyon.
+                    </details>
 
-    </ul>
+                </span>
+            </li>
+            <li>
+                <input type="button" value="Dos" onClick="javascript:history.back()">
+                <input type="submit" value='Envoyer'>
+            </li>
+
+        </ul>
     </form>
     {% endblock %}

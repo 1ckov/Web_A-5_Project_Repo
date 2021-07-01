@@ -10,19 +10,23 @@
         <ul>
             <li>
                 <label for="date_registered">Date d'enregistrement</label>
-                <input type="date" id="date_registered" name="date_reg" required>
-                <span> <details><summary>
-                    Aider?
-                </summary> 
-                    <p>Veuillez saisir la date exacte à laquelle vous avez enregistré votre adresse dans la ville.
-                    </p>
-                </details></span>
+                <input type="date" id="date_registered" name="date_reg"
+                    value="fields.registration_date if fields.registration_date != None else '' " required>
+                <span>
+                    <details>
+                        <summary>
+                            Aider?
+                        </summary>
+                        <p>Veuillez saisir la date exacte à laquelle vous avez enregistré votre adresse dans la ville.
+                        </p>
+                    </details>
+                </span>
             </li>
             <li>
                 <input type="button" value="Dos" onClick="javascript:history.back()">
                 <input type="submit" value='Envoyer'>
             </li>
         </ul>
-        </form>
-        </div>
-        {% endblock %}
+    </form>
+</div>
+{% endblock %}
