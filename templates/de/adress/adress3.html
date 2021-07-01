@@ -9,7 +9,7 @@
         <h1> Adresse 3/5</h1>
         <li>
             <label for="adress_additions">Adresszusatz (optional)</label>
-            <input type="text" id="adress_additions" name="adress_additions" >
+            <input type="text" id="adress_additions" name="adress_additions" value="{{fields.address_addition if fields.address_addition != None else '' }}">
             <span class="extra-info">
                 <details>
                     <summary>

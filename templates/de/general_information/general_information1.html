@@ -9,8 +9,16 @@
     <ul>
         <li>
             <label for="">Geschlecht</label>
-            <input type="radio" name="gender" id="radioMale" required> Männlich
-            <input type="radio" name="gender" id="radioFemale"> Weiblich
+            {% if fields.gender == "Male" %} 
+                <input type="radio" name="gender" id="radioMale" value="Male" checked="checked" required> Männlich
+                <input type="radio" name="gender" id="radioFemale" value="Female"> Weiblich
+            {%elif fields.gender == "Female"%}
+                <input type="radio" name="gender" id="radioMale" value="Male" required> Männlich
+                <input type="radio" name="gender" id="radioFemale" value="Female" checked="checked"> Weiblich
+            {%else %}
+                <input type="radio" name="gender" id="radioMale" value="Male" required> Männlich
+                <input type="radio" name="gender" id="radioFemale" value="Female"> Weiblich
+            {%endif%}
             <span>
                 <details>
                     <summary>Hilfe?</summary>

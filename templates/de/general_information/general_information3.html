@@ -9,7 +9,7 @@
     <ul>
         <li>
             <label for="dateOfBirth">Geburtsdatum</label>
-            <input type="date" name="dateOfBirth" id="dob" required>
+            <input type="date" name="dateOfBirth" id="dob" value="{{fields.date_of_birth if fields.date_of_birth != None else '' }}" required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
