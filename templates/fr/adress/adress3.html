@@ -10,7 +10,7 @@
         <li>
             <label for="adress_additions">Additions d'adresse (facultatif)</label>
             <input type="text" id="adress_additions" name="adress_additions"
-                value="fields.address_addition if fields.adress_addition != None else '' ">
+                value="{{fields.address_addition if fields.adress_addition != None else ''}}">
             <span class="extra-info">
                 <details>
                     <summary>

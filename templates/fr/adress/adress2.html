@@ -11,7 +11,7 @@
             <li>
                 <label for="street">Rue</label>
                 <input type="text" name="street" id="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*"
-                    value="fields.street if fields.street != None else '' " required>
+                    value="{{fields.street if fields.street != None else '' }}" required>
                 <span class="extra-info">
                     <details>
                         <summary>
@@ -29,7 +29,7 @@
             <li>
                 <label for="street_nr">Numéro de rue</label>
                 <input type="text" id="street_nr" name="street_nr"
-                    value="fields.streetnumber if fields.streetnumber != None else '' " required>
+                    value="{{fields.streetnumber if fields.streetnumber != None else ''}}" required>
                 <span class="extra-info">
                     <details>
                         <summary>

@@ -11,7 +11,7 @@
             <li>
                 <label for="zip_code">Code postal</label>
                 <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$"
-                    value="fields.zip_code if fields.zip_code != None else '' " required>
+                    value="{{fields.zip_code if fields.zip_code != None else ''}}" required>
                 <span class="extra-info">
                     <details>
                         <summary>Help?
@@ -26,7 +26,7 @@
             <li>
                 <label for="city">Ville</label>
                 <input type="text" id="city" name="city" pattern="^[A-Za-zzßÄÖÜäöü]+(([-]|[\s])?[A-Za-zzßÄÖÜäöü]+)*"
-                    value="fields.city if fields.city != None else '' " required>
+                    value="{{fields.city if fields.city != None else ''}}" required>
                 <span class="extra-info">
                     <details>
                         <summary>Aider?

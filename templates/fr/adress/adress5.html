@@ -11,7 +11,7 @@
             <li>
                 <label for="phone_number">Numéro de téléphone (facultatif)</label>
                 <input type="tel" id="phone_number" name="phone_number"
-                    value="fields.phone_number if fields.phone_number != None else '' ">
+                    value="{{fields.phone_number if fields.phone_number != None else ''}}">
                 <span class="extra-info">
                     <details>
                         <summary>Aider?

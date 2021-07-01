@@ -11,7 +11,7 @@
             <li>
                 <label for="date_registered">Date d'enregistrement</label>
                 <input type="date" id="date_registered" name="date_reg"
-                    value="fields.registration_date if fields.registration_date != None else '' " required>
+                    value="{{fields.registration_date if fields.registration_date != None else ''}}" required>
                 <span>
                     <details>
                         <summary>
