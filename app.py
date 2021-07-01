@@ -730,8 +730,7 @@ def sepa4(lang):
         addToSV(POSTname, genderPOST)
 
         sv = session.get("session_varaibles")
-        for key, value in sv.items():
-            print(" ")
+     
 
         #################################################
         return redirect('/' + language_glob + '/gez/final')
