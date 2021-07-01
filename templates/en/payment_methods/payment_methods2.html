@@ -11,9 +11,18 @@
         <ul>
             <li>
             <label for="">Type of Transfer</label>
-            <input type="radio" id="sepa" name="type" value="sepa" required> Through Sepa mandate <br>
-            <input type="radio" id="bank_transfer" name="type" value="bank"> Through Bank transfer
+            {% if fields.type_of_transfer == "sepa" %} 
+                <input type="radio" id="sepa" name="type" value="sepa" checked="checked" required> Through Sepa mandate <br>
+                <input type="radio" id="bank_transfer" name="type" value="bank"> Through Bank transfer
+            {% elif fields.type_of_transfer == "bank" %} 
+                <input type="radio" id="sepa" name="type" value="sepa" required> Through Sepa mandate <br>
+                <input type="radio" id="bank_transfer" name="type" value="bank" checked="checked"> Through Bank transfer
+            {%else%}
+                <input type="radio" id="sepa" name="type" value="sepa" required> Through Sepa mandate <br>
+                <input type="radio" id="bank_transfer" name="type" value="bank"> Through Bank transfer
+            {%endif%}
             <span><details>
+
                 <summary>
                     Help?
                 </summary>Please chose how you would like to pay the fee, you can either give SEPA the right to withdraw money from your acount or do a bank transfer on your own. <br>
