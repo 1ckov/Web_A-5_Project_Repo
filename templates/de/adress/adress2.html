@@ -10,7 +10,7 @@
         <ul>
             <li>
                 <label for="street">Straße</label>
-                <input type="text" name="street" id="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" required>
+                <input type="text" name="street" id="street" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" value="{{fields.street if fields.street != None else '' }}" required>
                 <span class="extra-info">
                     <details>
                         <summary>

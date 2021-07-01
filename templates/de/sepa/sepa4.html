@@ -10,7 +10,7 @@
     <ul>
         <li>
             <label for="IBAN">IBAN</label>
-            <input type="text" id="IBAN" name="IBAN" pattern="\p{Upper}{2}[0-9]{20}$" required>
+            <input type="text" id="IBAN" name="IBAN" pattern="\p{Upper}{2}[0-9]{20}$" value="{{fields.IBAN if fields.IBAN != None else '' }}" required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
@@ -22,7 +22,7 @@
         </li>
         <li>
             <label for="BIC">BIC</label>
-            <input type="text" id="BIC" name="BIC" pattern="[^\p{Lower}]{7,8}[0-9]{0,4}$" required>
+            <input type="text" id="BIC" name="BIC" pattern="[^\p{Lower}]{7,8}[0-9]{0,4}$" value="{{fields.BIC if fields.BIC != None else '' }}"  required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
@@ -34,7 +34,7 @@
         </li>
         <li>
             <label for="credit_institution">Kreditinstitut</label>
-            <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*" required>
+            <input type="text" id="credit_institution" name="credit_institution" pattern="^[A-Za-z]+(([-]|[\s])?[A-Za-z]+)*"  value="{{fields.credit_institution if fields.credit_institution != None else '' }}"required>
             <span>
                 <details>
                     <summary>Hilfe?</summary>
