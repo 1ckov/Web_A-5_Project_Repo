@@ -9,7 +9,7 @@
         <h1> Адрес 4 от 5</h1>
         <ul> <li>
             <label for="zip_code">Пощенски код</label>
-            <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$" required>
+            <input type="text" id="zip_code" name="zip_code" pattern="[0-9]{5}$" value="{{fields.zip_code if fields.zip_code != None else '' }}" required>
             <span class="extra-info"><details><summary>Помощ?
 
             </summary>
@@ -21,7 +21,7 @@
         </li>
         <li>
             <label for="city">Град</label>
-            <input type="text" id="city" name="city" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" required>
+            <input type="text" id="city" name="city" pattern="^[A-Za-zßÄÖÜäöü]+(([-]|[\s])?[A-Za-zßÄÖÜäöü]+)*" value="{{fields.city if fields.city != None else '' }}" required>
             <span class="extra-info"><details><summary>Помощ?
 
             </summary>
