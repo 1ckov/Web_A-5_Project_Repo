@@ -1,3 +1,5 @@
+# -*- coding: utf-8> -*-
+
 from datetime import datetime
 from re import I, S
 from flask import Flask, flash, redirect, render_template, request, session, abort
@@ -293,7 +295,7 @@ def registration(lang):
         addToSV("last_name", last_name)
 
 # Check if date of birth is future
-        
+
         date_of_birth = request.form.get("dateOfBirth")
         addToSV("date_of_birth", date_of_birth)
         new_data = Data(user_id=user_id,
@@ -730,7 +732,7 @@ def sepa4(lang):
         addToSV(POSTname, genderPOST)
 
         sv = session.get("session_varaibles")
-     
+        
 
         #################################################
         return redirect('/' + language_glob + '/gez/final')

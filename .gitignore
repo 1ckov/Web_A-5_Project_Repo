@@ -6,3 +6,6 @@ app.db
 post.db
 __pycache__/app.cpython-39.pyc
 __pycache__/database.cpython-39.pyc
+app.db
+post.db
+__pycache__/app.cpython-39.pyc

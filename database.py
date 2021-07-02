@@ -1,3 +1,4 @@
+# -*- coding: utf-8> -*-
 from typing import Optional
 from sqlalchemy import *
 from sqlalchemy import create_engine, ForeignKey

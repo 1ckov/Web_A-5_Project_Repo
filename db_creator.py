@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8> -*-
 from database import User, Data
 import hashlib
 from sqlalchemy import create_engine
