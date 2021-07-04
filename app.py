@@ -24,20 +24,20 @@ POST_names = ["gender", "firstName", "lastName", "dateOfBirth", "date_reg", "str
               "city", "phone_number", "timespan", "type", "fullName", "street", "street_nr", "ZIP_code", "area", "IBAN", "BIC", "credit_institution"]
 
 xml_variables = {
-    "Anrede": ["Frau, Herr"],
+    "Anrede": ["Frau", "Herr"],
     "Vorname": "",  # Max length 28
-    "Nachaname": "",  # Max length 19
+    "TitelNachname": "",  # Max length 19
     "Geburtsdatum": "",  # Max length 8
-    "AnmeldeDatum": "",  # Max length 6, only month and year
+    "Anmeldedatum": "",  # Max length 6, only month and year
     "Adresszusatz": "",  # Max length 22
     "Stra&#223;e" : "", # Max length 22 
     "Hausnummer": "",  # Max length 5
     "PLZ": "",  # Max length 5
     "Ort": "",  # Max length 22
-    "Zahlungsrhytmus": ["in der Mitte eines Dreimonatszeitraums",
+    "Zahlungsrhythmus": ["in der Mitte eines Dreimonatszeitraums",
                         "viertelj&#228;hrlich im Voraus",
                         "halbj&#228;hrlich im Voraus", "j&#228;hrlich im Voraus"],
-    "Zahlungsweise": ["Lastschr", "&#220;berweisung"],
+    "Zahlungsweise": ["Lastschrift", "&#220;berweisung"],
     "Stra&#223;e_Lastschrift": "",  # Max length 22
     "IBAN": "",  # Max length 28
     "BIC": "",  # Max length 11
@@ -61,9 +61,9 @@ def change_lang(lang):
 def check_future_date(date_str):
     year = int(date_str[0:4])
     month = int(date_str[5:7])
-    day = int(date_str[0:-2])
+    day = int(date_str[8:10])
     date_given = datetime.datetime(year,month,day)
-    now = datetime.now()
+    now = datetime.datetime.now()
     if (date_given > now):
         return True
     else: 
@@ -76,9 +76,9 @@ def fill_pdf(data):
     xml_var = xml_variables.copy()
 
     # Gender     
-    if(data["gender"] == "Male"):
+    if(data.get("gender") == "Male"):
         xml_var["Anrede"] = xml_var["Anrede"][1]
-    elif(data["gender"] == "Female"):
+    elif(data.get("gender") == "Female"):
         xml_var["Anrede"] = xml_var["Anrede"][0]
 
 
@@ -92,11 +92,11 @@ def fill_pdf(data):
     lname_str = data.get("last_name")
     if (len(lname_str) > 19 ):
         lname_str = lname_str[0 : 20]
-    xml_var["Nachname"] = lname_str
+    xml_var["TitelNachname"] = lname_str
     
     # Birthdate 
     date_str = data.get("date_of_birth")           
-    if (len(date_str  > 8 )): 
+    if (len(date_str)  > 8 ): 
         year = date_str[0:4]
         month = date_str[5:7]
         day = date_str[8:10]
@@ -113,7 +113,7 @@ def fill_pdf(data):
         reg_str = month + year
     else:
         reg_str = ""
-    xml_var["AnmeldeDatum"] = reg_str
+    xml_var["Anmeldedatum"] = reg_str
     
     # Address addition
     adr_addition = data.get("address_addition")
@@ -134,7 +134,7 @@ def fill_pdf(data):
     xml_var["Hausnummer"] = street_num
     
     # ZIP Code
-    zip_code = data.get("zip_code")
+    zip_code = str(data.get("zip_code"))
     if (len(zip_code) > 5 ):
         zip_code = zip_code[0 : 6]
     xml_var["PLZ"] = zip_code
@@ -148,13 +148,13 @@ def fill_pdf(data):
     # Payment Cycle
     pay_cicle = int(data.get("timespan"))
     if(pay_cicle == 1):
-        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][0]
+        xml_var["Zahlungsrhythmus"] = xml_var["Zahlungsrhythmus"][0]
     elif(pay_cicle == 2):
-        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][1]
+        xml_var["Zahlungsrhythmus"] = xml_var["Zahlungsrhythmus"][1]
     elif(pay_cicle == 3):
-        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][2]
+        xml_var["Zahlungsrhythmus"] = xml_var["Zahlungsrhythmus"][2]
     elif(pay_cicle == 4):
-        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][3]
+        xml_var["Zahlungsrhythmus"] = xml_var["Zahlungsrhythmus"][3]
     
     # Type of Payment
     pay_type = data.get("type_of_transfer")
@@ -203,7 +203,7 @@ def fill_pdf(data):
     city_sepa = data.get("city_sepa") 
     if (len(city_sepa) > 22 ):
         city_sepa = street_sepa [0 : 23]
-    xml_var["OrtLastschriftt"] = city_sepa
+    xml_var["OrtLastschrift"] = city_sepa
 
     # ZIP number of payment beneficiery
     zip_sepa = data.get("zip_code_sepa") 
@@ -215,14 +215,14 @@ def fill_pdf(data):
     phone_number = data.get("phone_number") 
     if (len(phone_number) > 17 ):
         phone_number = phone_number [0 : 18]
-    xml_var["Telefonnummert"] = phone_number
+    xml_var["Telefonnummer"] = phone_number
 
     # Generating PDF    
-    if exists("gez.pd"):
-        if not exists("/pdf_storage/" + session["uid"]):
-            os.mkdir("/pdf_storage/" + session["uid"])
-        pdf_name = 'pdf_storage/' + session["uid"] + "/GEZ Form_" + str(datetime.now()) + ".pdf"
-    pypdftk.fill_form('gez.pdf', xml_var,pdf_name )
+    if exists("gez.pdf"):
+        if not exists("pdf_storage/" + str(session["uid"])):
+            os.mkdir("pdf_storage/" + str(session["uid"]))
+    pdf_name = 'pdf_storage/' + str(session["uid"]) + "/GEZ_Form_" + str(datetime.datetime.now())[0:10] + ".pdf"
+    pypdftk.fill_form('gez.pdf', xml_var ,pdf_name )
 
 
 
@@ -601,7 +601,7 @@ def logout():
 @app.route('/<string:lang>/home')
 def home(lang):
     language_glob = session.get("lang")
-
+    fill_pdf(session["session_variables"])
     if request.args.get('lang') != None:
         change_lang(request.args.get('lang'))
         return redirect('/' + language_glob + '/home')
@@ -646,7 +646,6 @@ def general_information1(lang):
         if request.args.get('lang') != None:
             change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information1')
-        fields = session.get("session_variables")
         return render_template(language_glob + '/general_information/general_information1.html', language=language_glob, fields=session.get("session_variables"))
 
 # The General information Form Part 2
@@ -690,7 +689,7 @@ def general_information3(lang):
         var_POST = request.form[POSTname]
         POSTname = get_session_name(3)
         if (check_future_date(var_POST)):
-            flash(date_rejected)
+            flash(date_rejected())
             return redirect('/' + language_glob + '/gez/general_information3')
         fill_SV_and_DB(POSTname, var_POST)
         #################################################
@@ -977,8 +976,8 @@ def sepa4(lang):
         POSTname = get_session_name(20)
         fill_SV_and_DB(POSTname, var_POST)
 
-        sv = session.get("session_varaibles")
-
+        sv = session.get("session_variables")
+        fill_pdf(sv)
         #################################################
         return redirect('/' + language_glob + '/gez/final')
 
