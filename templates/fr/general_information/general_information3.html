@@ -22,6 +22,13 @@
                 </details>
             </span>
         </li>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <li>
             <input type="button" value="Dos" onClick="javascript:history.back()">
             <input type="submit" value="Envoyer">

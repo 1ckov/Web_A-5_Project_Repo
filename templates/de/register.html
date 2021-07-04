@@ -10,11 +10,6 @@
 <form action="/{{language}}/register" method="POST">
     <h1>Registrierung</h1>
     <ul>
-        <li>
-            <label for="uNameReg">Benutzername</label>
-            <input type="text" name="userNameReg" id="uNameReg" required>
-            <span>Wählen Sie ihren Benutzernamen.</span>
-        </li>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -22,6 +17,11 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        <li>
+            <label for="uNameReg">Benutzername</label>
+            <input type="text" name="userNameReg" id="uNameReg" required>
+            <span>Wählen Sie ihren Benutzernamen.</span>
+        </li>
         <li>
             <label for="">Passwort</label>
             <input type="password" name="password" id="password1" required>

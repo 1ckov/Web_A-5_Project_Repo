@@ -1,19 +1,18 @@
 # -*- coding: utf-8> -*-
 
-from datetime import datetime
-from re import I, S
-from flask import Flask, flash, redirect, render_template, request, session, abort
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, flash, redirect, render_template, request, session
 import os
 from database import User, Data
 import hashlib
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy_utils import EmailType
+import pypdftk
+import datetime
+from os.path import exists
+
+
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///post.db'
-#db_session = SQLAlchemy(app)
 session_variables = {"gender": "", "first_name": "", "last_name":  "", "date_of_birth": "", "registration_date": "", "street": "", "streetnumber": "", "address_addition": "", "zip_code": "", "city": "",
                      "phone_number": "", "timespan": "", "type_of_transfer": "", "name_sepa": "", "street_sepa": "", "streetnumber_sepa": "", "zip_code_sepa": "", "city_sepa": "", "IBAN": "", "BIC": "", "credit_institution": ""}
 session_names = ["gender", "first_name", "last_name", "date_of_birth",
@@ -24,35 +23,237 @@ session_names = ["gender", "first_name", "last_name", "date_of_birth",
 POST_names = ["gender", "firstName", "lastName", "dateOfBirth", "date_reg", "street", "street_nr", "adress_additions", "zip_code",
               "city", "phone_number", "timespan", "type", "fullName", "street", "street_nr", "ZIP_code", "area", "IBAN", "BIC", "credit_institution"]
 
+xml_variables = {
+    "Anrede": ["Frau, Herr"],
+    "Vorname": "",  # Max length 28
+    "Nachaname": "",  # Max length 19
+    "Geburtsdatum": "",  # Max length 8
+    "AnmeldeDatum": "",  # Max length 6, only month and year
+    "Adresszusatz": "",  # Max length 22
+    "Stra&#223;e" : "", # Max length 22 
+    "Hausnummer": "",  # Max length 5
+    "PLZ": "",  # Max length 5
+    "Ort": "",  # Max length 22
+    "Zahlungsrhytmus": ["in der Mitte eines Dreimonatszeitraums",
+                        "viertelj&#228;hrlich im Voraus",
+                        "halbj&#228;hrlich im Voraus", "j&#228;hrlich im Voraus"],
+    "Zahlungsweise": ["Lastschr", "&#220;berweisung"],
+    "Stra&#223;e_Lastschrift": "",  # Max length 22
+    "IBAN": "",  # Max length 28
+    "BIC": "",  # Max length 11
+    "Kreditinstitut": "",  # Max length 16
+    "NameLastschrift": "",  # Max length 28
+    "HausnummerLastschrift": "",  # Max length 5
+    "OrtLastschrift": "",  # Max length 22
+    "PLZLastschrift": "",  # Max length 5
+    "Telefonnummer": "",  # Max length 17
+}
+
 engine = create_engine('sqlite:///app.db', echo=True)
 
 
 # Changing Language
-def changeLang(lang):
+def change_lang(lang):
     session["lang"] = lang
 
+# Check if date given is in the future
 
-def addToDict(name, value, array):
-    print(name)
-    print(value)
-    print(array)
+def check_future_date(date_str):
+    year = int(date_str[0:4])
+    month = int(date_str[5:7])
+    day = int(date_str[0:-2])
+    date_given = datetime.datetime(year,month,day)
+    now = datetime.now()
+    if (date_given > now):
+        return True
+    else: 
+        return False
+
+# Filling our a pdf with a dictionary
+
+def fill_pdf(data):
+    global xml_variables
+    xml_var = xml_variables.copy()
+
+    # Gender     
+    if(data["gender"] == "Male"):
+        xml_var["Anrede"] = xml_var["Anrede"][1]
+    elif(data["gender"] == "Female"):
+        xml_var["Anrede"] = xml_var["Anrede"][0]
+
+
+    # First Name 
+    fname_str = data.get("first_name")
+    if (len(fname_str) > 28 ):
+        fname_str= fname_str[0 : 29]
+    xml_var["Vorname"] = fname_str
+
+    # Last Name
+    lname_str = data.get("last_name")
+    if (len(lname_str) > 19 ):
+        lname_str = lname_str[0 : 20]
+    xml_var["Nachname"] = lname_str
+    
+    # Birthdate 
+    date_str = data.get("date_of_birth")           
+    if (len(date_str  > 8 )): 
+        year = date_str[0:4]
+        month = date_str[5:7]
+        day = date_str[8:10]
+        date_str = day + month + year
+    else:
+        date_str = ""
+    xml_var["Geburtsdatum"] = date_str
+
+    # Date of registration
+    reg_str = data.get("registration_date")         
+    if (len(reg_str) > 6 ):
+        year = reg_str[0:4]
+        month = reg_str[5:7]
+        reg_str = month + year
+    else:
+        reg_str = ""
+    xml_var["AnmeldeDatum"] = reg_str
+    
+    # Address addition
+    adr_addition = data.get("address_addition")
+    if (len(fname_str) > 22 ):
+        adr_addition = adr_addition[0 : 23]
+    xml_var["Adresszusatz"] = adr_addition
+
+    # Street Name
+    street_name = data.get("street")
+    if (len(street_name) > 22 ):
+        street_name = street_name[0 : 23]
+    xml_var["Stra&#223;e"] = street_name
+
+    # Street Number
+    street_num = data.get("streetnumber")
+    if (len(street_num) > 5 ):
+        street_num = street_num[0 : 6]
+    xml_var["Hausnummer"] = street_num
+    
+    # ZIP Code
+    zip_code = data.get("zip_code")
+    if (len(zip_code) > 5 ):
+        zip_code = zip_code[0 : 6]
+    xml_var["PLZ"] = zip_code
+
+    # City 
+    city_name = data.get("city")
+    if (len(city_name) > 22 ):
+        city_name = city_name[0 : 23]
+    xml_var["Ort"] = city_name
+
+    # Payment Cycle
+    pay_cicle = int(data.get("timespan"))
+    if(pay_cicle == 1):
+        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][0]
+    elif(pay_cicle == 2):
+        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][1]
+    elif(pay_cicle == 3):
+        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][2]
+    elif(pay_cicle == 4):
+        xml_var["Zahlungsrhytmus"] = xml_var["Zahlungsrhytmus"][3]
+    
+    # Type of Payment
+    pay_type = data.get("type_of_transfer")
+    if(pay_type == "sepa"):
+        xml_var["Zahlungsweise"] = xml_var["Zahlungsweise"][0]
+    elif(pay_type == "bank"):
+        xml_var["Zahlungsweise"] = xml_var["Zahlungsweise"][1]
+
+    # Street Sepa 
+    street_sepa = data.get("street_sepa") 
+    if (len(street_sepa) > 22 ):
+        street_sepa = street_sepa[0 : 23]
+    xml_var["Stra&#223;e_Lastschrift"] = street_sepa
+    
+    # IBAN
+    iban_sepa = data.get("IBAN") 
+    if (len(iban_sepa) > 28 ):
+        iban_sepa = iban_sepa[0 : 29]
+    xml_var["IBAN"] = iban_sepa
+    
+    # BIC
+    bic_sepa = data.get("BIC") 
+    if (len(bic_sepa) > 11 ):
+        bic_sepa = bic_sepa[0 : 12]
+    xml_var["BIC"] = bic_sepa
+
+    # Bank
+    bank_sepa = data.get("credit_institution") 
+    if (len(bank_sepa) > 16 ):
+        bank_sepa = bank_sepa[0 : 17]
+    xml_var["Kreditinstitut"] = bank_sepa
+
+    # Name of payment beneficiery 
+    name_sepa = data.get("name_sepa") 
+    if (len(name_sepa) > 28 ):
+        name_sepa = name_sepa [0 : 29]
+    xml_var["NameLastschrift"] = name_sepa
+    
+    # Street number of payment beneficiery 
+    streetnumber_sepa = data.get("streetnumber_sepa") 
+    if (len(streetnumber_sepa) > 5 ):
+        streetnumber_sepa = streetnumber_sepa [0 : 6]
+    xml_var["HausnummerLastschrift"] = streetnumber_sepa
+
+    # City of payment beneficiery
+    city_sepa = data.get("city_sepa") 
+    if (len(city_sepa) > 22 ):
+        city_sepa = street_sepa [0 : 23]
+    xml_var["OrtLastschriftt"] = city_sepa
+
+    # ZIP number of payment beneficiery
+    zip_sepa = data.get("zip_code_sepa") 
+    if (len(zip_sepa) > 5 ):
+        zip_sepa = zip_sepa [0 : 6]
+    xml_var["PLZLastschrift"] = zip_sepa
+
+    # Personal Telephone number
+    phone_number = data.get("phone_number") 
+    if (len(phone_number) > 17 ):
+        phone_number = phone_number [0 : 18]
+    xml_var["Telefonnummert"] = phone_number
+
+    # Generating PDF    
+    if exists("gez.pd"):
+        if not exists("/pdf_storage/" + session["uid"]):
+            os.mkdir("/pdf_storage/" + session["uid"])
+        pdf_name = 'pdf_storage/' + session["uid"] + "/GEZ Form_" + str(datetime.now()) + ".pdf"
+    pypdftk.fill_form('gez.pdf', xml_var,pdf_name )
+
+
+
+# Helper Method for fiiling arrays
+
+
+def add_to_dict(name, value, array):
     if(value != ""):
         array[name] = value
         return array
     return array
 
+# Returns a "Session Variable" name based on the numerical postion of the field
 
-def getSessionName(stepNumber):
+
+def get_session_name(stepNumber):
     global session_names
     return session_names[stepNumber]
 
+# Return a "HTML field" name based on its numerical position.
 
-def getPOSTName(stepNumber):
+
+def get_POST_name(stepNumber):
     global POST_names
     return POST_names[stepNumber]
 
 
-def addToSV(name, value):
+# Puts a variable in the SV and if user is logged in, also in the DB
+
+
+def fill_SV_and_DB(name, value):
     temp = session["session_variables"]
     temp[name] = value
     session["session_variables"] = temp
@@ -64,38 +265,42 @@ def addToSV(name, value):
         db_session.commit()
 
 
-def populateSV(uid):
+# Fills SV array with data retrieved from the DB
+
+
+def populate_SV(uid):
     global session_variables
     temp = session_variables.copy()
-    print(temp)
     Session = sessionmaker(bind=engine)
     db_session = Session()
-    db_data = db_session.query(Data).filter_by(user_id=session["uid"]).first()
-    temp = addToDict("gender", db_data.gender, temp)
-    temp = addToDict("first_name", db_data.first_name, temp)
-    temp = addToDict("last_name", db_data.last_name, temp)
-    temp = addToDict("date_of_birth", db_data.date_of_birth, temp)
-    temp = addToDict("registration_date", db_data.registration_date, temp)
-    temp = addToDict("street", db_data.street, temp)
-    temp = addToDict("streetnumber", db_data.streetnumber, temp)
-    temp = addToDict("address_addition", db_data.address_addition, temp)
-    temp = addToDict("zip_code", db_data.zip_code, temp)
-    temp = addToDict("city", db_data.city, temp)
-    temp = addToDict("phone_number", db_data.phone_number, temp)
-    temp = addToDict("timespan", db_data.timespan, temp)
-    temp = addToDict("type_of_transfer", db_data.type_of_transfer, temp)
-    temp = addToDict("name_sepa", db_data.name_sepa, temp)
-    temp = addToDict("street_sepa", db_data.street_sepa, temp)
-    temp = addToDict("streetnumber_sepa", db_data.streetnumber_sepa, temp)
-    temp = addToDict("zip_code_sepa", db_data.zip_code_sepa, temp)
-    temp = addToDict("city_sepa", db_data.city_sepa, temp)
-    temp = addToDict("IBAN", db_data.IBAN, temp)
-    temp = addToDict("BIC", db_data.BIC, temp)
-    temp = addToDict("credit_institution", db_data.credit_institution, temp)
+    db_data = db_session.query(Data).filter_by(user_id=uid).first()
+    temp = add_to_dict("gender", db_data.gender, temp)
+    temp = add_to_dict("first_name", db_data.first_name, temp)
+    temp = add_to_dict("last_name", db_data.last_name, temp)
+    temp = add_to_dict("date_of_birth", db_data.date_of_birth, temp)
+    temp = add_to_dict("registration_date", db_data.registration_date, temp)
+    temp = add_to_dict("street", db_data.street, temp)
+    temp = add_to_dict("streetnumber", db_data.streetnumber, temp)
+    temp = add_to_dict("address_addition", db_data.address_addition, temp)
+    temp = add_to_dict("zip_code", db_data.zip_code, temp)
+    temp = add_to_dict("city", db_data.city, temp)
+    temp = add_to_dict("phone_number", db_data.phone_number, temp)
+    temp = add_to_dict("timespan", db_data.timespan, temp)
+    temp = add_to_dict("type_of_transfer", db_data.type_of_transfer, temp)
+    temp = add_to_dict("name_sepa", db_data.name_sepa, temp)
+    temp = add_to_dict("street_sepa", db_data.street_sepa, temp)
+    temp = add_to_dict("streetnumber_sepa", db_data.streetnumber_sepa, temp)
+    temp = add_to_dict("zip_code_sepa", db_data.zip_code_sepa, temp)
+    temp = add_to_dict("city_sepa", db_data.city_sepa, temp)
+    temp = add_to_dict("IBAN", db_data.IBAN, temp)
+    temp = add_to_dict("BIC", db_data.BIC, temp)
+    temp = add_to_dict("credit_institution", db_data.credit_institution, temp)
     session["session_variables"] = temp
 
+# Hashesh password with pdkf2_hmac algorithm, should be replaced cause fo DB issues
 
-def hashPwd(pwd):
+
+def hash_pwd(pwd):
     salt = (b"100000")
     key = hashlib.pbkdf2_hmac(
         'sha256',  # The hash digest algorithm for HMAC
@@ -106,8 +311,10 @@ def hashPwd(pwd):
     )
     return key
 
+# Helper method to retrieve a Message based on the currently set language.
 
-def usernameExistsMessage():
+
+def uname_exists():
     language_glob = session.get("lang")
 
     def bg():
@@ -132,8 +339,10 @@ def usernameExistsMessage():
     }
     return dict.get(language_glob, default)()
 
+# Helper method to retrieve a Message based on the currently set language.
 
-def emailExistsMessage():
+
+def email_exists():
     language_glob = session.get("lang")
 
     def bg():
@@ -158,8 +367,10 @@ def emailExistsMessage():
     }
     return dict.get(language_glob, default)()
 
+# Helper method to retrieve a Message based on the currently set language.
 
-def passwordRejectedMessage():
+
+def passwd_rejected():
     language_glob = session.get("lang")
 
     def bg():
@@ -185,6 +396,32 @@ def passwordRejectedMessage():
     return dict.get(language_glob, default)()
 
 
+def date_rejected():
+    language_glob = session.get("lang")
+
+    def bg():
+        return "Дадената дата е в бъдещето!"
+
+    def en():
+        return "The date you have given is in the Future!"
+
+    def de():
+        return "Das Datum das Sie eingetragen haben ist in der Zukunft!"
+
+    def fr():
+        return "La date que vous avez donnée est dans le futur! "
+
+    def default():
+        return "You should not be seeing me"
+    dict = {
+        "bg": bg,
+        "en": en,
+        "de": de,
+        "fr": fr
+    }
+    return dict.get(language_glob, default)()
+
+
 # "Chose language" and "Loggin" page
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -196,7 +433,7 @@ def index():
 
     # Saving language for further use
     language_glob = session.get("lang")
-
+    session["session_variables"] = session_variables.copy()
     # If User not logged in
     if not (session.get('logged_in') == True):
 
@@ -210,7 +447,7 @@ def index():
                 usernamePOST = request.form["username"]
 
                 # And Username
-                passwordPOST = str(hashPwd(request.form["password"]))
+                passwordPOST = str(hash_pwd(request.form["password"]))
 
                 # Open communication to DB
                 Session = sessionmaker(bind=engine)
@@ -222,7 +459,7 @@ def index():
 
                 # Password or Username rejected
                 if user == None:
-                    flash(passwordRejectedMessage())
+                    flash(passwd_rejected())
                     return redirect('/')
 
                 # If passwords match
@@ -230,20 +467,20 @@ def index():
                     # User gets logged in and his user id gets saved
                     session['logged_in'] = True
                     session['uid'] = int(user.id)
-                    populateSV(user.id)
+                    populate_SV(user.id)
 
 # Check if there is data from DB
 
                     # Create a session variables dict for PDF Creation
-                    changeLang(user.language)
+                    change_lang(user.language)
                     return redirect('/' + user.language + '/home')
 
-            flash(passwordRejectedMessage())
+            flash(passwd_rejected())
             return redirect('/')
         else:
 
             if request.args.get('lang') != None:
-                changeLang(request.args.get('lang'))
+                change_lang(request.args.get('lang'))
                 return redirect('/')
 
             return render_template(language_glob + '/welcome.html', language=language_glob)
@@ -263,7 +500,7 @@ def registration(lang):
 
         # Getting Post Data
         username = request.form['userNameReg']
-        password = str(hashPwd(request.form['password']))
+        password = str(hash_pwd(request.form['password']))
         email = request.form['email']
         language = request.form['language']
 
@@ -272,11 +509,11 @@ def registration(lang):
         db_session = Session()
 
         if db_session.query(User).filter_by(username=username).first():
-            flash(usernameExistsMessage())
+            flash(uname_exists())
             return redirect('/' + language_glob+'/register')
 
         if db_session.query(User).filter_by(email=email).first():
-            flash(emailExistsMessage())
+            flash(email_exists())
             return redirect('/' + language_glob+'/register')
 
         ########## Put data from forms into DB ##########
@@ -288,16 +525,22 @@ def registration(lang):
         user_id = db_session.query(User).filter_by(
             username=username).first().id
         gender = request.form.get("gender")
-        addToSV("gender", gender)
+        fill_SV_and_DB("gender", gender)
         first_name = request.form.get("firstName")
-        addToSV("first_name", first_name)
+        fill_SV_and_DB("first_name", first_name)
         last_name = request.form.get("lastName")
-        addToSV("last_name", last_name)
+        fill_SV_and_DB("last_name", last_name)
 
 # Check if date of birth is future
 
         date_of_birth = request.form.get("dateOfBirth")
-        addToSV("date_of_birth", date_of_birth)
+        if (check_future_date(date_of_birth)):
+            flash(date_rejected)
+            return redirect('/' + language_glob +'/register')
+        fill_SV_and_DB("date_of_birth", date_of_birth)
+
+        # Filling in possible data and setting dummy values for missing values
+        # New Data
         new_data = Data(user_id=user_id,
                         gender=gender,
                         first_name=first_name,
@@ -326,7 +569,7 @@ def registration(lang):
         #################################################
 
         if request.form['language'] != None:
-            changeLang(request.form['language'])
+            change_lang(request.form['language'])
             language_glob = request.form['language']
 
         session["logged_in"] = True
@@ -337,7 +580,7 @@ def registration(lang):
 
         if request.args.get('lang') != None:
 
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/register')
 
         return render_template(language_glob + '/register.html', language=language_glob)
@@ -360,7 +603,7 @@ def home(lang):
     language_glob = session.get("lang")
 
     if request.args.get('lang') != None:
-        changeLang(request.args.get('lang'))
+        change_lang(request.args.get('lang'))
         return redirect('/' + language_glob + '/home')
     return render_template(language_glob + '/home.html', language=language_glob)
 
@@ -375,7 +618,7 @@ def gez_explanation(lang):
         return redirect('/' + language_glob + '/gez/general_information1')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/gez_explanation')
         return render_template(language_glob + '/gez_explanation.html', language=language_glob)
 
@@ -393,15 +636,15 @@ def general_information1(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Gender
-        POSTname = getPOSTName(0)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(0)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(0)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(0)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/general_information2')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information1')
         fields = session.get("session_variables")
         return render_template(language_glob + '/general_information/general_information1.html', language=language_glob, fields=session.get("session_variables"))
@@ -416,20 +659,20 @@ def general_information2(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Last Name
-        POSTname = getPOSTName(1)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(1)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(1)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(1)
+        fill_SV_and_DB(POSTname, var_POST)
         # First Name
-        POSTname = getPOSTName(2)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(2)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(2)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(2)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/general_information3')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information2')
         return render_template(language_glob + '/general_information/general_information2.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -443,15 +686,18 @@ def general_information3(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Date of birth
-        POSTname = getPOSTName(3)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(3)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(3)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(3)
+        if (check_future_date(var_POST)):
+            flash(date_rejected)
+            return redirect('/' + language_glob + '/gez/general_information3')
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/adress1')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/general_information3')
         return render_template(language_glob + '/general_information/general_information3.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -469,15 +715,15 @@ def adress1(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Date of registration
-        POSTname = getPOSTName(4)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(4)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(4)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(4)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/adress2')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress1')
         return render_template(language_glob + '/adress/adress1.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -491,20 +737,20 @@ def adress2(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Street
-        POSTname = getPOSTName(5)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(5)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(5)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(5)
+        fill_SV_and_DB(POSTname, var_POST)
         # Street Nr.
-        POSTname = getPOSTName(6)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(6)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(6)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(6)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/adress3')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress2')
         return render_template(language_glob + '/adress/adress2.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -518,15 +764,15 @@ def adress3(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Adress additional.
-        POSTname = getPOSTName(7)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(7)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(7)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(7)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/adress4')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress3')
         return render_template(language_glob + '/adress/adress3.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -540,20 +786,20 @@ def adress4(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # ZIP
-        POSTname = getPOSTName(8)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(8)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(8)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(8)
+        fill_SV_and_DB(POSTname, var_POST)
         # City
-        POSTname = getPOSTName(9)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(9)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(9)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(9)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/adress5')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress4')
         return render_template(language_glob + '/adress/adress4.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -567,15 +813,15 @@ def adress5(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Phone Nr.
-        POSTname = getPOSTName(10)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(10)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(10)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(10)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/payment_methods1')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/adress5')
         return render_template(language_glob + '/adress/adress5.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -593,15 +839,15 @@ def payment_methods1(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Timespan.
-        POSTname = getPOSTName(11)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(11)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(11)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(11)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/payment_methods2')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/payment_methods1')
         return render_template(language_glob + '/payment_methods/payment_methods1.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -614,10 +860,10 @@ def payment_methods2(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Type of Transfer.
-        POSTname = getPOSTName(12)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(12)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(12)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(12)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         if request.form["type"] == "sepa":
             return redirect('/' + language_glob + '/gez/sepa1')
@@ -625,7 +871,7 @@ def payment_methods2(lang):
             return redirect('/' + language_glob + '/gez/final')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/payment_methods2')
         return render_template(language_glob + '/payment_methods/payment_methods2.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -643,15 +889,15 @@ def sepa1(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Fullname.
-        POSTname = getPOSTName(13)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(13)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(13)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(13)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/sepa2')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa1')
         return render_template(language_glob + '/sepa/sepa1.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -664,20 +910,20 @@ def sepa2(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # Street.
-        POSTname = getPOSTName(14)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(14)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(14)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(14)
+        fill_SV_and_DB(POSTname, var_POST)
         # Street Nr.
-        POSTname = getPOSTName(15)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(15)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(15)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(15)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/sepa3')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa2')
         return render_template(language_glob + '/sepa/sepa2.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -690,20 +936,20 @@ def sepa3(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # ZIP.
-        POSTname = getPOSTName(16)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(16)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(16)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(16)
+        fill_SV_and_DB(POSTname, var_POST)
         # City.
-        POSTname = getPOSTName(17)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(17)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(17)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(17)
+        fill_SV_and_DB(POSTname, var_POST)
         #################################################
         return redirect('/' + language_glob + '/gez/sepa4')
     else:
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa3')
         return render_template(language_glob + '/sepa/sepa3.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -716,23 +962,22 @@ def sepa4(lang):
     if request.method == 'POST':
         ########## Extract Data From Fields ##########
         # IBAN.
-        POSTname = getPOSTName(18)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(18)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(18)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(18)
+        fill_SV_and_DB(POSTname, var_POST)
         # BIC.
-        POSTname = getPOSTName(19)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(19)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(19)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(19)
+        fill_SV_and_DB(POSTname, var_POST)
         # Credit Institution.
-        POSTname = getPOSTName(20)
-        genderPOST = request.form[POSTname]
-        POSTname = getSessionName(20)
-        addToSV(POSTname, genderPOST)
+        POSTname = get_POST_name(20)
+        var_POST = request.form[POSTname]
+        POSTname = get_session_name(20)
+        fill_SV_and_DB(POSTname, var_POST)
 
         sv = session.get("session_varaibles")
-        
 
         #################################################
         return redirect('/' + language_glob + '/gez/final')
@@ -740,7 +985,7 @@ def sepa4(lang):
     else:
 
         if request.args.get('lang') != None:
-            changeLang(request.args.get('lang'))
+            change_lang(request.args.get('lang'))
             return redirect('/' + request.args.get('lang') + '/gez/sepa4')
         return render_template(language_glob + '/sepa/sepa4.html', language=language_glob, fields=session.get("session_variables"))
 
@@ -752,7 +997,7 @@ def gez_final(lang):
     language_glob = session.get("lang")
 
     if request.args.get('lang') != None:
-        changeLang(request.args.get('lang'))
+        change_lang(request.args.get('lang'))
         return redirect('/' + request.args.get('lang') + '/gez/final')
     return render_template(language_glob + '/final.html', language=language_glob)
 
@@ -763,9 +1008,11 @@ def about(lang):
     language_glob = session.get("lang")
 
     if request.args.get('lang') != None:
-        changeLang(request.args.get('lang'))
+        change_lang(request.args.get('lang'))
         return redirect('/' + request.args.get('lang') + '/about_us')
     return render_template(language_glob + '/about_us.html', language=language_glob)
+
+# Privacy policy
 
 
 @app.route('/<string:lang>/privacy_policy')
@@ -773,9 +1020,11 @@ def privacy_policy(lang):
     language_glob = session.get("lang")
 
     if request.args.get('lang') != None:
-        changeLang(request.args.get('lang'))
+        change_lang(request.args.get('lang'))
         return redirect('/' + request.args.get('lang') + '/privacy_policy')
     return render_template(language_glob + '/privacy_policy.html', language=language_glob)
+
+# Legal notice
 
 
 @app.route('/<string:lang>/legal_notice')
@@ -783,7 +1032,7 @@ def legal_notice(lang):
     language_glob = session.get("lang")
 
     if request.args.get('lang') != None:
-        changeLang(request.args.get('lang'))
+        change_lang(request.args.get('lang'))
         return redirect('/' + request.args.get('lang') + '/legal_notice')
     return render_template(language_glob + '/legalNotice.html', language=language_glob)
 
